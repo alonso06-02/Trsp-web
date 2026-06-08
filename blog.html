@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Galería · TRSP — Trap in Spain</title>
-  <meta name="description" content="Galería de fotos y vídeos de TRSP Nights y eventos del movimiento Trap in Spain."/>
+  <title>Blog · Trap In Spain</title>
+  <meta name="description" content="Blog de Trap In Spain. Noticias, lanzamientos y todo lo que mueve la cultura urbana emergente en España."/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Inicio · TRSP — Trap in Spain</title>
+  <meta name="description" content="TRSP — Movimiento emergente de música urbana en España. TRSP Nights, servicios musicales y comunidad real para artistas."/>
   <meta name="keywords" content="trap españa, TRSP, Trap in Spain, eventos urbanos, mix master, servicios musicales"/>
-  <meta property="og:title" content="Galería · TRSP"/>
-  <meta property="og:description" content="Galería de fotos y vídeos de TRSP Nights y eventos del movimiento Trap in Spain."/>
+  <meta property="og:title" content="Inicio · TRSP"/>
+  <meta property="og:description" content="TRSP — Movimiento emergente de música urbana en España. TRSP Nights, servicios musicales y comunidad real para artistas."/>
   <meta property="og:type" content="website"/>
   <link rel="canonical" href="https://www.trapinspain.com/"/>
   <meta charset="UTF-8" />
@@ -29,8 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  
-  <style>
+  <style>.skip-link{display:none!important}
     /* ── Active nav link ── */
     .skip-link { display:none !important; }
     nav a.active { color: var(--gold) !important; }
@@ -282,7 +285,7 @@
           <li><a href="servicios.html">Servicios</a></li>
           <li><a href="merch.html">Merch</a></li>
           <li><a href="artistas.html">Artistas</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
         </ul>
     <a href="contacto.html" class="nav-cta">Contacto</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -290,23 +293,19 @@
     </button>
   </nav>
   <main id="main">
-
   <section class="section-pad" style="min-height:70vh;display:flex;align-items:center;">
-    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);text-align:center;width:100%;">
-      <div class="section-label">Fotos & Vídeos</div>
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);width:100%;text-align:center;">
+      <div class="section-label">Blog TRSP</div>
       <h1 style="font-family:var(--font-display);font-size:clamp(3rem,8vw,7rem);line-height:0.9;margin:1rem 0 2rem;">
-        Galería <span class="gold">TRSP</span>
+        Noticias del <span class="gold">Movimiento</span>
       </h1>
       <p style="color:var(--white-dim);max-width:500px;margin:0 auto 3rem;line-height:1.8;">
-        Próximamente — fotos y vídeos de todas las TRSP Nights y eventos del movimiento.
+        Historias, lanzamientos, eventos y todo lo que mueve la cultura TRSP. Próximamente.
       </p>
-      <a href="https://www.instagram.com/trapinspainoficial/" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        Ver en Instagram
-      </a>
+      <a href="contacto.html" class="btn-primary">Contactar con TRSP</a>
     </div>
   </section>
-
-  </main>
+</main>
   <footer role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -354,19 +353,7 @@
       </div>
     </div>
   </footer>
-  <!-- WhatsApp flotante -->
-  <a href="https://wa.me/34628796290?text=Hola%20TRSP%2C%20quiero%20informaci%C3%B3n%20sobre%20vuestros%20servicios"
-     target="_blank" rel="noopener noreferrer"
-     id="wa-float"
-     aria-label="Contactar por WhatsApp"
-     title="Habla con nosotros por WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.524 5.865L0 24l6.296-1.493C8.005 23.455 9.959 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.663-.51-5.19-1.4l-.372-.22-3.857.914.979-3.762-.242-.387A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-    </svg>
-    <span>¿Hablamos?</span>
-  </a>
-    <script async src="https://www.instagram.com/embed.js"></script>
+  
     <script>
     // Map popups
     function togglePopup(id) {
@@ -470,6 +457,5 @@
       });
     }
   </script>
-  
 </body>
 </html>
