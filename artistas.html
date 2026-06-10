@@ -626,6 +626,7 @@
       position:absolute;
       width:140%;
       height:140%;
+      max-width:100vw;
       top:50%; left:50%;
       transform:translate(-50%,-50%);
       pointer-events:none;
@@ -692,14 +693,24 @@
 
     /* Responsive */
     @media(max-width:900px) {
-      .artistas-main { grid-template-columns:1fr; gap:1.5rem; padding-top:1rem; }
+      #artistas-hero { overflow-x:hidden; }
+      .artistas-main { grid-template-columns:1fr; gap:1.5rem; padding-top:1rem; max-width:100%; overflow-x:hidden; }
       .artistas-left { text-align:center; }
       .artistas-desc { margin:0 auto 1.5rem; }
-      .artist-card { width:clamp(200px,60vw,300px); }
-      .artist-nav-prev { left:-40px; }
-      .artist-nav-next { right:-40px; }
+      .artist-card-wrap { max-width:100%; }
+      .artist-card { width:clamp(200px,55vw,280px); }
+      .artist-nav-prev { left:4px; }
+      .artist-nav-next { right:4px; }
       .artistas-right { text-align:center; }
       .artist-bio-display { margin:0 auto 1.5rem; }
+      .card-splatter { width:120%; height:120%; }
+      .artist-strip { overflow-x:hidden; }
+    }
+    @media(max-width:480px) {
+      .artist-nav-prev { left:0; }
+      .artist-nav-next { right:0; }
+      .artist-nav-arrow { width:38px; height:38px; }
+      .artist-card { width:clamp(180px,50vw,240px); }
     }
   </style>
 </head>
