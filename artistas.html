@@ -700,24 +700,30 @@
 
     /* Responsive */
     @media(max-width:900px) {
-      #artistas-hero { overflow-x:hidden; }
-      .artistas-main { grid-template-columns:1fr; gap:1.5rem; padding-top:1rem; max-width:100%; overflow-x:hidden; }
-      .artistas-left { text-align:center; }
-      .artistas-desc { margin:0 auto 1.5rem; }
-      .artist-card-wrap { max-width:100%; }
-      .artist-card { width:clamp(200px,55vw,280px); }
-      .artist-nav-prev { left:4px; }
-      .artist-nav-next { right:4px; }
-      .artistas-right { text-align:center; }
-      .artist-bio-display { overflow-wrap:break-word; margin:0 auto 1.5rem; }
+      #artistas-hero { overflow-x:hidden; min-height:auto; padding-top:90px; padding-bottom:2rem; justify-content:flex-start; }
+      .artistas-main { display:flex; flex-direction:column; align-items:center; gap:1.25rem; padding:1rem clamp(1.25rem,4vw,3rem); max-width:100%; overflow-x:hidden; }
+      .artistas-left { text-align:center; order:1; }
+      .artistas-eyebrow { justify-content:center; }
+      .artistas-headline { font-size:clamp(2.4rem,9vw,3.5rem); margin-bottom:0.75rem; }
+      .artistas-desc { margin:0 auto; }
+      .artist-card-wrap { order:2; max-width:100%; width:100%; }
+      .artist-card { width:clamp(200px,60vw,260px); }
+      .artist-nav-prev { left:8px; }
+      .artist-nav-next { right:8px; }
+      .artistas-right { order:3; text-align:center; }
+      .artist-counter { margin-bottom:0.5rem; }
+      .artist-name-display { font-size:clamp(2.2rem,8vw,3.5rem); }
+      .artist-bio-display { overflow-wrap:break-word; margin:0 auto 1.25rem; }
       .card-splatter { width:120%; height:120%; }
-      .artist-strip { overflow-x:hidden; }
+      .artist-strip { overflow-x:hidden; padding-top:1rem; }
+      .kb-hint { display:none; }
     }
     @media(max-width:480px) {
       .artist-nav-prev { left:0; }
       .artist-nav-next { right:0; }
-      .artist-nav-arrow { width:38px; height:38px; }
-      .artist-card { width:clamp(180px,50vw,240px); }
+      .artist-nav-arrow { width:36px; height:36px; }
+      .artist-card { width:clamp(170px,55vw,220px); }
+      .artistas-headline { font-size:clamp(2.2rem,10vw,3rem); }
     }
   </style>
 </head>
