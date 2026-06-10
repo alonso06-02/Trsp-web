@@ -51,7 +51,8 @@
     }
     *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; font-size:16px; }
-    body { background:var(--black); color:var(--white); font-family:var(--font-body); line-height:1.6; overflow-x:hidden; }
+    html { overflow-x:hidden; max-width:100%; }
+    body { background:var(--black); color:var(--white); font-family:var(--font-body); line-height:1.6; overflow-x:hidden; max-width:100%; position:relative; }
     img { max-width:100%; display:block; }
     a { color:inherit; text-decoration:none; }
     button { font-family:var(--font-body); cursor:pointer; border:none; background:none; }
@@ -301,7 +302,7 @@
     }
 
     /* Left panel */
-    .artistas-left { }
+    .artistas-left { min-width:0; max-width:100%; }
     .artistas-eyebrow {
       display: flex;
       align-items: center;
@@ -321,11 +322,13 @@
     }
     .artistas-headline {
       font-family: var(--font-display);
-      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-size: clamp(2.8rem, 7vw, 6.5rem);
       line-height: 0.88;
       color: var(--white);
       margin-bottom: 1.5rem;
       text-transform: uppercase;
+      max-width:100%;
+      overflow-wrap:break-word;
     }
     .artistas-headline span { color: var(--gold); }
     .artistas-desc {
@@ -342,6 +345,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      max-width: 100%;
     }
     .artist-card {
       width: clamp(260px, 28vw, 380px);
@@ -448,17 +452,20 @@
     .artist-nav-next { right: -60px; }
 
     /* Right panel */
-    .artistas-right { }
+    .artistas-right { min-width:0; max-width:100%; }
     .artist-name-display {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-size: clamp(2.2rem, 6vw, 5.5rem);
       line-height: 0.9;
       color: var(--gold);
       margin-bottom: 0.5rem;
       text-transform: uppercase;
       transition: opacity .25s;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
-    .artist-role-display {
+    .artist-role-display { max-width:100%; overflow-wrap:break-word;
       font-family: var(--font-mono);
       font-size: 0.75rem;
       letter-spacing: 0.12em;
@@ -466,7 +473,7 @@
       text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
-    .artist-bio-display {
+    .artist-bio-display { overflow-wrap:break-word;
       font-size: 0.88rem;
       color: var(--white-dim);
       line-height: 1.85;
@@ -608,7 +615,7 @@
 
     /* Fade transition */
     .artist-fade { animation: artistFade .3s ease; }
-    @keyframes artistFade { from { opacity:0; transform:translateX(10px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes artistFade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 
 
     /* ── PERFECTED ELEMENTS ── */
@@ -702,7 +709,7 @@
       .artist-nav-prev { left:4px; }
       .artist-nav-next { right:4px; }
       .artistas-right { text-align:center; }
-      .artist-bio-display { margin:0 auto 1.5rem; }
+      .artist-bio-display { overflow-wrap:break-word; margin:0 auto 1.5rem; }
       .card-splatter { width:120%; height:120%; }
       .artist-strip { overflow-x:hidden; }
     }
@@ -743,7 +750,7 @@
     <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
     <a href="contacto.html" onclick="closeMobileMenu()" style="color:var(--gold);">Contacto</a>
   </div>
-  <main id="main">
+  <main id="main" style="overflow-x:clip;max-width:100vw;">
 
   <section id="artistas-hero">
 
