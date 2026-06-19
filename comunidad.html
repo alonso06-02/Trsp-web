@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5D2H8N96Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E5D2H8N96Y');
+  </script>
+
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Comunidad · TRSP — Trap in Spain</title>
@@ -34,6 +43,7 @@
   <style>
     /* ── Active nav link ── */
     .skip-link { display:none !important; }
+    .channel-card:hover { border-color:rgba(201,162,39,0.4)!important; transform:translateY(-3px); }
     nav a.active { color: var(--gold) !important; }
     
     :root {
@@ -297,6 +307,7 @@
     <a href="servicios.html" onclick="closeMobileMenu()">Servicios</a>
     <a href="merch.html" onclick="closeMobileMenu()">Merch</a>
     <a href="artistas.html" onclick="closeMobileMenu()">Artistas</a>
+    <a href="comunidad.html" onclick="closeMobileMenu()">Comunidad</a>
     <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
     <a href="contacto.html" onclick="closeMobileMenu()" style="color:var(--gold);">Contacto</a>
   </div>
@@ -305,6 +316,40 @@
     <div class="container">
       <div class="section-label reveal">Comunidad</div>
       <h2 class="community-title reveal" id="comunidad-heading">Voces del<br/><span class="gold">movimiento</span></h2>
+      <p class="reveal" style="color:var(--white-dim);max-width:620px;line-height:1.8;margin:1.5rem 0 0;font-size:0.95rem;">
+        Trap In Spain es más que eventos: es una comunidad real de artistas que se apoyan. Únete a nuestros canales, escucha el sonido del movimiento y conecta con gente que comparte tu pasión por la música urbana.
+      </p>
+
+      <div class="community-channels reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin:2.5rem 0 4rem;">
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/34628796290?text=Hola%20TRSP%2C%20quiero%20unirme%20a%20la%20comunidad" target="_blank" rel="noopener noreferrer" class="channel-card" style="background:var(--black-2);border:1px solid rgba(201,162,39,0.15);border-radius:var(--radius-lg);padding:2rem;text-decoration:none;display:block;transition:border-color .2s,transform .2s;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">💬</div>
+          <h3 style="font-size:1.2rem;color:var(--white);margin-bottom:0.5rem;">Grupo de WhatsApp</h3>
+          <p style="color:var(--white-dim);font-size:0.88rem;line-height:1.6;margin-bottom:1rem;">Entérate de eventos, convocatorias y conecta directamente con el movimiento.</p>
+          <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;">UNIRME →</span>
+        </a>
+
+        <!-- Spotify -->
+        <a href="https://open.spotify.com/user/trapinspain" target="_blank" rel="noopener noreferrer" class="channel-card" style="background:var(--black-2);border:1px solid rgba(201,162,39,0.15);border-radius:var(--radius-lg);padding:2rem;text-decoration:none;display:block;transition:border-color .2s,transform .2s;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🎵</div>
+          <h3 style="font-size:1.2rem;color:var(--white);margin-bottom:0.5rem;">Playlist oficial</h3>
+          <p style="color:var(--white-dim);font-size:0.88rem;line-height:1.6;margin-bottom:1rem;">El sonido del movimiento. Artistas de TRSP y lo mejor de la escena emergente.</p>
+          <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;">ESCUCHAR →</span>
+        </a>
+
+        <!-- Discord -->
+        <a href="https://www.instagram.com/trapinspainoficial/" target="_blank" rel="noopener noreferrer" class="channel-card" style="background:var(--black-2);border:1px solid rgba(201,162,39,0.15);border-radius:var(--radius-lg);padding:2rem;text-decoration:none;display:block;transition:border-color .2s,transform .2s;">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">👾</div>
+          <h3 style="font-size:1.2rem;color:var(--white);margin-bottom:0.5rem;">Discord</h3>
+          <p style="color:var(--white-dim);font-size:0.88rem;line-height:1.6;margin-bottom:1rem;">Próximamente — el espacio para charlar, colaborar y compartir tu música 24/7.</p>
+          <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;">PRÓXIMAMENTE</span>
+        </a>
+
+      </div>
+
+      <div class="section-label reveal" style="margin-bottom:0.5rem;">Testimonios</div>
+
       <div class="testimonials-grid">
         <article class="testimonial-card reveal"><div class="testimonial-quote">TRSP me dio mi primer escenario real. Sin ellos no hubiera tenido la oportunidad de demostrar lo que soy como artista delante de cientos de personas.</div><div class="testimonial-author"><div class="author-avatar" aria-hidden="true">MK</div><div><div class="author-name">MK Artist</div><div class="author-role">Artista emergente · Valencia</div></div></div></article>
         <article class="testimonial-card reveal" style="transition-delay:.1s"><div class="testimonial-quote">El mix que me hicieron fue un antes y un después en mi música. Noté la diferencia brutal en streams y el feedback de la gente cambió completamente.</div><div class="testimonial-author"><div class="author-avatar" aria-hidden="true">RZ</div><div><div class="author-name">Razz</div><div class="author-role">Artista trap · Madrid</div></div></div></article>
