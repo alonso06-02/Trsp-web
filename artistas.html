@@ -288,7 +288,9 @@
 
     /* ── ARTISTAS PAGE ── */
     #artistas-hero {
-      min-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
+      min-height: 560px;
       background: var(--black);
       display: flex;
       flex-direction: column;
@@ -354,6 +356,7 @@
       align-items: center;
       position: relative;
       max-width: 100%;
+      min-height: clamp(360px,38vw,510px);
     }
     .artist-card {
       width: clamp(260px, 28vw, 380px);
@@ -380,6 +383,9 @@
       transition: transform .5s var(--ease-out), filter .3s;
     }
     .artist-card:hover .artist-card-photo { transform: scale(1.04); filter: grayscale(0%); }
+    .artist-card-photo-box { width:100%; height:100%; overflow:hidden; }
+    .strip-thumb-img { width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(25%); }
+    .strip-item.active .strip-thumb-img { filter:grayscale(0%); }
 
     /* Placeholder when no photo */
     .artist-card-placeholder {
@@ -460,7 +466,7 @@
     .artist-nav-next { right: -60px; }
 
     /* Right panel */
-    .artistas-right { min-width:0; max-width:100%; }
+    .artistas-right { min-width:0; max-width:100%; min-height:clamp(360px,38vw,510px); display:flex; flex-direction:column; justify-content:center; }
     .artist-name-display {
       font-family: var(--font-display);
       font-size: clamp(2.2rem, 6vw, 5.5rem);
@@ -509,9 +515,13 @@
 
     /* Bottom strip */
     .artist-strip {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: clamp(2.2rem,5vh,3.2rem);
       max-width: 1300px;
       margin: 0 auto;
-      padding: 0 clamp(1.25rem,3vw,3rem) clamp(1.5rem,4vh,2.5rem);
+      padding: 0 clamp(1.25rem,3vw,3rem);
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -597,6 +607,10 @@
 
     /* Keyboard hint */
     .kb-hint {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: clamp(0.6rem,1.5vh,1rem);
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -669,9 +683,10 @@
     .artist-card-overlay {
       position:absolute;
       bottom:0; left:0; right:0;
-      padding:1.25rem;
+      padding:2.5rem 1.25rem 1.25rem;
       z-index:4;
       text-align:left;
+      background:linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 100%);
     }
     .artist-card-overlay-name {
       font-family:var(--font-display);
@@ -708,22 +723,23 @@
 
     /* Responsive */
     @media(max-width:900px) {
-      #artistas-hero { overflow-x:hidden; min-height:auto; padding-top:90px; padding-bottom:2rem; justify-content:flex-start; }
-      .artistas-main { display:flex; flex-direction:column; align-items:center; gap:1.25rem; padding:1rem clamp(1.25rem,4vw,3rem); max-width:100%; overflow-x:hidden; }
+      #artistas-hero { overflow:hidden; height:100vh; height:100dvh; min-height:0; padding-top:64px; padding-bottom:0; justify-content:center; }
+      .artistas-main { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem; padding:0.5rem clamp(1.25rem,4vw,3rem) 5rem; max-width:100%; overflow-x:hidden; }
       .artistas-left { text-align:center; order:1; }
-      .artistas-eyebrow { justify-content:center; }
-      .artistas-headline { font-size:clamp(2.4rem,9vw,3.5rem); margin-bottom:0.75rem; }
-      .artistas-desc { margin:0 auto; }
-      .artist-card-wrap { order:2; max-width:100%; width:100%; }
-      .artist-card { width:clamp(200px,60vw,260px); }
+      .artistas-eyebrow { justify-content:center; margin-bottom:0.5rem; }
+      .artistas-headline { font-size:clamp(1.9rem,7vw,2.8rem); margin-bottom:0; line-height:0.95; }
+      .artistas-desc { display:none; }
+      .artist-card-wrap { order:2; max-width:100%; width:100%; min-height:auto; }
+      .artist-card { width:clamp(180px,48vw,240px); }
       .artist-nav-prev { left:8px; }
       .artist-nav-next { right:8px; }
-      .artistas-right { order:3; text-align:center; }
-      .artist-counter { margin-bottom:0.5rem; }
-      .artist-name-display { font-size:clamp(2.2rem,8vw,3.5rem); }
-      .artist-bio-display { overflow-wrap:break-word; margin:0 auto 1.25rem; }
+      .artistas-right { order:3; text-align:center; min-height:auto; justify-content:flex-start; }
+      .artist-counter { margin-bottom:0.35rem; }
+      .artist-name-display { font-size:clamp(2rem,7vw,3rem); margin-bottom:0.35rem; }
+      .artist-role-display { margin-bottom:0.6rem; }
+      .artist-bio-display { overflow-wrap:break-word; margin:0 auto 0.9rem; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
       .card-splatter { width:120%; height:120%; }
-      .artist-strip { overflow-x:hidden; padding-top:1rem; }
+      .artist-strip { overflow-x:hidden; bottom:1rem; }
       .kb-hint { display:none; }
     }
     @media(max-width:480px) {
@@ -1021,7 +1037,7 @@
   </script>
 
   <script>
-    const ARTISTS = [{'id': 1, 'name': 'Anto GM', 'role': 'Artista · Co-Fundador', 'city': 'Valencia', 'bio': 'Co-fundador de Trap In Spain. Artista valenciano inspirado en la corriente del trap argentino. Referentes: YSY A, Duki, Neo Pistea.', 'ig': 'antogmswag', 'yt': ''}, {'id': 2, 'name': 'M3RY', 'role': 'Artista · Co-Fundadora', 'city': 'Valencia', 'bio': 'Co-fundadora de Trap In Spain. Artista valenciana inspirada en la escena de trap española. Voz del movimiento.', 'ig': 'm3ryswag', 'yt': ''}, {'id': 3, 'name': '7Merino', 'role': 'Artista', 'city': 'Valencia', 'bio': 'Artista emergente valenciano. Participó en la primera TRSP Night dejando una actuación que emocionó a la sala.', 'ig': 'oscaar.merinoo', 'yt': ''}, {'id': 4, 'name': 'Mighty Munch', 'role': 'Artista', 'city': 'Valencia', 'bio': 'Artista con un show lleno de energía y autenticidad. Uno de los highlights de la primera TRSP Night.', 'ig': 'eyoumighty', 'yt': ''}, {'id': 5, 'name': 'Kitto', 'role': 'Artista', 'city': 'Valencia', 'bio': 'Propuesta melódica y emocional. Miembro de La Esencia. Participó en TRSP #1 y #2 aportando sensibilidad única.', 'ig': 'kitto.essence', 'yt': ''}, {'id': 6, 'name': 'Bati1134', 'role': 'Artista', 'city': 'Valencia', 'bio': 'Ganador del Torneo de Estrellas de la TRSP #2. Voz diferencial y personalidad artística muy marcada.', 'ig': 'bati1134_', 'yt': ''}, {'id': 7, 'name': 'Loops', 'role': 'Artista', 'city': 'Valencia', 'bio': 'Finalista del Torneo de Estrellas. Propuesta especialmente energética que conectó rápidamente con el público.', 'ig': 'loops.pl', 'yt': ''}, {'id': 8, 'name': 'DarkCry ZZ', 'role': 'Artista', 'city': 'Murcia', 'bio': 'Sonido influenciado por el trap argentino. Identidad artística muy marcada. Primer concierto en TRSP #3 Murcia.', 'ig': 'darkcryzz_', 'yt': ''}, {'id': 9, 'name': 'Maga Santos', 'role': 'Artista', 'city': 'Murcia', 'bio': 'Artista de voz especialmente bonita. Cantó por primera vez en directo en la TRSP #3 Noche de Contactos.', 'ig': 'magasantos.g', 'yt': ''}, {'id': 10, 'name': 'YYOOMMY', 'role': 'Artista', 'city': 'España', 'bio': 'Versátil y emocional. Ganó el sorteo en TRSP #3 y dejó uno de los momentos más especiales de la noche.', 'ig': 'yyoommy', 'yt': ''}];
+    const ARTISTS = [{id:1,name:'Anto GM',role:'Artista · Co-Fundador',city:'Valencia',bio:'Co-fundador de Trap In Spain. Artista valenciano inspirado en la corriente del trap argentino. Referentes: YSY A, Duki, Neo Pistea.',ig:'antogmswag',yt:'',photo:'fotos-artistas/ANTO_GM.jpg',mini:'fotos-artistas/mini/ANTO_GM.jpg'},{id:2,name:'M3RY',role:'Artista · Co-Fundadora',city:'Valencia',bio:'Co-fundadora de Trap In Spain. Artista valenciana inspirada en la escena de trap española. Voz del movimiento.',ig:'m3ryswag',yt:'',photo:'fotos-artistas/M3RY.jpg',mini:'fotos-artistas/mini/M3RY.jpg'},{id:3,name:'7Merino',role:'Artista',city:'Valencia',bio:'Artista emergente valenciano. Participó en la primera TRSP Night dejando una actuación que emocionó a la sala.',ig:'oscaar.merinoo',yt:'',photo:'fotos-artistas/7MERINO.jpg',mini:'fotos-artistas/mini/7MERINO.jpg'},{id:4,name:'Mighty Munch',role:'Artista',city:'Valencia',bio:'Artista con un show lleno de energía y autenticidad. Uno de los highlights de la primera TRSP Night.',ig:'eyoumighty',yt:'',photo:'fotos-artistas/MIGHTY_MUNCH.jpg',mini:'fotos-artistas/mini/MIGHTY_MUNCH.jpg'},{id:5,name:'P4BS',role:'Artista',city:'Valencia',bio:'Artista del movimiento Trap In Spain.',ig:'_p4bs',yt:'',photo:'fotos-artistas/P4BS.jpg',mini:'fotos-artistas/mini/P4BS.jpg'},{id:6,name:'Bati1134',role:'Artista',city:'Valencia',bio:'Ganador del Torneo de Estrellas de la TRSP #2. Voz diferencial y personalidad artística muy marcada.',ig:'bati1134_',yt:'',photo:'fotos-artistas/BATI1134.jpg',mini:'fotos-artistas/mini/BATI1134.jpg'},{id:7,name:'Loops',role:'Artista',city:'Valencia',bio:'Finalista del Torneo de Estrellas. Propuesta especialmente energética que conectó rápidamente con el público.',ig:'loops.pl',yt:'',photo:'fotos-artistas/LOOPS.jpg',mini:'fotos-artistas/mini/LOOPS.jpg'},{id:8,name:'Kitto',role:'Artista',city:'Valencia',bio:'Propuesta melódica y emocional. Miembro de La Esencia. Participó en TRSP #1 y #2 aportando sensibilidad única.',ig:'kitto.essence',yt:'',photo:'fotos-artistas/KITTO.jpg',mini:'fotos-artistas/mini/KITTO.jpg'},{id:9,name:'Laurentzito',role:'Artista',city:'Valencia',bio:'Artista del movimiento Trap In Spain.',ig:'laurentzito',yt:'',photo:'fotos-artistas/LAURENTZITO.jpg',mini:'fotos-artistas/mini/LAURENTZITO.jpg'},{id:10,name:'Heo',role:'Artista',city:'Valencia',bio:'Artista del movimiento Trap In Spain.',ig:'heogsr',yt:'',photo:'fotos-artistas/HEO.jpg',mini:'fotos-artistas/mini/HEO.jpg'},{id:11,name:'Valve',role:'Artista',city:'Valencia',bio:'Artista del movimiento Trap In Spain.',ig:'valve.wav',yt:'',photo:'fotos-artistas/VALVE.jpg',mini:'fotos-artistas/mini/VALVE.jpg'},{id:12,name:'DarkCry ZZ',role:'Artista',city:'Murcia',bio:'Sonido influenciado por el trap argentino. Identidad artística muy marcada. Primer concierto en TRSP #3 Murcia.',ig:'darkcryzz_',yt:'',photo:'fotos-artistas/DARKCRY_ZZ.jpg',mini:'fotos-artistas/mini/DARKCRY_ZZ.jpg'},{id:13,name:'YOVNHACHE',role:'Artista',city:'España',bio:'Artista del movimiento Trap In Spain.',ig:'yovnhache_',yt:'',photo:'fotos-artistas/YOVNHACHE.jpg',mini:'fotos-artistas/mini/YOVNHACHE.jpg'},{id:14,name:'ELAANYEL',role:'Artista',city:'España',bio:'Artista del movimiento Trap In Spain.',ig:'elaanyel',yt:'',photo:'fotos-artistas/ELAANYEL.jpg',mini:'fotos-artistas/mini/ELAANYEL.jpg'},{id:15,name:'YYOOMMY',role:'Artista',city:'España',bio:'Versátil y emocional. Ganó el sorteo en TRSP #3 y dejó uno de los momentos más especiales de la noche.',ig:'yyoommy',yt:'',photo:'fotos-artistas/YOMY.jpg',mini:'fotos-artistas/mini/YOMY.jpg'}];
 
     let current = 0;
 
@@ -1031,7 +1047,6 @@
         name: document.getElementById('artist-name'),
         role: document.getElementById('artist-role'),
         bio:  document.getElementById('artist-bio'),
-        letter: document.getElementById('artist-letter'),
         badge: document.getElementById('artist-badge-num'),
         igBtn: document.getElementById('artist-ig-btn'),
       };
@@ -1048,9 +1063,19 @@
       els.name.textContent   = a.name;
       els.role.textContent   = a.role + ' · ' + a.city;
       els.bio.textContent    = a.bio;
-      els.letter.textContent = a.name.charAt(0).toUpperCase();
       els.badge.textContent  = a.id;
       els.igBtn.href = 'https://instagram.com/' + a.ig;
+      // Foto de la tarjeta (o placeholder con inicial)
+      const photoEl = document.getElementById('artist-card-photo');
+      if (a.photo) {
+        photoEl.classList.remove('artist-card-placeholder');
+        photoEl.classList.add('artist-card-photo-box');
+        photoEl.innerHTML = '<img class="artist-card-photo" src="' + a.photo + '" alt="' + a.name + '">';
+      } else {
+        photoEl.classList.add('artist-card-placeholder');
+        photoEl.classList.remove('artist-card-photo-box');
+        photoEl.innerHTML = '<span class="artist-card-placeholder-letter">' + a.name.charAt(0).toUpperCase() + '</span>';
+      }
       // Overlay on card
       document.getElementById('artist-card-name').textContent = a.name;
       document.getElementById('artist-card-city').textContent = a.city;
@@ -1090,7 +1115,7 @@
       strip.innerHTML = ARTISTS.map((a, i) => `
         <div class="strip-item ${i===0?'active':''}" onclick="selectArtist(${i})">
           <div class="strip-thumb">
-            <div class="strip-thumb-placeholder">${a.name.charAt(0)}</div>
+            ${a.mini ? `<img class="strip-thumb-img" src="${a.mini}" alt="${a.name}" loading="lazy">` : `<div class="strip-thumb-placeholder">${a.name.charAt(0)}</div>`}
             <span class="strip-p1">${a.id}</span>
           </div>
           <div class="strip-name">${a.name}</div>
