@@ -147,6 +147,8 @@
     .event-card:hover { border-color:rgba(201,162,39,0.4); transform:translateY(-3px); }
     .event-img { aspect-ratio:16/9; background:var(--black-4); position:relative; overflow:hidden; }
     .event-img-bg { position:absolute; inset:0; background:linear-gradient(135deg,var(--black-4),var(--black-5)); display:flex; align-items:center; justify-content:center; }
+    .event-img-cover { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+    .event-card:hover .event-img-cover { transform:scale(1.05); }
     .event-img-logo { font-family:var(--font-display); font-size:3rem; color:rgba(201,162,39,0.15); letter-spacing:0.1em; }
     .event-badge { position:absolute; top:12px; left:12px; padding:4px 10px; border-radius:2px; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; }
     .badge-past { background:rgba(245,243,236,0.1); color:var(--white-dim); }
@@ -446,12 +448,9 @@
       <div class="events-grid" style="margin-top:clamp(2rem,4vh,3rem);">
 
           <article class="event-card reveal" style="transition-delay:.0s" itemscope itemtype="https://schema.org/MusicEvent">
-            <div class="event-img" style="aspect-ratio:unset;background:var(--black);position:relative;">
-              <video src="trsp_night3.mp4" controls preload="metadata" playsinline
-                style="width:100%;display:block;max-height:340px;object-fit:cover;background:var(--black);"
-                aria-label="Highlights Trap In Spain #3 Murcia Noche de Contactos · Sala Spectrum · 25 Abril 2026">
-              </video>
-              <span class="event-badge badge-past" style="position:absolute;top:10px;left:10px;z-index:2;">Realizado · 25 Abr 2026</span>
+            <div class="event-img">
+              <img src="fotos-portadas/portada-murcia.jpg" alt="Trap in Spain Murcia #3 Noche de Contactos" loading="lazy" class="event-img-cover"/>
+              <span class="event-badge badge-past">Realizado · 25 Abr 2026</span>
             </div>
             <div class="event-body">
               <div class="event-date" itemprop="startDate" content="2026-04-25">25 ABRIL 2026</div>
@@ -460,12 +459,13 @@
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                 <span itemprop="name">Murcia · Sala Spectrum</span>
               </div>
+              <a href="evento-3.html" class="event-cta">Ver evento →</a>
             </div>
           </article>
 
           <article class="event-card reveal" style="transition-delay:.1s" itemscope itemtype="https://schema.org/MusicEvent">
             <div class="event-img">
-              <div class="event-img-bg"><div class="event-img-logo">TRSP</div></div>
+              <img src="fotos-portadas/portada-valencia2.jpg" alt="Trap in Spain Valencia #2 Jornada de Estrellas" loading="lazy" class="event-img-cover"/>
               <span class="event-badge badge-past">Realizado · 28 Ene 2026</span>
             </div>
             <div class="event-body">
@@ -481,7 +481,7 @@
 
           <article class="event-card reveal" style="transition-delay:.2s" itemscope itemtype="https://schema.org/MusicEvent">
             <div class="event-img">
-              <div class="event-img-bg"><div class="event-img-logo">TRSP</div></div>
+              <img src="fotos-portadas/portada-valencia1.jpg" alt="Trap in Spain Valencia #1 Night" loading="lazy" class="event-img-cover"/>
               <span class="event-badge badge-past">Realizado · 12 Sep 2025</span>
             </div>
             <div class="event-body">

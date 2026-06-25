@@ -58,6 +58,18 @@
     .feedback-author { font-family:var(--font-display);font-size:1.4rem;color:var(--gold);margin-bottom:0.75rem; }
     .feedback-text { color:var(--white-dim);line-height:1.8;font-size:0.9rem; }
     .artist-list { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem; }
+    .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
+    .gallery-thumb { width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px; cursor:pointer; transition:transform .2s, opacity .2s; border:1px solid rgba(201,162,39,0.1); }
+    .gallery-thumb:hover { transform:scale(1.03); opacity:0.9; }
+    .lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:92vw; max-height:88vh; object-fit:contain; border-radius:4px; }
+    .lightbox-close { position:absolute; top:20px; right:30px; color:#fff; font-size:2.5rem; cursor:pointer; line-height:1; z-index:2; }
+    .lightbox-arrow { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2.5rem; cursor:pointer; padding:1rem; user-select:none; z-index:2; opacity:0.7; transition:opacity .2s; }
+    .lightbox-arrow:hover { opacity:1; color:var(--gold); }
+    .lightbox-prev { left:10px; }
+    .lightbox-next { right:10px; }
+    @media(max-width:600px){ .photo-gallery{ grid-template-columns:repeat(3,1fr); } .lightbox-arrow{ font-size:1.8rem; padding:0.5rem; } }
     .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center; }
     .artist-name { font-weight:600;font-size:0.88rem; }
     .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold); }
@@ -382,8 +394,10 @@
         <div class="artist-item"><span class="artist-name">P4BS</span><a href="https://instagram.com/_p4bs" target="_blank" class="artist-ig">@_p4bs</a></div>
         <div class="artist-item"><span class="artist-name">Brunett</span><a href="https://instagram.com/brunetttttttttt" target="_blank" class="artist-ig">@brunetttttttttt</a></div>
         <div class="artist-item"><span class="artist-name">0800 Don Rouch</span><a href="https://instagram.com/0800donrouch" target="_blank" class="artist-ig">@0800donrouch</a></div>
-        <div class="artist-item"><span class="artist-name">DJ Sopa</span><a href="https://instagram.com/pau.albuixech" target="_blank" class="artist-ig">@pau.albuixech</a></div>
-        <div class="artist-item"><span class="artist-name">Say-K</span><a href="https://instagram.com/prodbysayk" target="_blank" class="artist-ig">@prodbysayk</a></div>
+        <div class="artist-item"><span class="artist-name">Whisu</span><a href="https://instagram.com/whisu.clo" target="_blank" class="artist-ig">@whisu.clo</a></div>
+        <div class="artist-item"><span class="artist-name">Sigarrete · Filmmaker</span><a href="https://instagram.com/sigarretee" target="_blank" class="artist-ig">@sigarretee</a></div>
+        <div class="artist-item"><span class="artist-name">DJ Sopa · DJ</span><a href="https://instagram.com/pau.albuixech" target="_blank" class="artist-ig">@pau.albuixech</a></div>
+        <div class="artist-item"><span class="artist-name">Say-K · Sonido</span><a href="https://instagram.com/prodbysayk" target="_blank" class="artist-ig">@prodbysayk</a></div>
       </div>
     </div>
 
@@ -403,13 +417,43 @@
       <div class="feedback-card"><div class="feedback-author">Mighty Munch</div><div class="feedback-text">Más allá del evento, he visto un equipo que no se rindió en ningún momento, que supo adaptarse a todos los problemas y seguir tirando para adelante. Me lo he disfrutado un montón porque se notaba el corazón y el esfuerzo real que había detrás.</div></div>
       <div class="feedback-card"><div class="feedback-author">P4BS</div><div class="feedback-text">Me gustó mucho las ganas que le pusieron para hacer el evento. Hubo muy buen ambiente. Dar las gracias a Anto y a M3RY por contar conmigo en la primera Trap In Spain. A raíz de ahí salen conexiones muy buenas y gente que te llevas para el recuerdo.</div></div>
       <div class="feedback-card"><div class="feedback-author">7Merino</div><div class="feedback-text">Increíble lo de hoy en Valencia ❤️ Agradecer lo primero de todo a todo el trabajo realizado por parte de Trap In Spain y especialmente a Anto GM y M3RY que pese a todos los problemas lo han solucionado para poder dar el show.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Brunett</div><div class="feedback-text">Muchas gracias a todos por asistir y por darme la oportunidad de presentarme como tal. Buen equipo y apoyo entre todos: se ha logrado algo muy bakano. Contenta de ser el primero de muchos. Estrené en directo dos canciones nuevas que pronto salen. Esto no es pa vender, esto es del corazón ❤️</div></div>
+      <div class="feedback-card"><div class="feedback-author">DJ Sopa</div><div class="feedback-text">Una locura de evento. Súper agradecido de tocar como DJ por primera vez aquí.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Say-K</div><div class="feedback-text">Más allá de todas las complicaciones que tuvo el evento, yo lo he sentido como una familia. Ver cómo, aunque salieran problemas, todos remamos hacia el mismo lado para sacarlo adelante es algo muy bonito y difícil de encontrar. Había ganas reales, apoyo entre nosotros y un objetivo común.</div></div>
       <div class="feedback-card"><div class="feedback-author">0800 Don Rouch</div><div class="feedback-text">Estuvo muy lindo el evento. Siento que están haciendo algo distinto, muy inspirado en esa unión que se vivía en Argentina. Me recordó un poco a las primeras fiestas en la mansión de Modo Diablo, esa sensación de familia y hambre por crecer.</div></div>
       <div class="feedback-card"><div class="feedback-author">Sigarrete</div><div class="feedback-text">Desde fuera se nota muchísimo que aquí van todos a una, y eso es lo que los diferencia del resto. No es solo música o un evento, es la forma en la que se apoyan, cómo empujan todos hacia el mismo sitio. Son diferentes porque aunque todo se complique, no se rinden.</div></div>
     </div>
 
+    <!-- Galería -->
+    <div class="event-section reveal">
+      <div class="section-label">Fotos del evento</div>
+      <h2 class="event-section-title">Galería Valencia #1</h2>
+      <div class="photo-gallery">
+        <img src="fotos-valencia1/valencia1-01.jpg" alt="Trap In Spain Valencia #1 - foto 1" loading="lazy" onclick="openLightbox(1)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-02.jpg" alt="Trap In Spain Valencia #1 - foto 2" loading="lazy" onclick="openLightbox(2)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-03.jpg" alt="Trap In Spain Valencia #1 - foto 3" loading="lazy" onclick="openLightbox(3)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-04.jpg" alt="Trap In Spain Valencia #1 - foto 4" loading="lazy" onclick="openLightbox(4)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-05.jpg" alt="Trap In Spain Valencia #1 - foto 5" loading="lazy" onclick="openLightbox(5)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-06.jpg" alt="Trap In Spain Valencia #1 - foto 6" loading="lazy" onclick="openLightbox(6)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-07.jpg" alt="Trap In Spain Valencia #1 - foto 7" loading="lazy" onclick="openLightbox(7)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-08.jpg" alt="Trap In Spain Valencia #1 - foto 8" loading="lazy" onclick="openLightbox(8)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-09.jpg" alt="Trap In Spain Valencia #1 - foto 9" loading="lazy" onclick="openLightbox(9)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-10.jpg" alt="Trap In Spain Valencia #1 - foto 10" loading="lazy" onclick="openLightbox(10)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-11.jpg" alt="Trap In Spain Valencia #1 - foto 11" loading="lazy" onclick="openLightbox(11)" class="gallery-thumb"/>
+        <img src="fotos-valencia1/valencia1-12.jpg" alt="Trap In Spain Valencia #1 - foto 12" loading="lazy" onclick="openLightbox(12)" class="gallery-thumb"/>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <span class="lightbox-arrow lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)">&#10094;</span>
+      <img id="lightbox-img" src="" alt="Foto ampliada"/>
+      <span class="lightbox-arrow lightbox-next" onclick="event.stopPropagation();lightboxNav(1)">&#10095;</span>
+    </div>
+
     <!-- Links externos -->
     <div class="event-section reveal" style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="https://drive.google.com/drive/folders/1odihkyGPJScNi3JVoX6qxVa-gc9y7KRU" target="_blank" rel="noopener noreferrer" class="btn-secondary">Ver fotos</a>
       <a href="eventos.html" class="btn-primary">← Todos los eventos</a>
     </div>
 
@@ -509,6 +553,14 @@
       entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
     }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Lightbox galería
+    let lbIndex = 1;
+    const lbTotal = 12;
+    function openLightbox(i){ lbIndex=i; document.getElementById('lightbox-img').src='fotos-valencia1/valencia1-'+String(i).padStart(2,'0')+'.jpg'; document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+    function lightboxNav(dir){ lbIndex=((lbIndex-1+dir+lbTotal)%lbTotal)+1; document.getElementById('lightbox-img').src='fotos-valencia1/valencia1-'+String(lbIndex).padStart(2,'0')+'.jpg'; }
+    document.addEventListener('keydown',function(e){ if(!document.getElementById('lightbox').classList.contains('open'))return; if(e.key==='Escape')closeLightbox(); if(e.key==='ArrowLeft')lightboxNav(-1); if(e.key==='ArrowRight')lightboxNav(1); });
 
     // Active nav on scroll (only on pages with multiple sections)
     const pageSections = document.querySelectorAll('section[id]');

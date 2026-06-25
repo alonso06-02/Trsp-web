@@ -58,6 +58,18 @@
     .feedback-author { font-family:var(--font-display);font-size:1.4rem;color:var(--gold);margin-bottom:0.75rem; }
     .feedback-text { color:var(--white-dim);line-height:1.8;font-size:0.9rem; }
     .artist-list { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem; }
+    .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
+    .gallery-thumb { width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px; cursor:pointer; transition:transform .2s, opacity .2s; border:1px solid rgba(201,162,39,0.1); }
+    .gallery-thumb:hover { transform:scale(1.03); opacity:0.9; }
+    .lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:92vw; max-height:88vh; object-fit:contain; border-radius:4px; }
+    .lightbox-close { position:absolute; top:20px; right:30px; color:#fff; font-size:2.5rem; cursor:pointer; line-height:1; z-index:2; }
+    .lightbox-arrow { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2.5rem; cursor:pointer; padding:1rem; user-select:none; z-index:2; opacity:0.7; transition:opacity .2s; }
+    .lightbox-arrow:hover { opacity:1; color:var(--gold); }
+    .lightbox-prev { left:10px; }
+    .lightbox-next { right:10px; }
+    @media(max-width:600px){ .photo-gallery{ grid-template-columns:repeat(3,1fr); } .lightbox-arrow{ font-size:1.8rem; padding:0.5rem; } }
     .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center; }
     .artist-name { font-weight:600;font-size:0.88rem; }
     .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold); }
@@ -354,6 +366,7 @@
         <div class="event-info-row"><span class="event-info-label">Ubicación</span><span class="event-info-val">BlackNote Club, Valencia</span></div>
         <div class="event-info-row"><span class="event-info-label">Horario</span><span class="event-info-val">19:30 – 21:30</span></div>
         <div class="event-info-row"><span class="event-info-label">Ciudad</span><span class="event-info-val">Valencia, España</span></div>
+        <div class="event-info-row" style="grid-column:1/-1;"><span class="event-info-label">Dirección</span><span class="event-info-val">C/ de Polo y Peyrolón, 15 · El Pla del Real · 46021 València</span></div>
       </div>
     </div>
 
@@ -361,8 +374,8 @@
       <div class="section-label">Sinopsis</div>
       <h2 class="event-section-title">Jornada de Estrellas</h2>
       <p style="color:var(--white-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;">La segunda edición de TRAP IN SPAIN VALENCIA llegó con un nuevo concepto: Jornada de Estrellas, una velada creada para seguir impulsando artistas emergentes y reforzar el sentimiento de unión dentro de la escena urbana valenciana.</p>
-      <p style="color:var(--white-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;">Uno de los pilares principales fue el Torneo de Estrellas, donde más de 100 artistas emergentes enviaron sus canciones y fueron reaccionadas públicamente en un directo de Twitch. Tras valorar todas las propuestas, se seleccionaron 8 finalistas y la decisión final quedó en manos del público.</p>
-      <p style="color:var(--white-dim);line-height:1.9;font-size:0.95rem;">UGLY CORP vistió a varios artistas durante el evento, y ENIGMA EXPERIENCE sorteó una experiencia de escape room. Más que un concierto, fue un paso más en la consolidación de una comunidad artística basada en la unión y las oportunidades reales.</p>
+      <p style="color:var(--white-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;">Uno de los pilares principales fue el Torneo de Estrellas, donde más de 100 artistas emergentes enviaron sus canciones y fueron reaccionadas públicamente en un directo de Twitch. Tras valorar todas las propuestas, un jurado seleccionó 8 finalistas y la decisión final quedó en manos del público: Bati1134 se llevó el primer puesto y Loops el segundo, ganando ambos su plaza en el cartel.</p>
+      <p style="color:var(--white-dim);line-height:1.9;font-size:0.95rem;">Durante la noche también subieron al escenario Hugobozz y _k4lyx, de La Esencia. UGLY CORP vistió a varios artistas y sorteó una camiseta, y ENIGMA EXPERIENCE sorteó una experiencia de escape room. Más que un concierto, fue un paso más en la consolidación de una comunidad artística basada en la unión y las oportunidades reales.</p>
     </div>
 
     <div class="event-section reveal">
@@ -378,6 +391,32 @@
         <div class="artist-item"><span class="artist-name">EmptyPaul</span><a href="https://instagram.com/empty_paul" target="_blank" class="artist-ig">@empty_paul</a></div>
         <div class="artist-item"><span class="artist-name">Heo</span><a href="https://instagram.com/heogsr" target="_blank" class="artist-ig">@heogsr</a></div>
         <div class="artist-item"><span class="artist-name">Valve</span><a href="https://instagram.com/valve.wav" target="_blank" class="artist-ig">@valve.wav</a></div>
+        <div class="artist-item"><span class="artist-name">Hugobozz</span><a href="https://instagram.com/hugobozz69" target="_blank" class="artist-ig">@hugobozz69</a></div>
+        <div class="artist-item"><span class="artist-name">_k4lyx</span><a href="https://instagram.com/_k4lyx" target="_blank" class="artist-ig">@_k4lyx</a></div>
+      </div>
+
+      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Participantes del Torneo de Estrellas</h2>
+      <div class="artist-list">
+        <div class="artist-item"><span class="artist-name">AKAELPERI</span><a href="https://instagram.com/akaelperi" target="_blank" class="artist-ig">@akaelperi</a></div>
+        <div class="artist-item"><span class="artist-name">Sintra</span><a href="https://instagram.com/nosoydesintra" target="_blank" class="artist-ig">@nosoydesintra</a></div>
+        <div class="artist-item"><span class="artist-name">ElWestMamai</span><a href="https://instagram.com/elwestmamai_oficial5" target="_blank" class="artist-ig">@elwestmamai_oficial5</a></div>
+        <div class="artist-item"><span class="artist-name">Kosto SK</span><a href="https://instagram.com/kosto_sk" target="_blank" class="artist-ig">@kosto_sk</a></div>
+        <div class="artist-item"><span class="artist-name">Ruben Koer</span><a href="https://instagram.com/rubenkoer" target="_blank" class="artist-ig">@rubenkoer</a></div>
+        <div class="artist-item"><span class="artist-name">Young Golden</span><a href="https://instagram.com/younggoldengf" target="_blank" class="artist-ig">@younggoldengf</a></div>
+      </div>
+
+      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Equipo del evento</h2>
+      <div class="artist-list">
+        <div class="artist-item"><span class="artist-name">Say-K · Sonido</span><a href="https://instagram.com/prodbysayk" target="_blank" class="artist-ig">@prodbysayk</a></div>
+        <div class="artist-item"><span class="artist-name">Broxx · DJ</span><a href="https://instagram.com/broxx.wav" target="_blank" class="artist-ig">@broxx.wav</a></div>
+        <div class="artist-item"><span class="artist-name">PHRDO · Filmmaker</span><a href="https://instagram.com/phrdo__" target="_blank" class="artist-ig">@phrdo__</a></div>
+        <div class="artist-item"><span class="artist-name">Fabi · Filmmaker</span><a href="https://instagram.com/fabiangorbaran_" target="_blank" class="artist-ig">@fabiangorbaran_</a></div>
+      </div>
+
+      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Marcas colaboradoras</h2>
+      <div class="artist-list">
+        <div class="artist-item"><span class="artist-name">UGLY CORP</span><a href="https://instagram.com/ugly.corp" target="_blank" class="artist-ig">@ugly.corp</a></div>
+        <div class="artist-item"><span class="artist-name">ENIGMA EXPERIENCE</span><a href="https://instagram.com/enigmaexperiencevalencia" target="_blank" class="artist-ig">@enigmaexperiencevalencia</a></div>
       </div>
     </div>
 
@@ -391,15 +430,46 @@
     <div class="event-section reveal">
       <div class="section-label">Feedback de artistas</div>
       <h2 class="event-section-title">Lo que dijeron</h2>
-      <div class="feedback-card"><div class="feedback-author">Anto GM</div><div class="feedback-text">Para mí este evento fue súper especial. El hecho de organizarlo con amigos hizo que todo se sintiera mucho más familiar y bonito. A nivel personal me lo pasé increíble, tanto arriba en el escenario como abajo apoyando al resto de artistas. Se sintió muy familia, muy real.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Bati1134</div><div class="feedback-text">"Yo describiría el evento como un subidón, ya que junto al equipo que te hacen sentir en familia y la buena vibra que hay te sientes como una estrella por ese día."</div></div>
-      <div class="feedback-card"><div class="feedback-author">Loops</div><div class="feedback-text">Trap in Spain es algo único, conocí artistas increíbles, ambiente de la industria y además rompimos el show. ¡INOLVIDABLE!</div></div>
-      <div class="feedback-card"><div class="feedback-author">Kitto</div><div class="feedback-text">Mi experiencia con Trap In Spain, tanto en la primera como en la segunda, fue muy acogedora. Los artistas siempre han sido muy cercanos y los eventos se han organizado con profesionalidad.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Valve</div><div class="feedback-text">Para mí este concierto ha sido un subidón enorme. Venía de momentos un poco complicados y vivir esto me ha dado mucha energía y motivación. Súper agradecido con el equipo. Más allá de un evento se siente una familia.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Anto GM</div><div class="feedback-text">Para mí este evento fue súper especial. El hecho de organizarlo con amigos hizo que todo se sintiera mucho más familiar y bonito, desde toda la promo previa hasta el propio día. Creo que ha sido de los mejores eventos que hemos hecho hasta la fecha. Me lo pasé increíble, tanto arriba en el escenario como abajo apoyando al resto. Y ver el agradecimiento de los artistas, del público y hasta de las familias es donde te das cuenta de que todo el esfuerzo vale la pena.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Bati1134</div><div class="feedback-text">Yo describiría el evento como un subidón: junto al equipo, que te hacen sentir en familia, y la buena vibra que hay, te sientes como una estrella por ese día 😛🤙🏽</div></div>
+      <div class="feedback-card"><div class="feedback-author">Loops</div><div class="feedback-text">Trap In Spain es algo único. Conocí artistas increíbles, ambiente de la industria y además rompimos el show. ¡INOLVIDABLE! 🤞🏻</div></div>
+      <div class="feedback-card"><div class="feedback-author">Kitto</div><div class="feedback-text">Mi experiencia con Trap In Spain, tanto en la primera como en la segunda, fue muy acogedora. Los artistas siempre han sido muy cercanos y los eventos se han organizado con profesionalidad, ya que no todos se toman tan en serio la comodidad de los artistas.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Valve</div><div class="feedback-text">Para mí este concierto ha sido un subidón enorme. Venía de momentos un poco complicados y vivir esto me ha dado mucha energía y motivación otra vez. Súper agradecido con el equipo, con Anto, con M3RY y con todos. Más allá de un evento se siente una familia. A por más, porque esto solo acaba de empezar.</div></div>
+      <div class="feedback-card"><div class="feedback-author">EmptyPaul</div><div class="feedback-text">Me gustó muchísimo el grupo que se ha formado y el ambiente que hubo. Me lo pasé muy bien y además creo que estuvo muy bien organizado. Muy buena experiencia.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Heo</div><div class="feedback-text">La verdad es que fue una experiencia muy guay.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Laurentzito</div><div class="feedback-text">Todo fue muy bakano.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Say-K</div><div class="feedback-text">Este evento, a nivel de organización, se notó bastante mejor y eso hizo que todo fluyera mucho más. Siempre hay cosas que solucionar sobre la marcha, pero se gestionó todo muy bien. Para mí siempre es un honor formar parte de Trap In Spain y aportar mi granito de arena. Se siente algo muy familiar, con gente remando hacia el mismo lado.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Broxx</div><div class="feedback-text">Fue una noche muy guay. Hubo muy buena energía todo el rato y el público respondió súper bien. Muy contento de haber podido formar parte y aportar mi granito de arena. Ojalá vengan muchas más.</div></div>
+      <div class="feedback-card"><div class="feedback-author">PHRDO</div><div class="feedback-text">Me lo pasé muy bien grabando el evento. Se notó mucho el curro y el cariño que había detrás, y eso hizo que todo se viviera de una forma muy especial. Muy agradecido de haber formado parte.</div></div>
+      <div class="feedback-card"><div class="feedback-author">Fabi</div><div class="feedback-text">Estuvo muy guay formar parte de esto. Se notó muchísimo la unión entre todos y las ganas de sacar algo grande adelante. Desde fuera se veía un ambiente muy familiar y con mucha hambre de crecer. Muy contento de haber podido captarlo todo.</div></div>
+    </div>
+
+    <div class="event-section reveal">
+      <div class="section-label">Fotos del evento</div>
+      <h2 class="event-section-title">Galería Valencia #2</h2>
+      <div class="photo-gallery">
+        <img src="fotos-valencia2/valencia2-01.jpg" alt="Trap In Spain Valencia #2 - foto 1" loading="lazy" onclick="openLightbox(1)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-02.jpg" alt="Trap In Spain Valencia #2 - foto 2" loading="lazy" onclick="openLightbox(2)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-03.jpg" alt="Trap In Spain Valencia #2 - foto 3" loading="lazy" onclick="openLightbox(3)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-04.jpg" alt="Trap In Spain Valencia #2 - foto 4" loading="lazy" onclick="openLightbox(4)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-05.jpg" alt="Trap In Spain Valencia #2 - foto 5" loading="lazy" onclick="openLightbox(5)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-06.jpg" alt="Trap In Spain Valencia #2 - foto 6" loading="lazy" onclick="openLightbox(6)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-07.jpg" alt="Trap In Spain Valencia #2 - foto 7" loading="lazy" onclick="openLightbox(7)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-08.jpg" alt="Trap In Spain Valencia #2 - foto 8" loading="lazy" onclick="openLightbox(8)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-09.jpg" alt="Trap In Spain Valencia #2 - foto 9" loading="lazy" onclick="openLightbox(9)" class="gallery-thumb"/>
+        <img src="fotos-valencia2/valencia2-10.jpg" alt="Trap In Spain Valencia #2 - foto 10" loading="lazy" onclick="openLightbox(10)" class="gallery-thumb"/>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <span class="lightbox-arrow lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)">&#10094;</span>
+      <img id="lightbox-img" src="" alt="Foto ampliada"/>
+      <span class="lightbox-arrow lightbox-next" onclick="event.stopPropagation();lightboxNav(1)">&#10095;</span>
     </div>
 
     <div class="event-section reveal" style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="https://drive.google.com/drive/folders/1-ncmY8IY-jGGNTjmVt5ANg7rG3-TaAEB" target="_blank" rel="noopener noreferrer" class="btn-secondary">Ver fotos</a>
       <a href="eventos.html" class="btn-primary">← Todos los eventos</a>
     </div>
 
@@ -499,6 +569,14 @@
       entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
     }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Lightbox galería
+    let lbIndex = 1;
+    const lbTotal = 10;
+    function openLightbox(i){ lbIndex=i; document.getElementById('lightbox-img').src='fotos-valencia2/valencia2-'+String(i).padStart(2,'0')+'.jpg'; document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+    function lightboxNav(dir){ lbIndex=((lbIndex-1+dir+lbTotal)%lbTotal)+1; document.getElementById('lightbox-img').src='fotos-valencia2/valencia2-'+String(lbIndex).padStart(2,'0')+'.jpg'; }
+    document.addEventListener('keydown',function(e){ if(!document.getElementById('lightbox').classList.contains('open'))return; if(e.key==='Escape')closeLightbox(); if(e.key==='ArrowLeft')lightboxNav(-1); if(e.key==='ArrowRight')lightboxNav(1); });
 
     // Active nav on scroll (only on pages with multiple sections)
     const pageSections = document.querySelectorAll('section[id]');
