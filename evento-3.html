@@ -59,6 +59,22 @@
     .feedback-author { font-family:var(--font-display);font-size:1.4rem;color:var(--gold);margin-bottom:0.75rem; }
     .feedback-text { color:var(--white-dim);line-height:1.8;font-size:0.9rem; }
     .artist-list { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem; }
+    .artist-item { transition:transform .2s var(--ease-out),border-color .2s; }
+    .artist-item:hover { transform:translateY(-2px); border-color:rgba(201,162,39,0.4); }
+    .evt-tabs { display:flex; gap:0.5rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+    .evt-tab-btn { padding:9px 20px; border:1px solid rgba(201,162,39,0.2); border-radius:999px; background:var(--black-2); color:var(--white-dim); font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; transition:background .2s,color .2s,border-color .2s; cursor:pointer; }
+    .evt-tab-btn:hover { border-color:rgba(201,162,39,0.5); color:var(--white); }
+    .evt-tab-btn.active { background:var(--gold); border-color:var(--gold); color:var(--black); font-weight:700; }
+    .evt-tab-panel { display:none; }
+    .evt-tab-panel.active { display:block; animation:fadeUp .35s var(--ease-out); }
+    .evt-subgroup-title { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin:1.5rem 0 0.75rem; }
+    .evt-empty { color:var(--white-muted); font-size:0.85rem; padding:0.5rem 0 1rem; }
+    .fb-carousel-wrap { position:relative; }
+    .fb-carousel { display:flex; gap:1.1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:0.75rem; scrollbar-width:none; }
+    .fb-carousel::-webkit-scrollbar { display:none; }
+    .fb-carousel .feedback-card { scroll-snap-align:start; flex:0 0 auto; width:min(360px,85vw); margin-bottom:0; }
+    .fb-carousel .feedback-card.founder { border-color:rgba(201,162,39,0.4); background:linear-gradient(160deg,var(--black-3),var(--black-2)); }
+
     .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center; }
     .artist-name { font-weight:600;font-size:0.88rem; }
     .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold); }
@@ -369,8 +385,14 @@
 
     <div class="event-section reveal">
       <div class="section-label">Cartel del evento</div>
-      <h2 class="event-section-title">Artistas</h2>
-      <div class="artist-list">
+      <h2 class="event-section-title">Cartel interactivo</h2>
+      <div class="evt-tabs" role="tablist" aria-label="Cartel del evento">
+        <button class="evt-tab-btn active" id="e3-tabbtn-artistas" role="tab" aria-selected="true" aria-controls="e3-tab-artistas" onclick="showEvtTab('e3','artistas',this)">Artistas</button>
+        <button class="evt-tab-btn" id="e3-tabbtn-equipo" role="tab" aria-selected="false" aria-controls="e3-tab-equipo" onclick="showEvtTab('e3','equipo',this)">Equipo</button>
+        <button class="evt-tab-btn" id="e3-tabbtn-marcas" role="tab" aria-selected="false" aria-controls="e3-tab-marcas" onclick="showEvtTab('e3','marcas',this)">Marcas</button>
+      </div>
+      <div class="evt-tab-panel active" id="e3-tab-artistas" role="tabpanel" aria-labelledby="e3-tabbtn-artistas">
+        <div class="artist-list">
         <div class="artist-item"><span class="artist-name">Anto GM</span><a href="https://instagram.com/antogmswag" target="_blank" class="artist-ig">@antogmswag</a></div>
         <div class="artist-item"><span class="artist-name">M3RY</span><a href="https://instagram.com/m3ry.es" target="_blank" class="artist-ig">@m3ry.es</a></div>
         <div class="artist-item"><span class="artist-name">DarkCry ZZ</span><a href="https://instagram.com/darkcryzz_" target="_blank" class="artist-ig">@darkcryzz_</a></div>
@@ -380,30 +402,28 @@
         <div class="artist-item"><span class="artist-name">YYOOMMY</span><a href="https://instagram.com/yyoommy" target="_blank" class="artist-ig">@yyoommy</a></div>
         <div class="artist-item"><span class="artist-name">JV Sound</span><a href="https://instagram.com/jvsound808" target="_blank" class="artist-ig">@jvsound808</a></div>
       </div>
-
-      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Participantes destacados del torneo</h2>
+      <div class="evt-subgroup-title">Participantes destacados del torneo</div>
       <div class="artist-list">
         <div class="artist-item"><span class="artist-name">AT13</span><a href="https://instagram.com/at13music" target="_blank" class="artist-ig">@at13music</a></div>
         <div class="artist-item"><span class="artist-name">Nummyyeiiwv</span><a href="https://instagram.com/nummyyeiiwv" target="_blank" class="artist-ig">@nummyyeiiwv</a></div>
       </div>
-
-      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Equipo del evento</h2>
-      <div class="artist-list">
+      </div>
+      <div class="evt-tab-panel" id="e3-tab-equipo" role="tabpanel" aria-labelledby="e3-tabbtn-equipo">
+        <div class="artist-list">
         <div class="artist-item"><span class="artist-name">Broxx · DJ</span><a href="https://instagram.com/broxx.wav" target="_blank" class="artist-ig">@broxx.wav</a></div>
         <div class="artist-item"><span class="artist-name">DJ Carrillo · Intro</span><a href="https://instagram.com/samuucano_" target="_blank" class="artist-ig">@samuucano_</a></div>
         <div class="artist-item"><span class="artist-name">Valve · Sonido</span><a href="https://instagram.com/valve.wav" target="_blank" class="artist-ig">@valve.wav</a></div>
         <div class="artist-item"><span class="artist-name">Sigarrete · Filmmaker</span><a href="https://instagram.com/sigarretee" target="_blank" class="artist-ig">@sigarretee</a></div>
         <div class="artist-item"><span class="artist-name">ELEKA · Filmmaker</span><a href="https://instagram.com/itselekaa" target="_blank" class="artist-ig">@itselekaa</a></div>
       </div>
-
-      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Marcas colaboradoras</h2>
-      <div class="artist-list">
+      </div>
+      <div class="evt-tab-panel" id="e3-tab-marcas" role="tabpanel" aria-labelledby="e3-tabbtn-marcas">
+        <div class="artist-list">
         <div class="artist-item"><span class="artist-name">F.F.F Ritual</span><a href="https://instagram.com/f.f.f.ritual" target="_blank" class="artist-ig">@f.f.f.ritual</a></div>
         <div class="artist-item"><span class="artist-name">Mortal Shins</span><a href="https://instagram.com/mortalshins" target="_blank" class="artist-ig">@mortalshins</a></div>
       </div>
-    </div>
-
-    <div class="event-section reveal">
+      </div>
+    </div><div class="event-section reveal">
       <div class="section-label">Highlights</div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(201,162,39,0.15);aspect-ratio:16/9;background:var(--black);">
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/9U2c-em1mh4" title="Highlights Trap In Spain #3 Murcia Noche de Contactos" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="display:block;"></iframe>
@@ -459,16 +479,21 @@
     <div class="event-section reveal">
       <div class="section-label">Feedback de artistas</div>
       <h2 class="event-section-title">Lo que dijeron</h2>
-      <div class="feedback-card"><div class="feedback-author">DarkCry ZZ</div><div class="feedback-text">Fue mi primer concierto y sinceramente no pude pasarlo mejor. Desde el primer momento me hicieron sentir súper cómodo y el trato fue increíble. Me llevo una experiencia que no voy a olvidar nunca.</div></div>
-      <div class="feedback-card"><div class="feedback-author">YOVNHACHE</div><div class="feedback-text">La experiencia en Trap In Spain fue inolvidable. Hacía falta que la industria en España se uniera y ellos lo están haciendo posible. Muy buen rollo y apoyo. Fue mi primer concierto y eso se queda para siempre en el corazón.</div></div>
-      <div class="feedback-card"><div class="feedback-author">ELAANYEL</div><div class="feedback-text">Después de haber cantado en otros eventos, me di cuenta aún más de lo especial que fue lo de Murcia. Se notaba muchísimo la organización, el cariño y las ganas de que todo saliera bien. Había algo distinto, una energía muy viva.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Maga Santos</div><div class="feedback-text">En este evento canté por primera vez en directo mis canciones. No puedo estar más agradecida por el trato, la confianza y la seguridad que te dan en todo momento. En todo momento te hacen sentir que eres parte del movimiento. Volvería a repetirlo sin dudarlo.</div></div>
-      <div class="feedback-card"><div class="feedback-author">YYOOMMY</div><div class="feedback-text">Este tipo de eventos hacen que artistas como yo puedan mostrarse desde lo que realmente son. Fue divertido ver que nadie competía por un puesto que no existe y la unión que sigue siendo necesaria entre los artistas.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Sigarrete</div><div class="feedback-text">Vuelvo de Austria y ya veo que Anto y M3RY la están liando otra vez. La verdad es que son de los mejores en lo que hacen, se dejan la piel para sacar todo adelante y eso se nota. Muy contento de haber formado parte de algo así otra vez.</div></div>
-      <div class="feedback-card"><div class="feedback-author">JV Sound</div><div class="feedback-text">Yo todavía ni me he quitado la pulsera de la buena sensación que me quedó esa noche 🐧. Todos tuvimos nuestro momento de brillar y esto se sentía más como una comunidad que un simple evento, y eso es lo que más me gustó. Por la forma en la que está organizado se hizo muy dinámico y me lo pasé de lujo desde el principio hasta el cierre. Se sentían las ganas de gozarla por parte de todos: participantes, organizadores y colaboradores.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Valve</div><div class="feedback-text">Un placer tocar fuera de Valencia. Trap In Spain, unos duros.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Broxx</div><div class="feedback-text">Me encanta Trap In Spain.</div></div>
-      <div class="feedback-card"><div class="feedback-author">DK · Asistente</div><div class="feedback-text">La party de Trap In Spain en Murcia fue una locura total, no hay palabras para describir tremenda fiesta. Todos los artistas cantaron fenomenal, y el sorteo estuvo genial para dar una segunda oportunidad a los que se quedaron fuera. M3RY y Anto hicieron un conciertazo, no me esperaba el talento que tenéis. Sobre todo el buen rollo que hubo entre los artistas: conocí a mucha gente. Ya quiero que se vuelva a repetir en Murcia ❤️🌹</div></div>
+      <div class="fb-carousel-wrap">
+        <div class="fb-carousel">
+          <div class="feedback-card founder"><div class="feedback-author">M3RY · Co-fundadora</div><div class="feedback-text">El evento de Murcia fue una experiencia muy intensa. A pesar de la agresión sufrida durante la jornada, decidimos seguir adelante porque nuestro compromiso siempre ha sido con los artistas y con quienes habían confiado en nosotros. Conseguimos que el evento saliera adelante y que el público disfrutara de una gran noche, pero también dejó una reflexión importante: esos comportamientos no tienen cabida en la escena que queremos construir. Trap In Spain nació para unir, crear oportunidades y apoyar a artistas emergentes.</div></div>
+          <div class="feedback-card"><div class="feedback-author">DarkCry ZZ</div><div class="feedback-text">Fue mi primer concierto y sinceramente no pude pasarlo mejor. Desde el primer momento me hicieron sentir súper cómodo y el trato fue increíble. Me llevo una experiencia que no voy a olvidar nunca.</div></div>
+          <div class="feedback-card"><div class="feedback-author">YOVNHACHE</div><div class="feedback-text">La experiencia en Trap In Spain fue inolvidable. Hacía falta que la industria en España se uniera y ellos lo están haciendo posible. Muy buen rollo y apoyo. Fue mi primer concierto y eso se queda para siempre en el corazón.</div></div>
+          <div class="feedback-card"><div class="feedback-author">ELAANYEL</div><div class="feedback-text">Después de haber cantado en otros eventos, me di cuenta aún más de lo especial que fue lo de Murcia. Se notaba muchísimo la organización, el cariño y las ganas de que todo saliera bien. Había algo distinto, una energía muy viva.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Maga Santos</div><div class="feedback-text">En este evento canté por primera vez en directo mis canciones. No puedo estar más agradecida por el trato, la confianza y la seguridad que te dan en todo momento. En todo momento te hacen sentir que eres parte del movimiento. Volvería a repetirlo sin dudarlo.</div></div>
+          <div class="feedback-card"><div class="feedback-author">YYOOMMY</div><div class="feedback-text">Este tipo de eventos hacen que artistas como yo puedan mostrarse desde lo que realmente son. Fue divertido ver que nadie competía por un puesto que no existe y la unión que sigue siendo necesaria entre los artistas.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Sigarrete</div><div class="feedback-text">Vuelvo de Austria y ya veo que Anto y M3RY la están liando otra vez. La verdad es que son de los mejores en lo que hacen, se dejan la piel para sacar todo adelante y eso se nota. Muy contento de haber formado parte de algo así otra vez.</div></div>
+          <div class="feedback-card"><div class="feedback-author">JV Sound</div><div class="feedback-text">Yo todavía ni me he quitado la pulsera de la buena sensación que me quedó esa noche 🐧. Todos tuvimos nuestro momento de brillar y esto se sentía más como una comunidad que un simple evento, y eso es lo que más me gustó. Por la forma en la que está organizado se hizo muy dinámico y me lo pasé de lujo desde el principio hasta el cierre. Se sentían las ganas de gozarla por parte de todos: participantes, organizadores y colaboradores.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Valve</div><div class="feedback-text">Un placer tocar fuera de Valencia. Trap In Spain, unos duros.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Broxx</div><div class="feedback-text">Me encanta Trap In Spain.</div></div>
+          <div class="feedback-card"><div class="feedback-author">DK · Asistente</div><div class="feedback-text">La party de Trap In Spain en Murcia fue una locura total, no hay palabras para describir tremenda fiesta. Todos los artistas cantaron fenomenal, y el sorteo estuvo genial para dar una segunda oportunidad a los que se quedaron fuera. M3RY y Anto hicieron un conciertazo, no me esperaba el talento que tenéis. Sobre todo el buen rollo que hubo entre los artistas: conocí a mucha gente. Ya quiero que se vuelva a repetir en Murcia ❤️🌹</div></div>
+        </div>
+      </div>
     </div>
 
     <div class="event-section reveal" style="display:flex;gap:1rem;flex-wrap:wrap;">
@@ -558,6 +583,16 @@
         mobileMenu.classList.toggle('open', menuOpen);
         hamburger.setAttribute('aria-expanded', menuOpen);
         document.body.style.overflow = menuOpen ? 'hidden' : '';
+      });
+    }
+
+    // Tabs del cartel del evento (Artistas / Equipo / Marcas)
+    function showEvtTab(prefix, tab, btn) {
+      ['artistas','equipo','marcas'].forEach(function(t) {
+        var panel = document.getElementById(prefix + '-tab-' + t);
+        var tabBtn = document.getElementById(prefix + '-tabbtn-' + t);
+        if (panel) panel.classList.toggle('active', t === tab);
+        if (tabBtn) { tabBtn.classList.toggle('active', t === tab); tabBtn.setAttribute('aria-selected', t === tab ? 'true' : 'false'); }
       });
     }
     function closeMobileMenu() {

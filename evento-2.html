@@ -45,6 +45,22 @@
     .feedback-author { font-family:var(--font-display);font-size:1.4rem;color:var(--gold);margin-bottom:0.75rem; }
     .feedback-text { color:var(--white-dim);line-height:1.8;font-size:0.9rem; }
     .artist-list { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem; }
+    .artist-item { transition:transform .2s var(--ease-out),border-color .2s; }
+    .artist-item:hover { transform:translateY(-2px); border-color:rgba(201,162,39,0.4); }
+    .evt-tabs { display:flex; gap:0.5rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+    .evt-tab-btn { padding:9px 20px; border:1px solid rgba(201,162,39,0.2); border-radius:999px; background:var(--black-2); color:var(--white-dim); font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; transition:background .2s,color .2s,border-color .2s; cursor:pointer; }
+    .evt-tab-btn:hover { border-color:rgba(201,162,39,0.5); color:var(--white); }
+    .evt-tab-btn.active { background:var(--gold); border-color:var(--gold); color:var(--black); font-weight:700; }
+    .evt-tab-panel { display:none; }
+    .evt-tab-panel.active { display:block; animation:fadeUp .35s var(--ease-out); }
+    .evt-subgroup-title { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin:1.5rem 0 0.75rem; }
+    .evt-empty { color:var(--white-muted); font-size:0.85rem; padding:0.5rem 0 1rem; }
+    .fb-carousel-wrap { position:relative; }
+    .fb-carousel { display:flex; gap:1.1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:0.75rem; scrollbar-width:none; }
+    .fb-carousel::-webkit-scrollbar { display:none; }
+    .fb-carousel .feedback-card { scroll-snap-align:start; flex:0 0 auto; width:min(360px,85vw); margin-bottom:0; }
+    .fb-carousel .feedback-card.founder { border-color:rgba(201,162,39,0.4); background:linear-gradient(160deg,var(--black-3),var(--black-2)); }
+
     .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
     .gallery-thumb { width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px; cursor:pointer; transition:transform .2s, opacity .2s; border:1px solid rgba(201,162,39,0.1); }
     .gallery-thumb:hover { transform:scale(1.03); opacity:0.9; }
@@ -367,8 +383,14 @@
 
     <div class="event-section reveal">
       <div class="section-label">Cartel del evento</div>
-      <h2 class="event-section-title">Artistas</h2>
-      <div class="artist-list">
+      <h2 class="event-section-title">Cartel interactivo</h2>
+      <div class="evt-tabs" role="tablist" aria-label="Cartel del evento">
+        <button class="evt-tab-btn active" id="e2-tabbtn-artistas" role="tab" aria-selected="true" aria-controls="e2-tab-artistas" onclick="showEvtTab('e2','artistas',this)">Artistas</button>
+        <button class="evt-tab-btn" id="e2-tabbtn-equipo" role="tab" aria-selected="false" aria-controls="e2-tab-equipo" onclick="showEvtTab('e2','equipo',this)">Equipo</button>
+        <button class="evt-tab-btn" id="e2-tabbtn-marcas" role="tab" aria-selected="false" aria-controls="e2-tab-marcas" onclick="showEvtTab('e2','marcas',this)">Marcas</button>
+      </div>
+      <div class="evt-tab-panel active" id="e2-tab-artistas" role="tabpanel" aria-labelledby="e2-tabbtn-artistas">
+        <div class="artist-list">
         <div class="artist-item"><span class="artist-name">Anto GM</span><a href="https://instagram.com/antogmswag" target="_blank" class="artist-ig">@antogmswag</a></div>
         <div class="artist-item"><span class="artist-name">M3RY</span><a href="https://instagram.com/m3ry.es" target="_blank" class="artist-ig">@m3ry.es</a></div>
         <div class="artist-item"><span class="artist-name">Bati1134</span><a href="https://instagram.com/bati1134_" target="_blank" class="artist-ig">@bati1134_</a></div>
@@ -381,8 +403,7 @@
         <div class="artist-item"><span class="artist-name">Hugobozz</span><a href="https://instagram.com/hugobozz69" target="_blank" class="artist-ig">@hugobozz69</a></div>
         <div class="artist-item"><span class="artist-name">_k4lyx</span><a href="https://instagram.com/_k4lyx" target="_blank" class="artist-ig">@_k4lyx</a></div>
       </div>
-
-      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Participantes del Torneo de Estrellas</h2>
+      <div class="evt-subgroup-title">Participantes del Torneo de Estrellas</div>
       <div class="artist-list">
         <div class="artist-item"><span class="artist-name">AKAELPERI</span><a href="https://instagram.com/akaelperi" target="_blank" class="artist-ig">@akaelperi</a></div>
         <div class="artist-item"><span class="artist-name">Sintra</span><a href="https://instagram.com/nosoydesintra" target="_blank" class="artist-ig">@nosoydesintra</a></div>
@@ -391,23 +412,22 @@
         <div class="artist-item"><span class="artist-name">Ruben Koer</span><a href="https://instagram.com/rubenkoer" target="_blank" class="artist-ig">@rubenkoer</a></div>
         <div class="artist-item"><span class="artist-name">Young Golden</span><a href="https://instagram.com/younggoldengf" target="_blank" class="artist-ig">@younggoldengf</a></div>
       </div>
-
-      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Equipo del evento</h2>
-      <div class="artist-list">
+      </div>
+      <div class="evt-tab-panel" id="e2-tab-equipo" role="tabpanel" aria-labelledby="e2-tabbtn-equipo">
+        <div class="artist-list">
         <div class="artist-item"><span class="artist-name">Say-K · Sonido</span><a href="https://instagram.com/prodbysayk" target="_blank" class="artist-ig">@prodbysayk</a></div>
         <div class="artist-item"><span class="artist-name">Broxx · DJ</span><a href="https://instagram.com/broxx.wav" target="_blank" class="artist-ig">@broxx.wav</a></div>
         <div class="artist-item"><span class="artist-name">PHRDO · Filmmaker</span><a href="https://instagram.com/phrdo__" target="_blank" class="artist-ig">@phrdo__</a></div>
         <div class="artist-item"><span class="artist-name">Fabi · Filmmaker</span><a href="https://instagram.com/fabiangorbaran_" target="_blank" class="artist-ig">@fabiangorbaran_</a></div>
       </div>
-
-      <h2 class="event-section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-top:2.5rem;">Marcas colaboradoras</h2>
-      <div class="artist-list">
+      </div>
+      <div class="evt-tab-panel" id="e2-tab-marcas" role="tabpanel" aria-labelledby="e2-tabbtn-marcas">
+        <div class="artist-list">
         <div class="artist-item"><span class="artist-name">UGLY CORP</span><a href="https://instagram.com/ugly.corp" target="_blank" class="artist-ig">@ugly.corp</a></div>
         <div class="artist-item"><span class="artist-name">ENIGMA EXPERIENCE</span><a href="https://instagram.com/enigmaexperiencevalencia" target="_blank" class="artist-ig">@enigmaexperiencevalencia</a></div>
       </div>
-    </div>
-
-    <div class="event-section reveal">
+      </div>
+    </div><div class="event-section reveal">
       <div class="section-label">Vlog oficial</div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;background:var(--black-2);aspect-ratio:16/9;">
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/bTZK6LcOI9I" title="Vlog Trap In Spain #2 Valencia" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="display:block;"></iframe>
@@ -417,18 +437,23 @@
     <div class="event-section reveal">
       <div class="section-label">Feedback de artistas</div>
       <h2 class="event-section-title">Lo que dijeron</h2>
-      <div class="feedback-card"><div class="feedback-author">Anto GM</div><div class="feedback-text">Para mí este evento fue súper especial. El hecho de organizarlo con amigos hizo que todo se sintiera mucho más familiar y bonito, desde toda la promo previa hasta el propio día. Creo que ha sido de los mejores eventos que hemos hecho hasta la fecha. Me lo pasé increíble, tanto arriba en el escenario como abajo apoyando al resto. Y ver el agradecimiento de los artistas, del público y hasta de las familias es donde te das cuenta de que todo el esfuerzo vale la pena.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Bati1134</div><div class="feedback-text">Yo describiría el evento como un subidón: junto al equipo, que te hacen sentir en familia, y la buena vibra que hay, te sientes como una estrella por ese día 😛🤙🏽</div></div>
-      <div class="feedback-card"><div class="feedback-author">Loops</div><div class="feedback-text">Trap In Spain es algo único. Conocí artistas increíbles, ambiente de la industria y además rompimos el show. ¡INOLVIDABLE! 🤞🏻</div></div>
-      <div class="feedback-card"><div class="feedback-author">Kitto</div><div class="feedback-text">Mi experiencia con Trap In Spain, tanto en la primera como en la segunda, fue muy acogedora. Los artistas siempre han sido muy cercanos y los eventos se han organizado con profesionalidad, ya que no todos se toman tan en serio la comodidad de los artistas.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Valve</div><div class="feedback-text">Para mí este concierto ha sido un subidón enorme. Venía de momentos un poco complicados y vivir esto me ha dado mucha energía y motivación otra vez. Súper agradecido con el equipo, con Anto, con M3RY y con todos. Más allá de un evento se siente una familia. A por más, porque esto solo acaba de empezar.</div></div>
-      <div class="feedback-card"><div class="feedback-author">EmptyPaul</div><div class="feedback-text">Me gustó muchísimo el grupo que se ha formado y el ambiente que hubo. Me lo pasé muy bien y además creo que estuvo muy bien organizado. Muy buena experiencia.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Heo</div><div class="feedback-text">La verdad es que fue una experiencia muy guay.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Laurentzito</div><div class="feedback-text">Todo fue muy bakano.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Say-K</div><div class="feedback-text">Este evento, a nivel de organización, se notó bastante mejor y eso hizo que todo fluyera mucho más. Siempre hay cosas que solucionar sobre la marcha, pero se gestionó todo muy bien. Para mí siempre es un honor formar parte de Trap In Spain y aportar mi granito de arena. Se siente algo muy familiar, con gente remando hacia el mismo lado.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Broxx</div><div class="feedback-text">Fue una noche muy guay. Hubo muy buena energía todo el rato y el público respondió súper bien. Muy contento de haber podido formar parte y aportar mi granito de arena. Ojalá vengan muchas más.</div></div>
-      <div class="feedback-card"><div class="feedback-author">PHRDO</div><div class="feedback-text">Me lo pasé muy bien grabando el evento. Se notó mucho el curro y el cariño que había detrás, y eso hizo que todo se viviera de una forma muy especial. Muy agradecido de haber formado parte.</div></div>
-      <div class="feedback-card"><div class="feedback-author">Fabi</div><div class="feedback-text">Estuvo muy guay formar parte de esto. Se notó muchísimo la unión entre todos y las ganas de sacar algo grande adelante. Desde fuera se veía un ambiente muy familiar y con mucha hambre de crecer. Muy contento de haber podido captarlo todo.</div></div>
+      <div class="fb-carousel-wrap">
+        <div class="fb-carousel">
+          <div class="feedback-card founder"><div class="feedback-author">M3RY · Co-fundadora</div><div class="feedback-text">En este segundo evento ya llegábamos con mucha más experiencia y eso se notó en la organización. Pudimos disfrutar mucho más del proceso y centrarnos en seguir mejorando cada detalle. Además, guardo un recuerdo muy especial de esta edición porque contamos con una sala que nos hizo sentir como en casa y con la que siempre estaremos muy agradecidos. Fue un paso adelante para Trap In Spain y una confirmación de que estábamos construyendo algo cada vez más sólido.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Anto GM</div><div class="feedback-text">Para mí este evento fue súper especial. El hecho de organizarlo con amigos hizo que todo se sintiera mucho más familiar y bonito, desde toda la promo previa hasta el propio día. Creo que ha sido de los mejores eventos que hemos hecho hasta la fecha. Me lo pasé increíble, tanto arriba en el escenario como abajo apoyando al resto. Y ver el agradecimiento de los artistas, del público y hasta de las familias es donde te das cuenta de que todo el esfuerzo vale la pena.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Bati1134</div><div class="feedback-text">Yo describiría el evento como un subidón: junto al equipo, que te hacen sentir en familia, y la buena vibra que hay, te sientes como una estrella por ese día 😛🤙🏽</div></div>
+          <div class="feedback-card"><div class="feedback-author">Loops</div><div class="feedback-text">Trap In Spain es algo único. Conocí artistas increíbles, ambiente de la industria y además rompimos el show. ¡INOLVIDABLE! 🤞🏻</div></div>
+          <div class="feedback-card"><div class="feedback-author">Kitto</div><div class="feedback-text">Mi experiencia con Trap In Spain, tanto en la primera como en la segunda, fue muy acogedora. Los artistas siempre han sido muy cercanos y los eventos se han organizado con profesionalidad, ya que no todos se toman tan en serio la comodidad de los artistas.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Valve</div><div class="feedback-text">Para mí este concierto ha sido un subidón enorme. Venía de momentos un poco complicados y vivir esto me ha dado mucha energía y motivación otra vez. Súper agradecido con el equipo, con Anto, con M3RY y con todos. Más allá de un evento se siente una familia. A por más, porque esto solo acaba de empezar.</div></div>
+          <div class="feedback-card"><div class="feedback-author">EmptyPaul</div><div class="feedback-text">Me gustó muchísimo el grupo que se ha formado y el ambiente que hubo. Me lo pasé muy bien y además creo que estuvo muy bien organizado. Muy buena experiencia.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Heo</div><div class="feedback-text">La verdad es que fue una experiencia muy guay.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Laurentzito</div><div class="feedback-text">Todo fue muy bakano.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Say-K</div><div class="feedback-text">Este evento, a nivel de organización, se notó bastante mejor y eso hizo que todo fluyera mucho más. Siempre hay cosas que solucionar sobre la marcha, pero se gestionó todo muy bien. Para mí siempre es un honor formar parte de Trap In Spain y aportar mi granito de arena. Se siente algo muy familiar, con gente remando hacia el mismo lado.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Broxx</div><div class="feedback-text">Fue una noche muy guay. Hubo muy buena energía todo el rato y el público respondió súper bien. Muy contento de haber podido formar parte y aportar mi granito de arena. Ojalá vengan muchas más.</div></div>
+          <div class="feedback-card"><div class="feedback-author">PHRDO</div><div class="feedback-text">Me lo pasé muy bien grabando el evento. Se notó mucho el curro y el cariño que había detrás, y eso hizo que todo se viviera de una forma muy especial. Muy agradecido de haber formado parte.</div></div>
+          <div class="feedback-card"><div class="feedback-author">Fabi</div><div class="feedback-text">Estuvo muy guay formar parte de esto. Se notó muchísimo la unión entre todos y las ganas de sacar algo grande adelante. Desde fuera se veía un ambiente muy familiar y con mucha hambre de crecer. Muy contento de haber podido captarlo todo.</div></div>
+        </div>
+      </div>
     </div>
 
     <div class="event-section reveal">
@@ -542,6 +567,16 @@
         mobileMenu.classList.toggle('open', menuOpen);
         hamburger.setAttribute('aria-expanded', menuOpen);
         document.body.style.overflow = menuOpen ? 'hidden' : '';
+      });
+    }
+
+    // Tabs del cartel del evento (Artistas / Equipo / Marcas)
+    function showEvtTab(prefix, tab, btn) {
+      ['artistas','equipo','marcas'].forEach(function(t) {
+        var panel = document.getElementById(prefix + '-tab-' + t);
+        var tabBtn = document.getElementById(prefix + '-tabbtn-' + t);
+        if (panel) panel.classList.toggle('active', t === tab);
+        if (tabBtn) { tabBtn.classList.toggle('active', t === tab); tabBtn.setAttribute('aria-selected', t === tab ? 'true' : 'false'); }
       });
     }
     function closeMobileMenu() {

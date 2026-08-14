@@ -397,38 +397,38 @@
               </circle>
               <circle cx="471" cy="263" r="7" fill="#C9A227" stroke="#0A0A08" stroke-width="2"/>
               <text x="471" y="244" font-family="DM Mono,monospace" font-size="9.5" fill="#C9A227" text-anchor="middle" font-weight="bold">VALENCIA</text>
-              <text x="471" y="234" font-family="DM Mono,monospace" font-size="8" fill="rgba(201,162,39,0.65)" text-anchor="middle">#1 · #2</text>
+              <text x="471" y="234" font-family="DM Mono,monospace" font-size="8" fill="rgba(201,162,39,0.65)" text-anchor="middle">#1 · #2 →</text>
             </g>
             <!-- Valencia popup -->
             <g id="popup-valencia" display="none">
               <rect x="310" y="160" width="230" height="92" rx="8" fill="#0A0A08" stroke="#C9A227" stroke-width="1" stroke-opacity="0.4"/>
-              <text x="325" y="178" font-family="DM Mono,monospace" font-size="8" fill="#C9A227" letter-spacing="1">VALENCIA</text>
-              <text x="325" y="194" font-family="DM Sans,sans-serif" font-size="9.5" fill="#F5F3EC" font-weight="bold">Trap in Spain Valencia #1 Night</text>
-              <text x="325" y="208" font-family="DM Mono,monospace" font-size="8" fill="rgba(245,243,236,0.5)">12 Sep 2025 · MYKY HOUSE</text>
+              <text x="325" y="178" font-family="DM Mono,monospace" font-size="8" fill="#C9A227" letter-spacing="1">VALENCIA · Toca un evento</text>
+              <a href="evento-1.html" aria-label="Abrir Trap in Spain Valencia #1">
+                <rect x="315" y="182" width="215" height="30" fill="#C9A227" fill-opacity="0" style="cursor:pointer;"/>
+                <text x="325" y="194" font-family="DM Sans,sans-serif" font-size="9.5" fill="#F5F3EC" font-weight="bold" style="cursor:pointer;">Trap in Spain Valencia #1 Night →</text>
+                <text x="325" y="208" font-family="DM Mono,monospace" font-size="8" fill="rgba(245,243,236,0.5)" style="cursor:pointer;">12 Sep 2025 · MYKY HOUSE</text>
+              </a>
               <line x1="325" y1="215" x2="528" y2="215" stroke="#C9A227" stroke-width="0.5" stroke-opacity="0.3"/>
-              <text x="325" y="228" font-family="DM Sans,sans-serif" font-size="9.5" fill="#F5F3EC" font-weight="bold">Trap in Spain Valencia #2 Jornada...</text>
-              <text x="325" y="242" font-family="DM Mono,monospace" font-size="8" fill="rgba(245,243,236,0.5)">28 Ene 2026 · Sala BlackNote Club</text>
+              <a href="evento-2.html" aria-label="Abrir Trap in Spain Valencia #2">
+                <rect x="315" y="219" width="215" height="30" fill="#C9A227" fill-opacity="0" style="cursor:pointer;"/>
+                <text x="325" y="228" font-family="DM Sans,sans-serif" font-size="9.5" fill="#F5F3EC" font-weight="bold" style="cursor:pointer;">Trap in Spain Valencia #2 Jornada... →</text>
+                <text x="325" y="242" font-family="DM Mono,monospace" font-size="8" fill="rgba(245,243,236,0.5)" style="cursor:pointer;">28 Ene 2026 · Sala BlackNote Club</text>
+              </a>
             </g>
 
             <!-- === MURCIA MARKER (lon=-1.13, lat=37.99) → (439,333) === -->
-            <g id="marker-murcia" style="cursor:pointer;" onclick="togglePopup('popup-murcia')" role="button" aria-label="Ver eventos Trap In Spain en Murcia">
-              <circle cx="439" cy="333" r="30" fill="url(#gm)"/>
-              <circle cx="439" cy="333" r="12" fill="none" stroke="#C9A227" stroke-width="1.2" stroke-opacity="0.5">
-                <animate attributeName="r" values="12;26;12" dur="3s" repeatCount="indefinite"/>
-                <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="439" cy="333" r="7" fill="#C9A227" stroke="#0A0A08" stroke-width="2"/>
-              <text x="439" y="314" font-family="DM Mono,monospace" font-size="9.5" fill="#C9A227" text-anchor="middle" font-weight="bold">MURCIA</text>
-              <text x="439" y="304" font-family="DM Mono,monospace" font-size="8" fill="rgba(201,162,39,0.65)" text-anchor="middle">#3</text>
-            </g>
-            <!-- Murcia popup -->
-            <g id="popup-murcia" display="none">
-              <rect x="278" y="230" width="230" height="80" rx="8" fill="#0A0A08" stroke="#C9A227" stroke-width="1" stroke-opacity="0.4"/>
-              <text x="293" y="248" font-family="DM Mono,monospace" font-size="8" fill="#C9A227" letter-spacing="1">MURCIA</text>
-              <text x="293" y="260" font-family="DM Sans,sans-serif" font-size="9" fill="#F5F3EC" font-weight="bold">Trap in Spain Murcia #3</text>
-              <text x="293" y="272" font-family="DM Sans,sans-serif" font-size="9" fill="#F5F3EC" font-weight="bold">Noche de Contactos</text>
-              <text x="293" y="286" font-family="DM Mono,monospace" font-size="8" fill="rgba(245,243,236,0.5)">25 Abr 2026 · Sala Spectrum</text>
-            </g>
+            <a href="evento-3.html" aria-label="Abrir Trap in Spain Murcia #3 Noche de Contactos">
+              <g id="marker-murcia" style="cursor:pointer;">
+                <circle cx="439" cy="333" r="30" fill="url(#gm)"/>
+                <circle cx="439" cy="333" r="12" fill="none" stroke="#C9A227" stroke-width="1.2" stroke-opacity="0.5">
+                  <animate attributeName="r" values="12;26;12" dur="3s" repeatCount="indefinite"/>
+                  <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="439" cy="333" r="7" fill="#C9A227" stroke="#0A0A08" stroke-width="2"/>
+                <text x="439" y="314" font-family="DM Mono,monospace" font-size="9.5" fill="#C9A227" text-anchor="middle" font-weight="bold">MURCIA</text>
+                <text x="439" y="304" font-family="DM Mono,monospace" font-size="8" fill="rgba(201,162,39,0.65)" text-anchor="middle">#3 →</text>
+              </g>
+            </a>
 
             <!-- Legend -->
             <circle cx="648" cy="492" r="6" fill="#C9A227" stroke="#0A0A08" stroke-width="1.5"/>
@@ -554,15 +554,15 @@
     <script>
     // Map popups
     function togglePopup(id) {
-      var popups = ['popup-valencia', 'popup-murcia'];
+      var popups = ['popup-valencia'];
       popups.forEach(function(p) {
         var el = document.getElementById(p);
         if (el) el.setAttribute('display', p === id && el.getAttribute('display') === 'none' ? 'block' : 'none');
       });
     }
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('#marker-valencia') && !e.target.closest('#marker-murcia')) {
-        ['popup-valencia','popup-murcia'].forEach(function(p) {
+      if (!e.target.closest('#marker-valencia')) {
+        ['popup-valencia'].forEach(function(p) {
           var el = document.getElementById(p); if (el) el.setAttribute('display','none');
         });
       }
