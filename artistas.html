@@ -321,13 +321,15 @@
     }
     .artistas-headline {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7vw, 6.5rem);
-      line-height: 0.88;
+      font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+      line-height: 0.9;
       color: var(--white);
       margin-bottom: 1.5rem;
       text-transform: uppercase;
       max-width:100%;
-      overflow-wrap:break-word;
+      overflow-wrap: normal;
+      word-break: keep-all;
+      white-space: normal;
     }
     .artistas-headline span { color: var(--gold); }
     .artistas-desc {
@@ -752,6 +754,7 @@
           <li><a href="servicios.html">Servicios</a></li>
           <li><a href="merch.html">Merch</a></li>
           <li><a href="artistas.html" class="active">Artistas</a></li>
+          <li><a href="cyphers.html">Cyphers</a></li>
           <li><a href="comunidad.html">Comunidad</a></li>
           <li><a href="blog.html">Blog</a></li>
         </ul>
@@ -767,6 +770,7 @@
     <a href="servicios.html" onclick="closeMobileMenu()">Servicios</a>
     <a href="merch.html" onclick="closeMobileMenu()">Merch</a>
     <a href="artistas.html" onclick="closeMobileMenu()">Artistas</a>
+    <a href="cyphers.html" onclick="closeMobileMenu()">Cyphers</a>
     <a href="comunidad.html" onclick="closeMobileMenu()">Comunidad</a>
     <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
     <a href="contacto.html" onclick="closeMobileMenu()" style="color:var(--gold);">Contacto</a>

@@ -57,6 +57,12 @@
     .related-links a:hover { border-color:var(--gold); }
     .blog-cat-tag { display:inline-block;font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem; }
     
+
+    .article-visual-band { position:relative; height:clamp(130px,18vw,190px); margin:0 0 -1px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#141410 0%,#1f1a0a 45%,#141410 100%); border-top:1px solid rgba(201,162,39,0.15); border-bottom:1px solid rgba(201,162,39,0.15); }
+    .article-visual-band::before { content:''; position:absolute; inset:0; background-image:repeating-linear-gradient(45deg, rgba(201,162,39,0.05) 0, rgba(201,162,39,0.05) 1px, transparent 1px, transparent 22px); opacity:0.6; }
+    .article-visual-band-inner { position:relative; z-index:1; text-align:center; }
+    .article-visual-icon { font-size:clamp(2.2rem,5vw,3.2rem); line-height:1; margin-bottom:0.4rem; filter:grayscale(15%); }
+    .article-visual-label { font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); opacity:0.85; }
     /* ── Active nav link ── */
     .skip-link { display:none !important; }
     nav a.active { color: var(--gold) !important; }
@@ -309,6 +315,7 @@
           <li><a href="servicios.html">Servicios</a></li>
           <li><a href="merch.html">Merch</a></li>
           <li><a href="artistas.html">Artistas</a></li>
+          <li><a href="cyphers.html">Cyphers</a></li>
           <li><a href="comunidad.html">Comunidad</a></li>
           <li><a href="blog.html" class="active">Blog</a></li>
         </ul>
@@ -324,6 +331,7 @@
     <a href="servicios.html" onclick="closeMobileMenu()">Servicios</a>
     <a href="merch.html" onclick="closeMobileMenu()">Merch</a>
     <a href="artistas.html" onclick="closeMobileMenu()">Artistas</a>
+    <a href="cyphers.html" onclick="closeMobileMenu()">Cyphers</a>
     <a href="comunidad.html" onclick="closeMobileMenu()">Comunidad</a>
     <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
     <a href="contacto.html" onclick="closeMobileMenu()" style="color:var(--gold);">Contacto</a>
@@ -338,6 +346,8 @@
       <h1 style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.8rem);line-height:1;">Qué es un visualizer y por qué artistas pequeños deberían usarlo</h1>
     </div>
   </div>
+
+  <div class="article-visual-band"><div class="article-visual-band-inner"><div class="article-visual-icon">🎬</div><div class="article-visual-label">Videoclips y Visuals</div></div></div>
 
   <article class="article-body">
 

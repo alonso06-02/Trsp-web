@@ -52,6 +52,38 @@
     button { font-family:var(--font-body); cursor:pointer; border:none; background:none; }
     .container { max-width:1200px; margin:0 auto; padding:0 clamp(1.25rem,4vw,3rem); }
     .section-label { font-family:var(--font-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:10px; margin-bottom:1.5rem; }
+    /* Módulo específico del servicio */
+    .svc-module { margin-bottom:clamp(3rem,6vh,4rem); }
+    .ab-toggle { display:inline-flex; border:1px solid rgba(201,162,39,0.25); border-radius:999px; padding:4px; margin-bottom:1.5rem; }
+    .ab-toggle button { padding:8px 22px; border-radius:999px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--white-dim); transition:background .2s,color .2s; }
+    .ab-toggle button.active { background:var(--gold); color:var(--black); font-weight:700; }
+    .ab-demo { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); padding:clamp(1.75rem,3vw,2.5rem); }
+    .ab-wave { display:flex; align-items:flex-end; gap:3px; height:80px; margin-bottom:1rem; }
+    .ab-wave span { flex:1; background:var(--gold); opacity:0.35; border-radius:2px 2px 0 0; transition:opacity .2s; }
+    .ab-demo.after .ab-wave span { opacity:0.85; }
+    .svc-equip-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; }
+    .svc-equip-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); padding:1.5rem; }
+    .svc-equip-card h3 { font-size:0.95rem; color:var(--gold); margin-bottom:0.5rem; font-family:var(--font-mono); letter-spacing:0.04em; text-transform:uppercase; font-size:0.72rem; }
+    .svc-equip-card p { color:var(--white-dim); font-size:0.88rem; line-height:1.7; }
+    .svc-gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.85rem; }
+    .svc-gallery-empty { aspect-ratio:1; background:var(--black-2); border:1px dashed rgba(201,162,39,0.25); border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; color:var(--white-muted); font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; text-align:center; padding:1rem; }
+    .svc-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .svc-step { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); padding:1.5rem; position:relative; }
+    .svc-step-num { font-family:var(--font-display); font-size:2rem; color:rgba(201,162,39,0.35); margin-bottom:0.5rem; }
+    .svc-video-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; }
+    .svc-video-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); overflow:hidden; }
+    .svc-video-cat { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); padding:0.85rem 1rem 0; }
+    .svc-video-frame { aspect-ratio:16/9; background:var(--black); margin-top:0.6rem; }
+    .svc-video-frame iframe { width:100%; height:100%; display:block; }
+    .svc-video-title { padding:0.75rem 1rem 1rem; font-size:0.85rem; color:var(--white-dim); }
+    .svc-stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; }
+    .svc-stat-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); padding:1.5rem; text-align:center; }
+    .svc-stat-num { font-family:var(--font-display); font-size:2.4rem; color:var(--gold); line-height:1; }
+    .svc-stat-label { font-size:0.75rem; color:var(--white-muted); margin-top:0.4rem; }
+    .svc-track-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); padding:1.5rem; display:flex; align-items:center; gap:1rem; }
+    .svc-track-icon { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--black-4),var(--black-5)); border:1px solid rgba(201,162,39,0.25); display:flex; align-items:center; justify-content:center; color:var(--gold); flex-shrink:0; }
+    .svc-note { font-size:0.8rem; color:var(--white-muted); font-style:italic; margin-top:1rem; }
+
     .section-label::before { content:''; display:block; width:28px; height:1px; background:var(--gold); }
     .gold { color:var(--gold); }
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
@@ -284,6 +316,7 @@
           <li><a href="servicios.html" class="active">Servicios</a></li>
           <li><a href="merch.html">Merch</a></li>
           <li><a href="artistas.html">Artistas</a></li>
+          <li><a href="cyphers.html">Cyphers</a></li>
           <li><a href="comunidad.html">Comunidad</a></li>
           <li><a href="blog.html">Blog</a></li>
         </ul>
@@ -299,6 +332,7 @@
     <a href="servicios.html" onclick="closeMobileMenu()">Servicios</a>
     <a href="merch.html" onclick="closeMobileMenu()">Merch</a>
     <a href="artistas.html" onclick="closeMobileMenu()">Artistas</a>
+    <a href="cyphers.html" onclick="closeMobileMenu()">Cyphers</a>
     <a href="comunidad.html" onclick="closeMobileMenu()">Comunidad</a>
     <a href="blog.html" onclick="closeMobileMenu()">Blog</a>
     <a href="contacto.html" onclick="closeMobileMenu()" style="color:var(--gold);">Contacto</a>
@@ -344,6 +378,18 @@
           <h3 style="font-size:1.05rem;color:var(--white);margin-bottom:0.6rem;">Producción completa</h3>
           <p style="color:var(--white-dim);line-height:1.7;font-size:0.88rem;">Desde la idea inicial hasta el beat final listo para grabar encima.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Cómo trabajamos -->
+    <div class="reveal svc-module">
+      <div class="section-label" style="margin-bottom:1.5rem;">Proceso</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1.5rem;">Cómo construimos <span class="gold">tu beat</span></h2>
+      <div class="svc-steps">
+        <div class="svc-step"><div class="svc-step-num">01</div><h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Dirección sonora</h3><p style="color:var(--white-dim);font-size:0.85rem;line-height:1.6;">Referencias, BPM y la atmósfera que quieres para el tema.</p></div>
+        <div class="svc-step"><div class="svc-step-num">02</div><h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Base del beat</h3><p style="color:var(--white-dim);font-size:0.85rem;line-height:1.6;">Melodía, batería y estructura inicial sobre la que construir el tema.</p></div>
+        <div class="svc-step"><div class="svc-step-num">03</div><h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Capas y arreglos</h3><p style="color:var(--white-dim);font-size:0.85rem;line-height:1.6;">Añadimos textura, variaciones y detalles para que no suene plano.</p></div>
+        <div class="svc-step"><div class="svc-step-num">04</div><h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Entrega</h3><p style="color:var(--white-dim);font-size:0.85rem;line-height:1.6;">Instrumental y stems listos para grabar o mezclar.</p></div>
       </div>
     </div>
 
