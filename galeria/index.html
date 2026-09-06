@@ -269,7 +269,19 @@
     @media(prefers-reduced-motion:reduce) {
       *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
     }
-  
+
+    .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; margin-top:1rem; }
+    .gallery-thumb { width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px; cursor:pointer; transition:transform .2s, opacity .2s; border:1px solid rgba(201,162,39,0.1); }
+    .gallery-thumb:hover { transform:scale(1.03); opacity:0.9; }
+    .lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:92vw; max-height:88vh; object-fit:contain; border-radius:4px; }
+    .lightbox-close { position:absolute; top:20px; right:30px; color:#fff; font-size:2.5rem; cursor:pointer; line-height:1; z-index:2; }
+    .lightbox-arrow { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2.5rem; cursor:pointer; padding:1rem; user-select:none; z-index:2; opacity:0.7; transition:opacity .2s; }
+    .lightbox-arrow:hover { opacity:1; color:var(--gold); }
+    .lightbox-prev { left:10px; }
+    .lightbox-next { right:10px; }
+    @media(max-width:600px){ .photo-gallery{ grid-template-columns:repeat(3,1fr); } .lightbox-arrow{ font-size:1.8rem; padding:0.5rem; } }
   </style>
 </head>
 <body>
@@ -314,13 +326,46 @@
         Galería <span class="gold">Trap In Spain</span>
       </h1>
       <p style="color:var(--white-dim);max-width:500px;margin:0 auto 3rem;line-height:1.8;">
-        Próximamente — fotos y vídeos de todas las Eventos Trap In Spain y eventos del movimiento.
+        Momentos reales de nuestros eventos: escenario, público y la energía de cada noche Trap In Spain.
       </p>
       <a href="https://www.instagram.com/trapinspainoficial/" target="_blank" rel="noopener noreferrer" class="btn-primary">
         Ver en Instagram
       </a>
     </div>
   </section>
+
+  <section class="section-pad" style="padding-top:0;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);">
+      <div class="photo-gallery">
+        <img src="/fotos-galeria/galeria-01.jpg" alt="Trap In Spain - foto de evento 1" loading="lazy" onclick="openLightbox(1)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-02.jpg" alt="Trap In Spain - foto de evento 2" loading="lazy" onclick="openLightbox(2)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-03.jpg" alt="Trap In Spain - foto de evento 3" loading="lazy" onclick="openLightbox(3)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-04.jpg" alt="Trap In Spain - foto de evento 4" loading="lazy" onclick="openLightbox(4)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-05.jpg" alt="Trap In Spain - foto de evento 5" loading="lazy" onclick="openLightbox(5)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-06.jpg" alt="Trap In Spain - foto de evento 6" loading="lazy" onclick="openLightbox(6)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-07.jpg" alt="Trap In Spain - foto de evento 7" loading="lazy" onclick="openLightbox(7)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-08.jpg" alt="Trap In Spain - foto de evento 8" loading="lazy" onclick="openLightbox(8)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-09.jpg" alt="Trap In Spain - foto de evento 9" loading="lazy" onclick="openLightbox(9)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-10.jpg" alt="Trap In Spain - foto de evento 10" loading="lazy" onclick="openLightbox(10)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-11.jpg" alt="Trap In Spain - foto de evento 11" loading="lazy" onclick="openLightbox(11)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-12.jpg" alt="Trap In Spain - foto de evento 12" loading="lazy" onclick="openLightbox(12)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-13.jpg" alt="Trap In Spain - foto de evento 13" loading="lazy" onclick="openLightbox(13)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-14.jpg" alt="Trap In Spain - foto de evento 14" loading="lazy" onclick="openLightbox(14)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-15.jpg" alt="Trap In Spain - foto de evento 15" loading="lazy" onclick="openLightbox(15)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-16.jpg" alt="Trap In Spain - foto de evento 16" loading="lazy" onclick="openLightbox(16)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-17.jpg" alt="Trap In Spain - foto de evento 17" loading="lazy" onclick="openLightbox(17)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-18.jpg" alt="Trap In Spain - foto de evento 18" loading="lazy" onclick="openLightbox(18)" class="gallery-thumb"/>
+        <img src="/fotos-galeria/galeria-19.jpg" alt="Trap In Spain - foto de evento 19" loading="lazy" onclick="openLightbox(19)" class="gallery-thumb"/>
+      </div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <span class="lightbox-arrow lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)">&#10094;</span>
+    <img id="lightbox-img" src="" alt="Foto ampliada"/>
+    <span class="lightbox-arrow lightbox-next" onclick="event.stopPropagation();lightboxNav(1)">&#10095;</span>
+  </div>
 
   </main>
   <footer role="contentinfo">
@@ -384,6 +429,13 @@
   </a>
     <script async src="https://www.instagram.com/embed.js"></script>
     <script>
+    // Lightbox galería
+    let lbIndex = 1;
+    const lbTotal = 19;
+    function openLightbox(i){ lbIndex=i; document.getElementById('lightbox-img').src='/fotos-galeria/galeria-'+String(i).padStart(2,'0')+'.jpg'; document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+    function lightboxNav(dir){ lbIndex=((lbIndex-1+dir+lbTotal)%lbTotal)+1; document.getElementById('lightbox-img').src='/fotos-galeria/galeria-'+String(lbIndex).padStart(2,'0')+'.jpg'; }
+
     // Map popups
     function togglePopup(id) {
       var popups = ['popup-valencia', 'popup-murcia'];
