@@ -1123,7 +1123,7 @@
       if(e.key === 'ArrowRight') changeArtist(1);
       if(e.key === 'Enter') {
         const a = ARTISTS[current];
-        window.open('https://open.spotify.com/search/' + encodeURIComponent(a.name), '_blank');
+        window.open(a.ig ? ('https://instagram.com/' + a.ig) : 'https://instagram.com/trapinspainoficial', '_blank');
       }
     });
 
