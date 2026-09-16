@@ -73,11 +73,17 @@
     .fb-carousel { display:flex; gap:1.1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:0.75rem; scrollbar-width:none; }
     .fb-carousel::-webkit-scrollbar { display:none; }
     .fb-carousel .feedback-card { scroll-snap-align:start; flex:0 0 auto; width:min(360px,85vw); margin-bottom:0; }
+    .fb-arrow { position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; background:var(--black-2); border:1px solid rgba(201,162,39,0.3); color:var(--gold); font-size:1.2rem; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:2; opacity:0.95; transition:background .2s,color .2s,opacity .2s; }
+    .fb-arrow:hover { background:var(--gold); color:var(--black); }
+    .fb-arrow:disabled { opacity:0.2; cursor:default; }
+    .fb-arrow.fb-prev { left:-6px; }
+    .fb-arrow.fb-next { right:-6px; }
+    @media(max-width:640px){ .fb-arrow{ width:34px;height:34px;font-size:1rem; } .fb-arrow.fb-prev{left:-2px;} .fb-arrow.fb-next{right:-2px;} }
     .fb-carousel .feedback-card.founder { border-color:rgba(201,162,39,0.4); background:linear-gradient(160deg,var(--black-3),var(--black-2)); }
 
-    .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center; }
-    .artist-name { font-weight:600;font-size:0.88rem; }
-    .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold); }
+    .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;flex-direction:column;align-items:flex-start;gap:0.4rem; }
+    .artist-name { font-weight:600;font-size:0.88rem;line-height:1.35; }
+    .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold);white-space:nowrap; }
     
     /* ── Active nav link ── */
     .skip-link { display:none !important; }
@@ -419,9 +425,9 @@
       </div>
       </div>
     </div><div class="event-section reveal">
-      <div class="section-label">Highlights</div>
+      <div class="section-label">Blog del evento</div>
       <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(201,162,39,0.15);aspect-ratio:16/9;background:var(--black);">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/9U2c-em1mh4" title="Highlights Trap In Spain #3 Murcia Noche de Contactos" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="display:block;"></iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/9U2c-em1mh4" title="Blog del evento Trap In Spain #3 Murcia Noche de Contactos" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="display:block;"></iframe>
       </div>
     </div>
 
@@ -460,6 +466,13 @@
         <img src="/fotos-murcia/murcia-29.jpg" alt="Trap In Spain Murcia #3 - foto 29" loading="lazy" onclick="openLightbox(29)" class="gallery-thumb"/>
         <img src="/fotos-murcia/murcia-30.jpg" alt="Trap In Spain Murcia #3 - foto 30" loading="lazy" onclick="openLightbox(30)" class="gallery-thumb"/>
         <img src="/fotos-murcia/murcia-31.jpg" alt="Trap In Spain Murcia #3 - foto 31" loading="lazy" onclick="openLightbox(31)" class="gallery-thumb"/>
+        <img src="/fotos-murcia/murcia-32.jpg" alt="Trap In Spain Murcia #3 - foto 32" loading="lazy" onclick="openLightbox(32)" class="gallery-thumb"/>
+        <img src="/fotos-murcia/murcia-33.jpg" alt="Trap In Spain Murcia #3 - foto 33" loading="lazy" onclick="openLightbox(33)" class="gallery-thumb"/>
+        <img src="/fotos-murcia/murcia-34.jpg" alt="Trap In Spain Murcia #3 - foto 34" loading="lazy" onclick="openLightbox(34)" class="gallery-thumb"/>
+        <img src="/fotos-murcia/murcia-35.jpg" alt="Trap In Spain Murcia #3 - foto 35" loading="lazy" onclick="openLightbox(35)" class="gallery-thumb"/>
+        <img src="/fotos-murcia/murcia-36.jpg" alt="Trap In Spain Murcia #3 - foto 36" loading="lazy" onclick="openLightbox(36)" class="gallery-thumb"/>
+        <img src="/fotos-murcia/murcia-37.jpg" alt="Trap In Spain Murcia #3 - foto 37" loading="lazy" onclick="openLightbox(37)" class="gallery-thumb"/>
+        <img src="/fotos-murcia/murcia-38.jpg" alt="Trap In Spain Murcia #3 - foto 38" loading="lazy" onclick="openLightbox(38)" class="gallery-thumb"/>
       </div>
     </div>
 
@@ -475,6 +488,8 @@
       <div class="section-label">Feedback de artistas</div>
       <h2 class="event-section-title">Lo que dijeron</h2>
       <div class="fb-carousel-wrap">
+        <button type="button" class="fb-arrow fb-prev" aria-label="Testimonio anterior" onclick="fbScroll(this)">&#10094;</button>
+        <button type="button" class="fb-arrow fb-next" aria-label="Testimonio siguiente" onclick="fbScroll(this)">&#10095;</button>
         <div class="fb-carousel">
           <div class="feedback-card founder"><div class="feedback-author">M3RY · Co-fundadora</div><div class="feedback-text">El evento de Murcia fue una experiencia muy intensa. A pesar de la agresión sufrida durante la jornada, decidimos seguir adelante porque nuestro compromiso siempre ha sido con los artistas y con quienes habían confiado en nosotros. Conseguimos que el evento saliera adelante y que el público disfrutara de una gran noche, pero también dejó una reflexión importante: esos comportamientos no tienen cabida en la escena que queremos construir. Trap In Spain nació para unir, crear oportunidades y apoyar a artistas emergentes.</div></div>
           <div class="feedback-card"><div class="feedback-author">DarkCry ZZ</div><div class="feedback-text">Fue mi primer concierto y sinceramente no pude pasarlo mejor. Desde el primer momento me hicieron sentir súper cómodo y el trato fue increíble. Me llevo una experiencia que no voy a olvidar nunca.</div></div>
@@ -597,6 +612,32 @@
       document.body.style.overflow = '';
     }
 
+    // Carrusel de "Lo que dijeron" (feedback de artistas)
+    function fbScroll(btn) {
+      var wrap = btn.closest('.fb-carousel-wrap');
+      var track = wrap && wrap.querySelector('.fb-carousel');
+      if (!track) return;
+      var card = track.querySelector('.feedback-card');
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 18;
+      var amount = (card ? card.getBoundingClientRect().width : 300) + gap;
+      var dir = btn.classList.contains('fb-next') ? 1 : -1;
+      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    }
+    function fbUpdateArrows(track) {
+      var wrap = track.closest('.fb-carousel-wrap');
+      var prev = wrap && wrap.querySelector('.fb-prev');
+      var next = wrap && wrap.querySelector('.fb-next');
+      if (!prev || !next) return;
+      var maxScroll = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= maxScroll;
+    }
+    document.querySelectorAll('.fb-carousel').forEach(function(track) {
+      fbUpdateArrows(track);
+      track.addEventListener('scroll', function() { fbUpdateArrows(track); }, { passive: true });
+      window.addEventListener('resize', function() { fbUpdateArrows(track); });
+    });
+
     // Scroll reveal
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
@@ -663,7 +704,7 @@
 
   <script>
     let lbIndex = 1;
-    const lbTotal = 31;
+    const lbTotal = 38;
     function openLightbox(i){ lbIndex=i; document.getElementById('lightbox-img').src='/fotos-murcia/murcia-'+String(i).padStart(2,'0')+'.jpg'; document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
     function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
     function lightboxNav(dir){ lbIndex=((lbIndex-1+dir+lbTotal)%lbTotal)+1; document.getElementById('lightbox-img').src='/fotos-murcia/murcia-'+String(lbIndex).padStart(2,'0')+'.jpg'; }

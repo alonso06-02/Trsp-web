@@ -180,7 +180,8 @@
     .merch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.25rem; }
     .merch-card { background:var(--black-3); border:1px solid rgba(201,162,39,0.1); border-radius:var(--radius-lg); overflow:hidden; transition:transform .2s var(--ease-out),border-color .2s; }
     .merch-card:hover { transform:translateY(-3px); border-color:rgba(201,162,39,0.3); }
-    .merch-img { aspect-ratio:1; background:var(--black-4); display:flex; align-items:center; justify-content:center; position:relative; }
+    .merch-img { aspect-ratio:1; background:var(--black-4) center/cover no-repeat; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+    .merch-img .merch-sold-badge { z-index:3; }
     .merch-logo-bg { font-family:var(--font-display); font-size:3.5rem; color:rgba(201,162,39,0.12); letter-spacing:0.1em; }
     .merch-sold-badge { position:absolute; top:10px; right:10px; padding:3px 8px; background:rgba(10,10,8,0.8); border:1px solid rgba(245,243,236,0.15); border-radius:2px; font-size:0.6rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-muted); }
     .merch-body { padding:1rem 1.25rem 1.25rem; }
@@ -327,8 +328,7 @@
     <!-- Producto: imagen + info -->
     <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start;margin-bottom:clamp(3rem,6vh,4rem);">
       <div>
-        <div class="merch-img" style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);border:1px solid rgba(201,162,39,0.15);">
-          <div class="merch-logo-bg" style="font-size:1rem;letter-spacing:0.1em;color:var(--gold);text-align:center;">TRAP IN SPAIN<br/>VAPE SERIES</div>
+        <div class="merch-img" style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);border:1px solid rgba(201,162,39,0.15);background-image:url(/fotos-merch/tropical-rainbow-blast-vape-trap-in-spain.jpg);">
           <div class="merch-sold-badge">ÚLTIMAS UNIDADES</div>
         </div>
         <div class="svc-gallery-grid" style="grid-template-columns:repeat(4,1fr);margin-top:0.85rem;">
