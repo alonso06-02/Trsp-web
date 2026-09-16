@@ -174,7 +174,7 @@
     /* MERCH LANDING */
     .merch-landing-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,4vw,4rem); align-items:center; }
     .merch-landing-card { background:var(--black-3); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); padding:clamp(1.5rem,3vw,2.5rem); display:flex; gap:1.5rem; align-items:center; }
-    .merch-landing-badge { flex-shrink:0; width:96px; height:96px; border-radius:50%; background:linear-gradient(135deg,var(--black-4),var(--black-5)); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:0.85rem; color:var(--gold); text-align:center; line-height:1.1; border:1px solid rgba(201,162,39,0.2); }
+    .merch-landing-badge { flex-shrink:0; width:96px; height:96px; border-radius:50%; background:var(--black-4) center/cover no-repeat; border:1px solid rgba(201,162,39,0.25); overflow:hidden; border:1px solid rgba(201,162,39,0.2); }
     @media(max-width:768px) { .merch-landing-grid { grid-template-columns:1fr; } .merch-landing-card { flex-direction:column; text-align:center; } }
 
     /* ABOUT */
@@ -566,7 +566,7 @@
           <a href="/merch/" class="btn-primary">Ver la tienda</a>
         </div>
         <a href="/producto-blue-razz-ice/" class="merch-landing-card reveal" style="text-decoration:none;">
-          <div class="merch-landing-badge">BLUE<br/>RAZZ<br/>ICE</div>
+          <div class="merch-landing-badge" style="background-image:url(/fotos-merch/blue-razz-ice-mini.jpg);" role="img" aria-label="Vape Blue Razz Ice de Trap In Spain"></div>
           <div>
             <div class="merch-cat">Merch · Edición limitada</div>
             <div class="merch-name" style="font-size:1.15rem;margin-bottom:0.3rem;color:var(--white);">Blue Razz Ice</div>

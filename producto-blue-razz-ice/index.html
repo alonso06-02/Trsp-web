@@ -182,6 +182,10 @@
     .merch-card:hover { transform:translateY(-3px); border-color:rgba(201,162,39,0.3); }
     .merch-img { aspect-ratio:1; background:var(--black-4) center/cover no-repeat; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
     .merch-img .merch-sold-badge { z-index:3; }
+    .vape-thumbs { display:grid; grid-template-columns:repeat(auto-fill,minmax(56px,1fr)); gap:0.5rem; margin-top:0.85rem; }
+    .vape-thumb { aspect-ratio:1; border-radius:10px; border:1px solid rgba(201,162,39,0.18); background:var(--black-2) center/cover no-repeat; cursor:pointer; padding:0; transition:border-color .2s, transform .2s; }
+    .vape-thumb:hover { transform:translateY(-2px); border-color:rgba(201,162,39,0.5); }
+    .vape-thumb.is-active { border-color:var(--gold); }
     .merch-logo-bg { font-family:var(--font-display); font-size:3.5rem; color:rgba(201,162,39,0.12); letter-spacing:0.1em; }
     .merch-sold-badge { position:absolute; top:10px; right:10px; padding:3px 8px; background:rgba(10,10,8,0.8); border:1px solid rgba(245,243,236,0.15); border-radius:2px; font-size:0.6rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-muted); }
     .merch-body { padding:1rem 1.25rem 1.25rem; }
@@ -261,6 +265,7 @@
 
     /* RESPONSIVE */
     @media(max-width:768px) {
+      .producto-grid { grid-template-columns:1fr !important; }
       .nav-links,.nav-cta { display:none; }
       .nav-hamburger { display:flex; }
       .about-grid { grid-template-columns:1fr; }
@@ -326,10 +331,19 @@
   <div style="max-width:1100px;margin:0 auto;padding:clamp(2rem,5vh,4rem) clamp(1.25rem,4vw,3rem);">
 
     <!-- Producto: imagen + info -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start;margin-bottom:clamp(3rem,6vh,4rem);">
+    <div class="reveal producto-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start;margin-bottom:clamp(3rem,6vh,4rem);">
       <div>
         <div class="merch-img" style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);border:1px solid rgba(201,162,39,0.15);background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain.jpg);">
           <div class="merch-sold-badge">OUT OF STOCK</div>
+        </div>
+        <div class="vape-thumbs">
+          <button type="button" class="vape-thumb is-active" style="background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain.jpg);" aria-label="Vista frontal del vape Blue Razz Ice de Trap In Spain"></button>
+          <button type="button" class="vape-thumb" style="background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain-2.jpg);" aria-label="Vista en ángulo del vape Blue Razz Ice de Trap In Spain"></button>
+          <button type="button" class="vape-thumb" style="background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain-3.jpg);" aria-label="Vista frontal con pantalla del vape Blue Razz Ice de Trap In Spain"></button>
+          <button type="button" class="vape-thumb" style="background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain-4.jpg);" aria-label="Vista lateral en ángulo del vape Blue Razz Ice de Trap In Spain"></button>
+          <button type="button" class="vape-thumb" style="background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain-5.jpg);" aria-label="Vista trasera con pantalla del vape Blue Razz Ice de Trap In Spain"></button>
+          <button type="button" class="vape-thumb" style="background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain-6.jpg);" aria-label="Vista trasera del vape Blue Razz Ice de Trap In Spain"></button>
+          <button type="button" class="vape-thumb" style="background-image:url(/fotos-merch/blue-razz-ice-vape-trap-in-spain-7.jpg);" aria-label="Detalle del diseño del vape Blue Razz Ice de Trap In Spain"></button>
         </div>
       </div>
       <div>
@@ -516,5 +530,19 @@
     }
   </script>
   
+<script>
+(function(){
+  var main = document.querySelector('.merch-img');
+  var thumbs = document.querySelectorAll('.vape-thumb');
+  if (!main || !thumbs.length) return;
+  thumbs.forEach(function(t){
+    t.addEventListener('click', function(){
+      main.style.backgroundImage = t.style.backgroundImage;
+      thumbs.forEach(function(o){ o.classList.remove('is-active'); });
+      t.classList.add('is-active');
+    });
+  });
+})();
+</script>
 </body>
 </html>
