@@ -175,6 +175,11 @@
     .merch-landing-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,4vw,4rem); align-items:center; }
     .merch-landing-card { background:var(--black-3); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); padding:clamp(1.5rem,3vw,2.5rem); display:flex; gap:1.5rem; align-items:center; }
     .merch-landing-badge { flex-shrink:0; width:96px; height:96px; border-radius:50%; background:linear-gradient(135deg,var(--black-4),var(--black-5)); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:0.85rem; color:var(--gold); text-align:center; line-height:1.1; border:1px solid rgba(201,162,39,0.2); }
+    .merch-landing-stack { display:flex; flex-direction:column; gap:1.1rem; }
+    .merch-landing-photo { flex-shrink:0; width:110px; height:110px; border-radius:16px; object-fit:cover; border:1px solid rgba(201,162,39,0.25); transition:transform .35s var(--ease-out), box-shadow .35s; }
+    .merch-landing-card { transition:border-color .25s, transform .25s var(--ease-out); }
+    .merch-landing-card:hover { border-color:rgba(201,162,39,0.55); transform:translateY(-3px); }
+    .merch-landing-card:hover .merch-landing-photo { transform:scale(1.06) rotate(-2deg); box-shadow:0 10px 30px -8px rgba(201,162,39,0.45); }
     @media(max-width:768px) { .merch-landing-grid { grid-template-columns:1fr; } .merch-landing-card { flex-direction:column; text-align:center; } }
 
     /* ABOUT */
@@ -567,15 +572,26 @@
           <p style="color:var(--white-dim);line-height:1.8;margin-bottom:1.5rem;">La primera pieza de merch oficial de Trap In Spain. Edición limitada — cuando vuelva stock lo sabrás aquí primero.</p>
           <a href="/merch/" class="btn-primary">Ver la tienda</a>
         </div>
+        <div class="merch-landing-stack">
         <a href="/producto-blue-razz-ice/" class="merch-landing-card reveal" style="text-decoration:none;">
-          <div class="merch-landing-badge">BLUE<br/>RAZZ<br/>ICE</div>
+          <img class="merch-landing-photo" src="/fotos-merch/blue-razz-ice-vape-trap-in-spain.jpg" alt="Vape Blue Razz Ice - Trap In Spain" width="110" height="110" loading="lazy"/>
           <div>
-            <div class="merch-cat">Merch · Edición limitada</div>
+            <div class="merch-cat">Merch · Vape Series</div>
             <div class="merch-name" style="font-size:1.15rem;margin-bottom:0.3rem;color:var(--white);">Blue Razz Ice</div>
             <div class="merch-price sold-out">Out of Stock</div>
             <span style="display:inline-block;margin-top:0.75rem;font-size:0.78rem;color:var(--gold);">Ver producto →</span>
           </div>
         </a>
+        <a href="/producto-tropical-rainbow-blast/" class="merch-landing-card reveal" style="text-decoration:none;">
+          <img class="merch-landing-photo" src="/fotos-merch/tropical-rainbow-blast-vape-trap-in-spain.jpg" alt="Vape Tropical Rainbow Blast - Trap In Spain" width="110" height="110" loading="lazy"/>
+          <div>
+            <div class="merch-cat">Merch · Vape Series</div>
+            <div class="merch-name" style="font-size:1.15rem;margin-bottom:0.3rem;color:var(--white);">Tropical Rainbow Blast</div>
+            <div class="merch-price" style="color:var(--gold);">Últimas unidades</div>
+            <span style="display:inline-block;margin-top:0.75rem;font-size:0.78rem;color:var(--gold);">Ver producto →</span>
+          </div>
+        </a>
+      </div>
       </div>
     </div>
   </section>
