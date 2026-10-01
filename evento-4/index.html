@@ -40,7 +40,9 @@
     .event-info-label { font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase; }
     .event-info-val { font-size:0.88rem;color:var(--white-dim);text-align:right; }
 
-    .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
+    .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:8px; }
+    .gallery-thumb { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:6px; cursor:zoom-in; display:block; transition:transform .25s, filter .25s; }
+    .gallery-thumb:hover { transform:scale(1.03); filter:brightness(1.12); }
     .gallery-thumb { width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px; cursor:pointer; transition:transform .2s, opacity .2s; border:1px solid rgba(201,162,39,0.1); }
     .gallery-thumb:hover { transform:scale(1.03); opacity:0.9; }
     .lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; }
@@ -73,11 +75,17 @@
     .fb-carousel { display:flex; gap:1.1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:0.75rem; scrollbar-width:none; }
     .fb-carousel::-webkit-scrollbar { display:none; }
     .fb-carousel .feedback-card { scroll-snap-align:start; flex:0 0 auto; width:min(360px,85vw); margin-bottom:0; }
+    .fb-arrow { position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; background:var(--black-2); border:1px solid rgba(201,162,39,0.3); color:var(--gold); font-size:1.2rem; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:2; opacity:0.95; transition:background .2s,color .2s,opacity .2s; }
+    .fb-arrow:hover { background:var(--gold); color:var(--black); }
+    .fb-arrow:disabled { opacity:0.2; cursor:default; }
+    .fb-arrow.fb-prev { left:-6px; }
+    .fb-arrow.fb-next { right:-6px; }
+    @media(max-width:640px){ .fb-arrow{ width:34px;height:34px;font-size:1rem; } .fb-arrow.fb-prev{left:-2px;} .fb-arrow.fb-next{right:-2px;} }
     .fb-carousel .feedback-card.founder { border-color:rgba(201,162,39,0.4); background:linear-gradient(160deg,var(--black-3),var(--black-2)); }
 
-    .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center; }
-    .artist-name { font-weight:600;font-size:0.88rem; }
-    .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold); }
+    .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;flex-direction:column;align-items:flex-start;gap:0.4rem; }
+    .artist-name { font-weight:600;font-size:0.88rem;line-height:1.35; }
+    .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold);white-space:nowrap; }
     
     /* ── Active nav link ── */
     .skip-link { display:none !important; }
@@ -379,7 +387,7 @@
       <div class="section-label">Sinopsis</div>
       <h2 class="event-section-title">La vuelta a Valencia, edición Bubble Gummy</h2>
       <p style="color:var(--white-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;">TRAP IN SPAIN #4 Valencia — Bubble Gummy Edition fue la cuarta edición oficial del movimiento y supuso su regreso a Valencia después de haber llevado el proyecto fuera de casa por primera vez con la tercera edición, celebrada en Murcia. La cita tuvo lugar el 31 de julio de 2026 en Sala Matisse. Para esta vuelta a Valencia se creó el concepto Bubble Gummy Edition, una identidad visual más colorida, dulce y veraniega que diferenció esta entrega de las anteriores sin abandonar la esencia underground del proyecto.</p>
-      <p style="color:var(--white-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;">El cartel estuvo encabezado por Anto GM y M3RY, junto a HugoBozz, Elyatekomo, Caligo, Humano Extinto y Kuiner. A ellos se sumaron los tres artistas que consiguieron su plaza a través del torneo de showcases organizado por Trap In Spain: Sr. Squared (1er puesto), mmiro4! (2º puesto) y Yung Jota (3er puesto), que ganaron así la oportunidad de actuar en Sala Matisse y formar parte oficial del cartel. Durante el show de HugoBozz también subieron al escenario AkaElPeri y Valve como artistas invitados.</p>
+      <p style="color:var(--white-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;">El cartel estuvo encabezado por Anto GM y M3RY, junto a HugoBozz, Elyatekomo, Caligo y Humano Extinto. A ellos se sumaron los tres artistas que consiguieron su plaza a través del torneo de showcases organizado por Trap In Spain: Sr. Squared (1er puesto), mmiro4! (2º puesto) y Yung Jota (3er puesto), que ganaron así la oportunidad de actuar en Sala Matisse y formar parte oficial del cartel. Durante el show de HugoBozz también subieron al escenario AkaElPeri y Valve como artistas invitados.</p>
       <p style="color:var(--white-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem;">En el recinto se instaló además un pequeño espacio de merch y proyectos de la comunidad: "I'm Lovin' M3RY", TRAKETO, los vapers oficiales de TRSP y el vaso oficial de Caligo. La música y la parte técnica estuvieron en manos de SAY-K como DJ y técnico, con el apartado audiovisual a cargo de Directed by 2K, Jano Designer y el equipo de Trap In Spain, mientras M3RY se encargó del vlog y su edición. No todo salió exactamente como se había imaginado, pero la edición reafirmó uno de los valores fundamentales de Trap In Spain: nadie es más que nadie, y todos merecen el mismo respeto y la misma oportunidad de demostrar lo que hacen.</p>
     </div>
 
@@ -399,16 +407,9 @@
         <div class="artist-item"><span class="artist-name">Elyatekomo</span><a href="https://instagram.com/elyatekomoklk" target="_blank" class="artist-ig">@elyatekomoklk</a></div>
         <div class="artist-item"><span class="artist-name">Caligo</span><a href="https://instagram.com/_caligo" target="_blank" class="artist-ig">@_caligo</a></div>
         <div class="artist-item"><span class="artist-name">Humano Extinto</span><a href="https://instagram.com/humanoextinto" target="_blank" class="artist-ig">@humanoextinto</a></div>
-        <div class="artist-item"><span class="artist-name">Kuiner</span><a href="https://instagram.com/kuin3r" target="_blank" class="artist-ig">@kuin3r</a></div>
         <div class="artist-item"><span class="artist-name">Sr. Squared</span><a href="https://instagram.com/sr.squared" target="_blank" class="artist-ig">@sr.squared</a></div>
         <div class="artist-item"><span class="artist-name">mmiro4!</span><a href="https://instagram.com/xannii44_" target="_blank" class="artist-ig">@xannii44_</a></div>
         <div class="artist-item"><span class="artist-name">Yung Jota</span><a href="https://instagram.com/_yxngjota" target="_blank" class="artist-ig">@_yxngjota</a></div>
-      </div>
-      <div class="evt-subgroup-title">Ganadores del torneo showcase</div>
-      <div class="artist-list">
-        <div class="artist-item"><span class="artist-name">1. Sr. Squared</span><a href="https://instagram.com/sr.squared" target="_blank" class="artist-ig">@sr.squared</a></div>
-        <div class="artist-item"><span class="artist-name">2. mmiro4!</span><a href="https://instagram.com/xannii44_" target="_blank" class="artist-ig">@xannii44_</a></div>
-        <div class="artist-item"><span class="artist-name">3. Yung Jota</span><a href="https://instagram.com/_yxngjota" target="_blank" class="artist-ig">@_yxngjota</a></div>
       </div>
       <div class="evt-subgroup-title">Artistas invitados durante el show de HugoBozz</div>
       <div class="artist-list">
@@ -445,13 +446,44 @@
     <div class="event-section reveal">
       <div class="section-label">Fotos del evento</div>
       <h2 class="event-section-title">Galería Bubble Gummy</h2>
-      <p style="color:var(--white-muted);font-size:0.9rem;">Próximamente — fotos y vídeos de la noche.</p>
+      <div class="photo-gallery">
+        <img src="/fotos-valencia2/evento4-01.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 1" loading="lazy" onclick="openLightbox(1)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-02.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 2" loading="lazy" onclick="openLightbox(2)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-03.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 3" loading="lazy" onclick="openLightbox(3)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-04.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 4" loading="lazy" onclick="openLightbox(4)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-05.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 5" loading="lazy" onclick="openLightbox(5)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-06.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 6" loading="lazy" onclick="openLightbox(6)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-07.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 7" loading="lazy" onclick="openLightbox(7)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-08.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 8" loading="lazy" onclick="openLightbox(8)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-09.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 9" loading="lazy" onclick="openLightbox(9)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-10.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 10" loading="lazy" onclick="openLightbox(10)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-11.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 11" loading="lazy" onclick="openLightbox(11)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-12.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 12" loading="lazy" onclick="openLightbox(12)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-13.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 13" loading="lazy" onclick="openLightbox(13)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-14.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 14" loading="lazy" onclick="openLightbox(14)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-15.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 15" loading="lazy" onclick="openLightbox(15)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-16.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 16" loading="lazy" onclick="openLightbox(16)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-17.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 17" loading="lazy" onclick="openLightbox(17)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-18.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 18" loading="lazy" onclick="openLightbox(18)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-19.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 19" loading="lazy" onclick="openLightbox(19)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-20.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 20" loading="lazy" onclick="openLightbox(20)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-21.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 21" loading="lazy" onclick="openLightbox(21)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-22.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 22" loading="lazy" onclick="openLightbox(22)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-23.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 23" loading="lazy" onclick="openLightbox(23)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-24.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 24" loading="lazy" onclick="openLightbox(24)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-25.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 25" loading="lazy" onclick="openLightbox(25)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-26.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 26" loading="lazy" onclick="openLightbox(26)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-27.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 27" loading="lazy" onclick="openLightbox(27)" class="gallery-thumb"/>
+        <img src="/fotos-valencia2/evento4-28.jpg" alt="Trap In Spain Valencia #4 Bubble Gummy Edition - foto 28" loading="lazy" onclick="openLightbox(28)" class="gallery-thumb"/>
+      </div>
     </div>
 
     <div class="event-section reveal">
       <div class="section-label">Feedback de artistas</div>
       <h2 class="event-section-title">Lo que dijeron</h2>
       <div class="fb-carousel-wrap">
+        <button type="button" class="fb-arrow fb-prev" aria-label="Testimonio anterior" onclick="fbScroll(this)">&#10094;</button>
+        <button type="button" class="fb-arrow fb-next" aria-label="Testimonio siguiente" onclick="fbScroll(this)">&#10095;</button>
         <div class="fb-carousel">
           <div class="feedback-card founder"><div class="feedback-author">Anto GM · Co-fundador</div><div class="feedback-text">Ha sido un evento muy complicado de organizar y hubo momentos en los que todo se hizo cuesta arriba. Pero después, al ver la ilusión de los artistas, las ganas reales que tenían de estar allí, a la gente que vino a apoyar y la oportunidad que dimos a artistas emergentes de subirse a un escenario, todo cobró sentido. De esta edición han salido relaciones que hemos mantenido después del evento y personas muy bacanas que nos llevamos con nosotros.</div></div>
           <div class="feedback-card founder"><div class="feedback-author">M3RY · Co-fundadora</div><div class="feedback-text">Esta edición fue un reto enorme y nos puso a prueba de muchas maneras. Aun así, ver a los artistas disfrutar, apoyarse y vivir con tanta ilusión su momento en Sala Matisse hizo que todo el esfuerzo valiera la pena. No fue una noche perfecta, pero sí una experiencia muy humana y bonita de la que sacamos muchas cosas positivas.</div></div>
@@ -467,7 +499,6 @@
     </div>
 
     <div class="event-section reveal" style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="https://www.youtube.com/watch?v=fXZuf5RxBig" target="_blank" rel="noopener noreferrer" class="btn-secondary">Vlog oficial</a>
       <a href="/eventos/" class="btn-primary">← Todos los eventos</a>
     </div>
 
@@ -572,6 +603,32 @@
       document.body.style.overflow = '';
     }
 
+    // Carrusel de "Lo que dijeron" (feedback de artistas)
+    function fbScroll(btn) {
+      var wrap = btn.closest('.fb-carousel-wrap');
+      var track = wrap && wrap.querySelector('.fb-carousel');
+      if (!track) return;
+      var card = track.querySelector('.feedback-card');
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 18;
+      var amount = (card ? card.getBoundingClientRect().width : 300) + gap;
+      var dir = btn.classList.contains('fb-next') ? 1 : -1;
+      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    }
+    function fbUpdateArrows(track) {
+      var wrap = track.closest('.fb-carousel-wrap');
+      var prev = wrap && wrap.querySelector('.fb-prev');
+      var next = wrap && wrap.querySelector('.fb-next');
+      if (!prev || !next) return;
+      var maxScroll = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= maxScroll;
+    }
+    document.querySelectorAll('.fb-carousel').forEach(function(track) {
+      fbUpdateArrows(track);
+      track.addEventListener('scroll', function() { fbUpdateArrows(track); }, { passive: true });
+      window.addEventListener('resize', function() { fbUpdateArrows(track); });
+    });
+
     // Scroll reveal
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
@@ -637,5 +694,19 @@
   </script>
 
 
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <span class="lightbox-arrow lightbox-prev" onclick="event.stopPropagation();lightboxNav(-1)">&#10094;</span>
+  <img id="lightbox-img" src="" alt="Foto ampliada" onclick="event.stopPropagation()"/>
+  <span class="lightbox-arrow lightbox-next" onclick="event.stopPropagation();lightboxNav(1)">&#10095;</span>
+</div>
+<script>
+var lbIndex=1, lbTotal=28;
+function lbSrc(i){ return '/fotos-valencia2/evento4-'+String(i).padStart(2,'0')+'.jpg'; }
+function openLightbox(i){ lbIndex=i; document.getElementById('lightbox-img').src=lbSrc(i); document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+function lightboxNav(d){ lbIndex=((lbIndex-1+d+lbTotal)%lbTotal)+1; document.getElementById('lightbox-img').src=lbSrc(lbIndex); }
+document.addEventListener('keydown',function(e){ if(!document.getElementById('lightbox').classList.contains('open'))return; if(e.key==='Escape')closeLightbox(); if(e.key==='ArrowLeft')lightboxNav(-1); if(e.key==='ArrowRight')lightboxNav(1); });
+</script>
 </body>
 </html>
