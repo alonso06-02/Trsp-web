@@ -288,6 +288,151 @@
     }
   
   
+  
+/* ═════════ BLOG · rediseño ═════════ */
+html { scroll-behavior:smooth; }
+main#main { overflow-x:clip; }
+.bl-h1, .bl-h2, .bl-cta-h, .bl-card-t, .bl-feat-t { font-family:var(--font-display); font-weight:400; letter-spacing:.01em; }
+.bl-h2 { font-size:clamp(2.4rem,6vw,4.6rem); line-height:.92; margin:.4rem 0 0; }
+.bl-sub { color:var(--white-dim); max-width:600px; line-height:1.8; font-size:.95rem; margin:1.1rem 0 1.8rem; }
+.bl-ghost { display:inline-flex; align-items:center; gap:.5rem; padding:.95rem 1.5rem; border:1px solid rgba(245,243,236,.22); background:transparent; color:var(--white); text-decoration:none; border-radius:2px; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; font-weight:600; cursor:pointer; font-family:inherit; transition:border-color .2s, color .2s, transform .2s; }
+.bl-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+
+/* hero */
+.bl-hero { position:relative; overflow:hidden; padding:clamp(7rem,15vh,9.5rem) 0 clamp(3rem,7vh,5rem); min-height:88vh; display:flex; align-items:center; background:var(--black); --mx:70%; --my:30%; }
+.bl-hero-glow { position:absolute; inset:0; background:radial-gradient(520px circle at var(--mx) var(--my), rgba(201,162,39,.22), transparent 60%), radial-gradient(900px circle at 90% 100%, rgba(201,162,39,.08), transparent 60%); pointer-events:none; }
+.bl-hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,162,39,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.05) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse at 60% 40%, #000 20%, transparent 75%); -webkit-mask-image:radial-gradient(ellipse at 60% 40%, #000 20%, transparent 75%); pointer-events:none; }
+.bl-hero-inner { position:relative; z-index:2; width:100%; }
+.bl-eyebrow { display:inline-flex; align-items:center; gap:.6rem; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,162,39,.3); padding:.45rem .9rem; border-radius:99px; background:rgba(201,162,39,.06); }
+.bl-dot { width:7px; height:7px; border-radius:50%; background:var(--gold); animation:blPulse 1.8s infinite; }
+@keyframes blPulse { 0%{ box-shadow:0 0 0 0 rgba(201,162,39,.7);} 70%,100%{ box-shadow:0 0 0 10px rgba(201,162,39,0);} }
+.bl-h1 { font-size:clamp(3.6rem,13vw,10.5rem); line-height:.92; margin:1.4rem 0; text-transform:uppercase; }
+.bl-outline { color:transparent; -webkit-text-stroke:2px var(--white); }
+.bl-lead { max-width:640px; color:var(--white-dim); line-height:1.85; font-size:clamp(.95rem,1.5vw,1.08rem); }
+.bl-hero-cta { display:flex; flex-wrap:wrap; gap:1rem; margin-top:2rem; }
+.bl-stats { display:flex; flex-wrap:wrap; gap:clamp(1.5rem,5vw,4rem); margin-top:3rem; }
+.bl-stat b { display:block; font-family:var(--font-display); font-weight:400; font-size:clamp(2.4rem,5vw,3.6rem); line-height:1; color:var(--gold); }
+.bl-stat span { font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--white-dim); }
+
+.bl-marquee { overflow:hidden; background:var(--gold); color:var(--black); border-block:1px solid var(--gold-light); transform:rotate(-1deg) scale(1.02); position:relative; z-index:3; }
+.bl-marquee-track { display:flex; gap:1.6rem; align-items:center; width:max-content; padding:.85rem 0; animation:blMarq 40s linear infinite; font-family:var(--font-display); font-size:clamp(1.3rem,2.4vw,1.9rem); letter-spacing:.05em; text-transform:uppercase; white-space:nowrap; }
+.bl-marquee:hover .bl-marquee-track { animation-play-state:paused; }
+.bl-marquee i { font-style:normal; font-size:.8em; opacity:.7; }
+@keyframes blMarq { to{ transform:translateX(-50%);} }
+
+/* featured */
+.bl-start { background:var(--black-2); padding-top:clamp(5rem,10vh,8rem); }
+.bl-featured { display:grid; grid-template-columns:1.35fr 1fr; grid-template-rows:1fr 1fr; gap:16px; margin-top:2rem; min-height:520px; perspective:1400px; }
+.bl-feat { position:relative; display:flex; align-items:flex-end; overflow:hidden; border-radius:var(--radius-lg); border:1px solid rgba(201,162,39,.16); text-decoration:none; color:var(--white); isolation:isolate; transition:transform .25s var(--ease-out), border-color .25s, box-shadow .25s; will-change:transform; min-height:240px; }
+.bl-feat:first-child { grid-row:span 2; }
+.bl-feat:hover { border-color:rgba(201,162,39,.7); box-shadow:0 24px 60px -20px rgba(201,162,39,.35); }
+.bl-feat-bg { position:absolute; inset:0; z-index:-2; background-size:cover; background-position:center; filter:brightness(.8) saturate(.95); transition:transform .8s var(--ease-out), filter .4s; }
+.bl-feat:hover .bl-feat-bg { transform:scale(1.07); filter:brightness(.95) saturate(1.1); }
+.bl-feat::before { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(to top, rgba(10,10,8,.97) 10%, rgba(10,10,8,.55) 50%, rgba(10,10,8,.1)); }
+.bl-feat-n { position:absolute; top:12px; right:18px; font-family:var(--font-display); font-size:4rem; line-height:1; color:rgba(245,243,236,.12); transition:color .3s; }
+.bl-feat:hover .bl-feat-n { color:var(--gold); }
+.bl-feat-body { padding:1.5rem; width:100%; }
+.bl-tag { display:inline-block; font-family:var(--font-mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-light); border:1px solid rgba(201,162,39,.4); padding:.25rem .6rem; border-radius:99px; background:rgba(10,10,8,.55); backdrop-filter:blur(6px); }
+.bl-feat-t { font-size:clamp(1.8rem,3vw,2.8rem); line-height:1; margin:.7rem 0 .5rem; text-transform:uppercase; }
+.bl-feat:not(:first-child) .bl-feat-t { font-size:clamp(1.5rem,2.2vw,2rem); }
+.bl-feat-d { color:rgba(245,243,236,.8); font-size:.88rem; line-height:1.6; margin:0 0 .8rem; max-width:52ch; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.bl-feat-go { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; color:var(--gold); text-transform:uppercase; }
+
+/* ruta */
+.bl-path { background:var(--black); }
+.bl-tabs { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.8rem; }
+.bl-tab { display:inline-flex; align-items:center; gap:.55rem; cursor:pointer; background:var(--black-3); border:1px solid rgba(245,243,236,.12); color:var(--white-dim); padding:.8rem 1.1rem; border-radius:99px; font-family:inherit; font-size:.85rem; transition:all .25s var(--ease-out); }
+.bl-tab:hover { border-color:var(--gold); color:var(--white); transform:translateY(-2px); }
+.bl-tab.is-on { background:var(--gold); border-color:var(--gold); color:var(--black); font-weight:600; }
+.bl-steps { list-style:none; margin:0; padding:0; display:grid; gap:12px; counter-reset:blstep; }
+.bl-steps li { counter-increment:blstep; animation:blIn .45s var(--ease-out) both; }
+.bl-steps li:nth-child(2){ animation-delay:.07s; } .bl-steps li:nth-child(3){ animation-delay:.14s; } .bl-steps li:nth-child(4){ animation-delay:.21s; }
+@keyframes blIn { from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:none; } }
+.bl-steps a { display:flex; align-items:center; gap:1.2rem; padding:1.1rem 1.3rem; background:var(--black-2); border:1px solid rgba(201,162,39,.14); border-radius:var(--radius-lg); text-decoration:none; color:var(--white); transition:border-color .2s, transform .25s var(--ease-out), background .2s; }
+.bl-steps a::before { content:counter(blstep); flex:none; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font-family:var(--font-display); font-size:1.5rem; color:var(--gold); border:1.5px solid rgba(201,162,39,.5); transition:all .25s; }
+.bl-steps a:hover { border-color:var(--gold); transform:translateX(6px); background:var(--black-3); }
+.bl-steps a:hover::before { background:var(--gold); color:var(--black); }
+.bl-steps .t { flex:1; font-weight:500; line-height:1.35; }
+.bl-steps .m { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; color:var(--white-muted); text-transform:uppercase; white-space:nowrap; }
+.bl-steps .go { color:var(--gold); transition:transform .25s; }
+.bl-steps a:hover .go { transform:translateX(4px); }
+
+/* biblioteca */
+.bl-lib { background:var(--black-2); padding-bottom:clamp(4rem,8vh,7rem); }
+.bl-bar { position:sticky; top:68px; z-index:30; margin:1.6rem 0 1.4rem; padding:.8rem 0; background:rgba(17,17,16,.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-block:1px solid rgba(201,162,39,.12); }
+.bl-bar-in { display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; }
+.bl-search { display:flex; align-items:center; gap:.6rem; flex:1 1 300px; max-width:420px; background:var(--black-3); border:1px solid rgba(245,243,236,.14); border-radius:99px; padding:.65rem 1rem; color:var(--white-dim); transition:border-color .2s, box-shadow .2s; }
+.bl-search:focus-within { border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,162,39,.2); color:var(--gold); }
+.bl-search input { flex:1; min-width:0; background:none; border:0; outline:0; color:var(--white); font-family:inherit; font-size:.92rem; }
+.bl-search input::placeholder { color:var(--white-muted); }
+.bl-search kbd { font-family:var(--font-mono); font-size:.68rem; border:1px solid rgba(245,243,236,.25); border-radius:5px; padding:.1rem .4rem; color:var(--white-muted); }
+.bl-chips { display:flex; gap:.45rem; overflow-x:auto; scrollbar-width:none; flex:1 1 400px; padding:2px; }
+.bl-chips::-webkit-scrollbar { display:none; }
+.bl-chip { flex:none; cursor:pointer; background:transparent; border:1px solid rgba(245,243,236,.16); color:var(--white-dim); padding:.5rem .9rem; border-radius:99px; font-family:inherit; font-size:.78rem; white-space:nowrap; transition:all .2s; }
+.bl-chip small { opacity:.6; margin-left:.3rem; font-family:var(--font-mono); font-size:.68rem; }
+.bl-chip:hover { color:var(--white); border-color:var(--gold); }
+.bl-chip.is-on { background:var(--gold); border-color:var(--gold); color:var(--black); font-weight:600; }
+.bl-chip-saved.is-on { background:#ff5a7a; border-color:#ff5a7a; color:#fff; }
+.bl-count { font-family:var(--font-mono); font-size:.74rem; letter-spacing:.08em; color:var(--white-muted); margin-bottom:1rem; text-transform:uppercase; }
+
+.bl-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px; perspective:1400px; }
+.bl-card { position:relative; display:flex; flex-direction:column; background:var(--black-3); border:1px solid rgba(201,162,39,.12); border-radius:var(--radius-lg); overflow:hidden; transition:transform .25s var(--ease-out), border-color .25s, box-shadow .25s; will-change:transform; }
+.bl-card:hover { border-color:rgba(201,162,39,.65); box-shadow:0 22px 50px -22px rgba(201,162,39,.4); }
+.bl-card.is-hidden { display:none; }
+.bl-card.is-in { animation:blIn .45s var(--ease-out) both; }
+.bl-card-img { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--black-4); }
+.bl-card-img i { position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.78) saturate(.95); transition:transform .8s var(--ease-out), filter .4s; }
+.bl-card:hover .bl-card-img i { transform:scale(1.08); filter:brightness(.95) saturate(1.1); }
+.bl-card-img::after { content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(26,26,24,1) 0%, transparent 55%); }
+.bl-card-img .bl-tag { position:absolute; left:12px; top:12px; z-index:2; }
+.bl-card-body { padding:1.1rem 1.3rem 1.3rem; display:flex; flex-direction:column; flex:1; margin-top:-.2rem; }
+.bl-card-t { font-size:1.55rem; line-height:1.02; margin:0 0 .6rem; text-transform:uppercase; }
+.bl-card-t a { color:var(--white); text-decoration:none; }
+.bl-card-t a::after { content:""; position:absolute; inset:0; z-index:1; }
+.bl-card-d { color:var(--white-dim); font-size:.85rem; line-height:1.65; margin:0 0 1rem; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.bl-card-f { margin-top:auto; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; }
+.bl-card-f .min { color:var(--white-muted); }
+.bl-card-f .go { color:var(--gold); transition:letter-spacing .25s; }
+.bl-card:hover .bl-card-f .go { letter-spacing:.15em; }
+.bl-save { position:absolute; right:10px; top:10px; z-index:3; width:38px; height:38px; border-radius:50%; cursor:pointer; display:grid; place-items:center; background:rgba(10,10,8,.65); backdrop-filter:blur(6px); border:1px solid rgba(245,243,236,.25); color:var(--white); font-size:1.05rem; line-height:1; transition:transform .2s var(--ease-out), background .2s, border-color .2s; }
+.bl-save:hover { transform:scale(1.12); border-color:#ff5a7a; }
+.bl-save[aria-pressed="true"] { background:#ff5a7a; border-color:#ff5a7a; color:#fff; animation:blPop .35s var(--ease-out); }
+@keyframes blPop { 40%{ transform:scale(1.35);} }
+mark.bl-hl { background:rgba(201,162,39,.3); color:inherit; border-radius:3px; padding:0 2px; }
+
+.bl-empty { text-align:center; padding:4rem 1rem; }
+.bl-empty-i { font-size:3rem; }
+.bl-empty h3 { font-family:var(--font-display); font-weight:400; font-size:2.2rem; margin:.5rem 0; text-transform:uppercase; }
+.bl-empty p { color:var(--white-dim); margin:0 0 1.4rem; }
+
+.bl-cta { position:relative; overflow:hidden; padding:clamp(5rem,12vh,9rem) 0; text-align:center; background:var(--black); border-top:1px solid rgba(201,162,39,.15); }
+.bl-cta-glow { position:absolute; inset:-30%; background:conic-gradient(from 0deg at 50% 50%, transparent, rgba(201,162,39,.16), transparent 40%); animation:blSpin 14s linear infinite; }
+@keyframes blSpin { to{ transform:rotate(360deg);} }
+.bl-cta-in { position:relative; }
+.bl-cta-h { font-size:clamp(2.8rem,8vw,6rem); line-height:.92; margin:0 0 1.2rem; text-transform:uppercase; }
+.bl-cta p { color:var(--white-dim); margin:0 0 1rem; max-width:560px; margin-inline:auto; line-height:1.7; }
+
+.bl-toast { position:fixed; left:50%; bottom:28px; transform:translate(-50%,30px); opacity:0; pointer-events:none; z-index:200; background:var(--black-3); color:var(--white); border:1px solid var(--gold); padding:.75rem 1.2rem; border-radius:99px; font-size:.85rem; box-shadow:0 14px 40px rgba(0,0,0,.6); transition:all .35s var(--ease-out); }
+.bl-toast.on { opacity:1; transform:translate(-50%,0); }
+
+@media (max-width:900px){
+  .bl-featured { grid-template-columns:1fr; grid-template-rows:none; min-height:0; }
+  .bl-feat:first-child { grid-row:auto; min-height:360px; }
+  .bl-bar { top:60px; }
+  .bl-search kbd { display:none; }
+  .bl-steps .m { display:none; }
+}
+@media (max-width:520px){
+  .bl-outline { -webkit-text-stroke:1.5px var(--white); }
+  .bl-hero { min-height:auto; }
+  .bl-grid { grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion:reduce){
+  html { scroll-behavior:auto; }
+  .bl-marquee-track, .bl-cta-glow, .bl-dot { animation:none !important; }
+  .bl-card, .bl-feat, .bl-card-img i, .bl-feat-bg { transition:none; }
+}
+
   </style>
 </head>
 <body>
@@ -322,71 +467,404 @@
     <a href="/contacto/" onclick="closeMobileMenu()" style="color:var(--gold);">Contacto</a>
   </div>
   <main id="main">
-  <div class="blog-hero">
-    <div class="section-label" style="justify-content:center;">Blog Trap In Spain</div>
-    <h1 style="font-family:var(--font-display);font-size:clamp(3rem,8vw,6rem);line-height:0.9;margin:1rem 0;">Noticias del <span class="gold">Movimiento</span></h1>
-    <p style="color:var(--white-dim);max-width:600px;margin:0 auto;line-height:1.8;">Consejos, guías y todo lo que mueve la cultura urbana emergente en España.</p>
-  </div>
-  <section class="section-pad" style="padding-top:clamp(2rem,4vh,3rem);">
-    <div class="section-label reveal" style="max-width:1200px;margin:0 auto 1.5rem;padding:0 clamp(1.25rem,4vw,3rem);">Destacados</div>
-    <div class="blog-featured">
-      <a href="/blog-color-grading-videoclip/" class="blog-featured-card reveal"><div class="blog-card-cat">✂️ Edición &amp; VFX</div><h3 class="blog-card-title">Color grading: por qué algunos videoclips parecen de artista grande</h3><p class="blog-card-meta">¿Por qué algunos videoclips se ven tan profesionales? Descubre cómo el color grading cambia totalmente un videoclip de t...</p><span class="blog-card-link">Leer más →</span></a>
-      <a href="/blog-como-conseguir-primeros-conciertos/" class="blog-featured-card reveal"><div class="blog-card-cat">🔥 Eventos &amp; Artistas</div><h3 class="blog-card-title">Cómo conseguir tus primeros conciertos siendo artista emergente</h3><p class="blog-card-meta">¿Quieres empezar a actuar? Descubre cómo conseguir tus primeros conciertos siendo artista emergente, incluso si todavía ...</p><span class="blog-card-link">Leer más →</span></a>
-      <a href="/blog-como-crecer-en-spotify-sin-bots/" class="blog-featured-card reveal"><div class="blog-card-cat">📊 Promoción Spotify</div><h3 class="blog-card-title">Cómo crecer en Spotify sin bots ni playlists fake</h3><p class="blog-card-meta">¿Quieres crecer en Spotify de verdad? Descubre cómo conseguir oyentes reales, entrar en playlists y aumentar streams sin...</p><span class="blog-card-link">Leer más →</span></a>
+
+<!-- ═════════ HERO ═════════ -->
+<section class="bl-hero" aria-labelledby="blog-heading">
+  <div class="bl-hero-glow" aria-hidden="true"></div>
+  <div class="bl-hero-grid" aria-hidden="true"></div>
+  <div class="container bl-hero-inner">
+    <div class="bl-eyebrow reveal"><span class="bl-dot"></span>Blog · Noticias del Movimiento</div>
+    <h1 class="bl-h1 reveal" id="blog-heading">Aprende el<br/><span class="bl-outline">juego</span> <span class="gold">del trap.</span></h1>
+    <p class="bl-lead reveal">Guías claras, sin humo, para artistas emergentes: cómo grabar, mezclar, diseñar tu portada, hacer un videoclip, crecer en Spotify y conseguir tus primeros conciertos. Todo lo que aprendemos haciendo música y eventos.</p>
+    <div class="bl-hero-cta reveal">
+      <a href="#empieza" class="btn-primary">Empieza aquí</a>
+      <button type="button" class="bl-ghost" id="blRandom">🎲 Sorpréndeme</button>
     </div>
-  </section>
-  <section class="section-pad" style="padding-top:0;">
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🎚 Mix &amp; Master</h2><div class="blog-list">
-        <a href="/blog-como-sonar-profesional-sin-estudio-caro/" class="blog-list-item"><h4>Cómo conseguir que tu canción suene profesional sin un estudio de 10.000€</h4><p>¿Tu música no suena profesional? Descubre cómo mejorar el sonido de tus canciones de trap, drill o u...</p></a>
-        <a href="/blog-mix-master-barato-vs-profesional/" class="blog-list-item"><h4>Mix &amp; Master barato vs profesional: diferencias reales que sí se notan</h4><p>¿Merece la pena pagar un mix &amp; master profesional? Descubre las diferencias reales entre una mez...</p></a>
-        <a href="/blog-por-que-tu-cancion-suena-peor-en-spotify/" class="blog-list-item"><h4>¿Por qué tu canción suena peor en Spotify? (Y cómo arreglarlo)</h4><p>¿Tu canción pierde calidad al subirla a Spotify? Descubre por qué pasa y cómo un buen mix &amp; mast...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🎹 Producción Musical</h2><div class="blog-list">
-        <a href="/blog-como-elegir-beat-trap/" class="blog-list-item"><h4>Cómo elegir un beat que no parezca sacado de YouTube</h4><p>¿Tus canciones suenan genéricas? Aprende a elegir un beat profesional para trap, drill o urbano y ev...</p></a>
-        <a href="/blog-errores-beat-amateur/" class="blog-list-item"><h4>5 errores que hacen que tu beat suene amateur</h4><p>¿Tus beats suenan poco profesionales? Descubre los errores más comunes en producción trap, drill y u...</p></a>
-        <a href="/blog-que-beat-necesita-tu-voz/" class="blog-list-item"><h4>Qué instrumental necesita tu voz según tu estilo musical</h4><p>¿No sabes qué beat elegir? Descubre qué instrumental encaja con tu voz según tu estilo musical: trap...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">📊 Promoción Spotify</h2><div class="blog-list">
-        <a href="/blog-como-crecer-en-spotify-sin-bots/" class="blog-list-item"><h4>Cómo crecer en Spotify sin bots ni playlists fake</h4><p>¿Quieres crecer en Spotify de verdad? Descubre cómo conseguir oyentes reales, entrar en playlists y ...</p></a>
-        <a href="/blog-por-que-no-crezco-en-spotify/" class="blog-list-item"><h4>¿Por qué tu canción no despega en Spotify aunque sea buena?</h4><p>¿Tu canción es buena pero no crece? Descubre por qué muchos artistas emergentes no despegan en Spoti...</p></a>
-        <a href="/blog-spotify-me-ha-tirado-la-cancion/" class="blog-list-item"><h4>Spotify me ha tirado la canción: causas reales y cómo recuperarte</h4><p>¿Spotify te ha eliminado una canción? Descubre las causas reales, cómo recuperarte y evitar que vuel...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🎨 Diseño de Portadas</h2><div class="blog-list">
-        <a href="/blog-como-hacer-portada-profesional/" class="blog-list-item"><h4>Cómo hacer que tu portada parezca de un artista grande</h4><p>¿Tu portada parece amateur? Aprende cómo diseñar una portada profesional para Spotify, singles y álb...</p></a>
-        <a href="/blog-errores-portada-amateur/" class="blog-list-item"><h4>Las 7 cosas que hacen que una portada parezca amateur</h4><p>¿Tu portada no parece profesional? Descubre los errores más comunes en portadas de singles, EPs y ál...</p></a>
-        <a href="/blog-portadas-virales-trap/" class="blog-list-item"><h4>Las portadas más virales del trap y por qué funcionan</h4><p>Analizamos algunas de las portadas más virales del trap y urbano para entender qué hace que un artwo...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🎬 Videoclips</h2><div class="blog-list">
-        <a href="/blog-como-grabar-videoclip-barato/" class="blog-list-item"><h4>Cómo grabar un videoclip barato que no parezca barato</h4><p>¿Poco presupuesto para videoclip? Aprende cómo grabar un videoclip barato para trap, drill o urbano ...</p></a>
-        <a href="/blog-que-es-un-visualizer/" class="blog-list-item"><h4>Qué es un visualizer y por qué artistas pequeños deberían usarlo</h4><p>¿No tienes presupuesto para videoclip? Descubre qué es un visualizer, cómo funciona y por qué puede ...</p></a>
-        <a href="/blog-videoclip-barato-que-se-vea-profesional/" class="blog-list-item"><h4>No necesitas 10.000€ para un videoclip: ideas que sí funcionan</h4><p>¿Quieres grabar un videoclip sin gastar una locura? Ideas reales para hacer videoclips de trap y urb...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🎙️ Grabación</h2><div class="blog-list">
-        <a href="/blog-como-grabar-voces-trap/" class="blog-list-item"><h4>Cómo grabar voces de trap sin sonar amateur</h4><p>¿Tus voces no suenan profesionales? Aprende cómo grabar voces de trap, drill y urbano para conseguir...</p></a>
-        <a href="/blog-errores-grabar-voces/" class="blog-list-item"><h4>7 errores al grabar voces que arruinan una canción</h4><p>¿Tus voces no suenan profesionales? Descubre los errores más comunes al grabar voces de trap, drill ...</p></a>
-        <a href="/blog-grabar-en-casa-musica/" class="blog-list-item"><h4>Por qué grabar en casa está frenando tu música</h4><p>¿Tus canciones no suenan profesionales? Descubre por qué grabar en casa puede estar limitando tu mús...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🤝 Featurings &amp; Letras</h2><div class="blog-list">
-        <a href="/blog-como-escribir-letra-trap/" class="blog-list-item"><h4>Cómo escribir una letra de trap que no suene genérica</h4><p>¿Tus letras suenan iguales a todas? Aprende cómo escribir letras de trap y urbano con personalidad, ...</p></a>
-        <a href="/blog-feat-trap-in-spain/" class="blog-list-item"><h4>Feat con Anto GM, M3RY o artistas de Trap In Spain: cómo funciona</h4><p>¿Quieres hacer un feat con Anto GM, M3RY o artistas de Trap In Spain? Descubre cómo funciona, requis...</p></a>
-        <a href="/blog-merece-la-pena-pagar-featuring/" class="blog-list-item"><h4>¿Merece la pena pagar un featuring? La verdad que nadie te dice</h4><p>¿Estás pensando en pagar un featuring? Descubre cuándo merece la pena una colaboración musical y cuá...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">✂️ Edición &amp; VFX</h2><div class="blog-list">
-        <a href="/blog-color-grading-videoclip/" class="blog-list-item"><h4>Color grading: por qué algunos videoclips parecen de artista grande</h4><p>¿Por qué algunos videoclips se ven tan profesionales? Descubre cómo el color grading cambia totalmen...</p></a>
-        <a href="/blog-como-hacer-videoclip-barato-parezca-caro/" class="blog-list-item"><h4>Cómo hacer que un videoclip barato parezca caro</h4><p>¿Tu videoclip parece amateur? Descubre cómo hacer que un videoclip barato de trap, drill o urbano pa...</p></a>
-        <a href="/blog-efectos-visuales-videoclip-trap/" class="blog-list-item"><h4>Los efectos visuales que están usando los artistas urbanos</h4><p>¿Quieres que tus videoclips se vean más profesionales? Descubre los efectos visuales (VFX) que están...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🧠 Asesoría Artística</h2><div class="blog-list">
-        <a href="/blog-errores-carrera-musical/" class="blog-list-item"><h4>Los 10 errores que están frenando tu carrera musical</h4><p>¿Sientes que tu música no avanza? Descubre los errores más comunes que frenan a artistas emergentes ...</p></a>
-        <a href="/blog-por-que-no-crece-mi-musica/" class="blog-list-item"><h4>Por qué algunos artistas crecen y otros se quedan estancados</h4><p>¿Sientes que tu música no avanza? Descubre por qué algunos artistas emergentes crecen y otros se que...</p></a>
-      </div></div>
-    <div class="blog-cat-block reveal"><h2 class="blog-cat-heading">🔥 Eventos &amp; Artistas</h2><div class="blog-list">
-        <a href="/blog-como-conseguir-primeros-conciertos/" class="blog-list-item"><h4>Cómo conseguir tus primeros conciertos siendo artista emergente</h4><p>¿Quieres empezar a actuar? Descubre cómo conseguir tus primeros conciertos siendo artista emergente,...</p></a>
-        <a href="/blog-que-buscan-organizadores-bolo/" class="blog-list-item"><h4>Qué buscan realmente los organizadores antes de darte un bolo</h4><p>¿Quieres actuar más? Descubre qué miran realmente los organizadores antes de dar un concierto a un a...</p></a>
-        <a href="/blog-trap-in-spain-eventos/" class="blog-list-item"><h4>Trap In Spain: cómo funcionan nuestros eventos para artistas emergentes</h4><p>Descubre cómo funcionan los eventos de Trap In Spain y cómo puedes participar siendo artista emergen...</p></a>
-      </div></div>
-  </section>
-  </main>
+    <div class="bl-stats reveal">
+      <div class="bl-stat"><b data-count="29">0</b><span>artículos</span></div>
+      <div class="bl-stat"><b data-count="10">0</b><span>temas</span></div>
+      <div class="bl-stat"><b data-count="100" data-suffix="%">0</b><span>sin humo</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="bl-marquee" aria-hidden="true">
+  <div class="bl-marquee-track"><span>Mix &amp; Master</span><i>✦</i><span>Producción</span><i>✦</i><span>Spotify</span><i>✦</i><span>Portadas</span><i>✦</i><span>Videoclips</span><i>✦</i><span>Grabación</span><i>✦</i><span>Featurings y letras</span><i>✦</i><span>Edición y VFX</span><i>✦</i><span>Asesoría</span><i>✦</i><span>Eventos</span><i>✦</i><span>Mix &amp; Master</span><i>✦</i><span>Producción</span><i>✦</i><span>Spotify</span><i>✦</i><span>Portadas</span><i>✦</i><span>Videoclips</span><i>✦</i><span>Grabación</span><i>✦</i><span>Featurings y letras</span><i>✦</i><span>Edición y VFX</span><i>✦</i><span>Asesoría</span><i>✦</i><span>Eventos</span><i>✦</i></div>
+</div>
+
+<!-- ═════════ EMPIEZA AQUÍ ═════════ -->
+<section class="section-pad bl-start" id="empieza" aria-labelledby="empieza-title">
+  <div class="container">
+    <div class="section-label reveal">Lo más leído</div>
+    <h2 class="bl-h2 reveal" id="empieza-title">Empieza<br/><span class="gold">por aquí</span></h2>
+    <div class="bl-featured">
+      <a href="/blog-como-crecer-en-spotify-sin-bots/" class="bl-feat">
+        <div class="bl-feat-bg" style="background-image:url('/fotos-servicios/spotify.jpg');background-position:center 18%"></div>
+        <span class="bl-feat-n">01</span>
+        <div class="bl-feat-body"><span class="bl-tag">📊 Spotify</span>
+          <h3 class="bl-feat-t">Cómo crecer en Spotify sin bots ni playlists fake</h3>
+          <p class="bl-feat-d">¿Quieres crecer en Spotify de verdad? Descubre cómo conseguir oyentes reales, entrar en playlists y ...</p>
+          <span class="bl-feat-go">Leer artículo →</span></div>
+      </a>
+      <a href="/blog-como-conseguir-primeros-conciertos/" class="bl-feat">
+        <div class="bl-feat-bg" style="background-image:url('/fotos-valencia2/evento4-02.jpg');background-position:center 18%"></div>
+        <span class="bl-feat-n">02</span>
+        <div class="bl-feat-body"><span class="bl-tag">🔥 Eventos</span>
+          <h3 class="bl-feat-t">Cómo conseguir tus primeros conciertos siendo artista emergente</h3>
+          <p class="bl-feat-d">¿Quieres empezar a actuar? Descubre cómo conseguir tus primeros conciertos siendo artista emergente,...</p>
+          <span class="bl-feat-go">Leer artículo →</span></div>
+      </a>
+      <a href="/blog-color-grading-videoclip/" class="bl-feat">
+        <div class="bl-feat-bg" style="background-image:url('/fotos-servicios/videoclips.jpg');background-position:center 25%"></div>
+        <span class="bl-feat-n">03</span>
+        <div class="bl-feat-body"><span class="bl-tag">✂️ Edición y VFX</span>
+          <h3 class="bl-feat-t">Color grading: por qué algunos videoclips parecen de artista grande</h3>
+          <p class="bl-feat-d">¿Por qué algunos videoclips se ven tan profesionales? Descubre cómo el color grading cambia totalmen...</p>
+          <span class="bl-feat-go">Leer artículo →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ RUTA ═════════ -->
+<section class="section-pad bl-path" id="ruta" aria-labelledby="ruta-title">
+  <div class="container">
+    <div class="section-label reveal">Tu situación</div>
+    <h2 class="bl-h2 reveal" id="ruta-title">¿En qué punto<br/><span class="gold">estás?</span></h2>
+    <p class="bl-sub reveal">Elige la tuya y te decimos qué leer, en orden.</p>
+    <div class="bl-tabs" role="tablist" aria-label="Tu situación">
+      <button type="button" class="bl-tab is-on" data-path="0" role="tab" aria-selected="true"><span aria-hidden="true">🎤</span>Voy a sacar mi primer tema</button>
+      <button type="button" class="bl-tab" data-path="1" role="tab" aria-selected="false"><span aria-hidden="true">📈</span>Está sacado y no crece</button>
+      <button type="button" class="bl-tab" data-path="2" role="tab" aria-selected="false"><span aria-hidden="true">🔥</span>Quiero tocar en directo</button>
+      <button type="button" class="bl-tab" data-path="3" role="tab" aria-selected="false"><span aria-hidden="true">🎬</span>Quiero portada y videoclip</button>
+    </div>
+    <ol class="bl-steps" id="blPathList" aria-live="polite"><li><a href="/blog-como-escribir-letra-trap/"><span class="t">Cómo escribir una letra de trap que no suene genérica</span><span class="m">2 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-elegir-beat-trap/"><span class="t">Cómo elegir un beat que no parezca sacado de YouTube</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-grabar-voces-trap/"><span class="t">Cómo grabar voces de trap sin sonar amateur</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-sonar-profesional-sin-estudio-caro/"><span class="t">Cómo conseguir que tu canción suene profesional sin un estudio de 10.000€</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li></ol>
+    <template id="blPaths">
+      <ol><li><a href="/blog-como-escribir-letra-trap/"><span class="t">Cómo escribir una letra de trap que no suene genérica</span><span class="m">2 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-elegir-beat-trap/"><span class="t">Cómo elegir un beat que no parezca sacado de YouTube</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-grabar-voces-trap/"><span class="t">Cómo grabar voces de trap sin sonar amateur</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-sonar-profesional-sin-estudio-caro/"><span class="t">Cómo conseguir que tu canción suene profesional sin un estudio de 10.000€</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li></ol><ol><li><a href="/blog-por-que-no-crezco-en-spotify/"><span class="t">¿Por qué tu canción no despega en Spotify aunque sea buena?</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-crecer-en-spotify-sin-bots/"><span class="t">Cómo crecer en Spotify sin bots ni playlists fake</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-por-que-no-crece-mi-musica/"><span class="t">Por qué algunos artistas crecen y otros se quedan estancados</span><span class="m">5 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-errores-carrera-musical/"><span class="t">Los 10 errores que están frenando tu carrera musical</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li></ol><ol><li><a href="/blog-como-conseguir-primeros-conciertos/"><span class="t">Cómo conseguir tus primeros conciertos siendo artista emergente</span><span class="m">1 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-que-buscan-organizadores-bolo/"><span class="t">Qué buscan realmente los organizadores antes de darte un bolo</span><span class="m">1 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-trap-in-spain-eventos/"><span class="t">Trap In Spain: cómo funcionan nuestros eventos para artistas emergentes</span><span class="m">1 min</span><span class="go" aria-hidden="true">→</span></a></li></ol><ol><li><a href="/blog-como-hacer-portada-profesional/"><span class="t">Cómo hacer que tu portada parezca de un artista grande</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-errores-portada-amateur/"><span class="t">Las 7 cosas que hacen que una portada parezca amateur</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-como-grabar-videoclip-barato/"><span class="t">Cómo grabar un videoclip barato que no parezca barato</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/blog-que-es-un-visualizer/"><span class="t">Qué es un visualizer y por qué artistas pequeños deberían usarlo</span><span class="m">3 min</span><span class="go" aria-hidden="true">→</span></a></li></ol>
+    </template>
+  </div>
+</section>
+
+<!-- ═════════ BIBLIOTECA ═════════ -->
+<section class="section-pad bl-lib" id="biblioteca" aria-labelledby="lib-title">
+  <div class="container">
+    <div class="section-label reveal">Biblioteca</div>
+    <h2 class="bl-h2 reveal" id="lib-title">Todos los<br/><span class="gold">artículos</span></h2>
+  </div>
+
+  <div class="bl-bar" id="blBar">
+    <div class="container bl-bar-in">
+      <label class="bl-search">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm9 16-4-4"/></svg>
+        <input type="search" id="blQ" placeholder="Busca: beat, Spotify, portada, bolo…" autocomplete="off" aria-label="Buscar artículos"/>
+        <kbd>/</kbd>
+      </label>
+      <div class="bl-chips" id="blChips" role="tablist" aria-label="Filtrar por tema">
+        <button type="button" class="bl-chip is-on" data-cat="all" role="tab" aria-selected="true">Todos<small>29</small></button>
+        <button type="button" class="bl-chip" data-cat="mix" role="tab" aria-selected="false">🎚 Mix &amp; Master<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="prod" role="tab" aria-selected="false">🎹 Producción<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="spot" role="tab" aria-selected="false">📊 Spotify<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="port" role="tab" aria-selected="false">🎨 Portadas<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="video" role="tab" aria-selected="false">🎬 Videoclips<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="grab" role="tab" aria-selected="false">🎙️ Grabación<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="feat" role="tab" aria-selected="false">🤝 Featurings y letras<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="edit" role="tab" aria-selected="false">✂️ Edición y VFX<small>3</small></button>
+        <button type="button" class="bl-chip" data-cat="ase" role="tab" aria-selected="false">🧠 Asesoría<small>2</small></button>
+        <button type="button" class="bl-chip" data-cat="ev" role="tab" aria-selected="false">🔥 Eventos<small>3</small></button>
+        <button type="button" class="bl-chip bl-chip-saved" data-cat="saved" role="tab" aria-selected="false">♥ Guardados<small>0</small></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="bl-count" id="blCount" aria-live="polite"></div>
+    <div class="bl-grid" id="blGrid">
+      <article class="bl-card" data-cat="mix" data-url="/blog-como-sonar-profesional-sin-estudio-caro/" data-title="Cómo conseguir que tu canción suene profesional sin un estudio de 10.000€" data-desc="¿Tu música no suena profesional? Descubre cómo mejorar el sonido de tus canciones de trap, drill o u..." data-catname="Mix &amp; Master">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/mix-master.jpg');background-position:center 18%"></i><span class="bl-tag">🎚 Mix &amp; Master</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-sonar-profesional-sin-estudio-caro/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-sonar-profesional-sin-estudio-caro/">Cómo conseguir que tu canción suene profesional sin un estudio de 10.000€</a></h3>
+          <p class="bl-card-d">¿Tu música no suena profesional? Descubre cómo mejorar el sonido de tus canciones de trap, drill o u...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="mix" data-url="/blog-mix-master-barato-vs-profesional/" data-title="Mix &amp; Master barato vs profesional: diferencias reales que sí se notan" data-desc="¿Merece la pena pagar un mix &amp; master profesional? Descubre las diferencias reales entre una mez..." data-catname="Mix &amp; Master">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/mix-master.jpg');background-position:center 52%"></i><span class="bl-tag">🎚 Mix &amp; Master</span></div>
+        <button type="button" class="bl-save" data-url="/blog-mix-master-barato-vs-profesional/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-mix-master-barato-vs-profesional/">Mix &amp; Master barato vs profesional: diferencias reales que sí se notan</a></h3>
+          <p class="bl-card-d">¿Merece la pena pagar un mix &amp; master profesional? Descubre las diferencias reales entre una mez...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="mix" data-url="/blog-por-que-tu-cancion-suena-peor-en-spotify/" data-title="¿Por qué tu canción suena peor en Spotify? (Y cómo arreglarlo)" data-desc="¿Tu canción pierde calidad al subirla a Spotify? Descubre por qué pasa y cómo un buen mix &amp; mast..." data-catname="Mix &amp; Master">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/mix-master.jpg');background-position:center 85%"></i><span class="bl-tag">🎚 Mix &amp; Master</span></div>
+        <button type="button" class="bl-save" data-url="/blog-por-que-tu-cancion-suena-peor-en-spotify/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-por-que-tu-cancion-suena-peor-en-spotify/">¿Por qué tu canción suena peor en Spotify? (Y cómo arreglarlo)</a></h3>
+          <p class="bl-card-d">¿Tu canción pierde calidad al subirla a Spotify? Descubre por qué pasa y cómo un buen mix &amp; mast...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="prod" data-url="/blog-como-elegir-beat-trap/" data-title="Cómo elegir un beat que no parezca sacado de YouTube" data-desc="¿Tus canciones suenan genéricas? Aprende a elegir un beat profesional para trap, drill o urbano y ev..." data-catname="Producción">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/produccion.jpg');background-position:center 18%"></i><span class="bl-tag">🎹 Producción</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-elegir-beat-trap/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-elegir-beat-trap/">Cómo elegir un beat que no parezca sacado de YouTube</a></h3>
+          <p class="bl-card-d">¿Tus canciones suenan genéricas? Aprende a elegir un beat profesional para trap, drill o urbano y ev...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="prod" data-url="/blog-errores-beat-amateur/" data-title="5 errores que hacen que tu beat suene amateur" data-desc="¿Tus beats suenan poco profesionales? Descubre los errores más comunes en producción trap, drill y u..." data-catname="Producción">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/produccion.jpg');background-position:center 52%"></i><span class="bl-tag">🎹 Producción</span></div>
+        <button type="button" class="bl-save" data-url="/blog-errores-beat-amateur/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-errores-beat-amateur/">5 errores que hacen que tu beat suene amateur</a></h3>
+          <p class="bl-card-d">¿Tus beats suenan poco profesionales? Descubre los errores más comunes en producción trap, drill y u...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="prod" data-url="/blog-que-beat-necesita-tu-voz/" data-title="Qué instrumental necesita tu voz según tu estilo musical" data-desc="¿No sabes qué beat elegir? Descubre qué instrumental encaja con tu voz según tu estilo musical: trap..." data-catname="Producción">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/produccion.jpg');background-position:center 85%"></i><span class="bl-tag">🎹 Producción</span></div>
+        <button type="button" class="bl-save" data-url="/blog-que-beat-necesita-tu-voz/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-que-beat-necesita-tu-voz/">Qué instrumental necesita tu voz según tu estilo musical</a></h3>
+          <p class="bl-card-d">¿No sabes qué beat elegir? Descubre qué instrumental encaja con tu voz según tu estilo musical: trap...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="spot" data-url="/blog-como-crecer-en-spotify-sin-bots/" data-title="Cómo crecer en Spotify sin bots ni playlists fake" data-desc="¿Quieres crecer en Spotify de verdad? Descubre cómo conseguir oyentes reales, entrar en playlists y ..." data-catname="Spotify">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/spotify.jpg');background-position:center 18%"></i><span class="bl-tag">📊 Spotify</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-crecer-en-spotify-sin-bots/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-crecer-en-spotify-sin-bots/">Cómo crecer en Spotify sin bots ni playlists fake</a></h3>
+          <p class="bl-card-d">¿Quieres crecer en Spotify de verdad? Descubre cómo conseguir oyentes reales, entrar en playlists y ...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="spot" data-url="/blog-por-que-no-crezco-en-spotify/" data-title="¿Por qué tu canción no despega en Spotify aunque sea buena?" data-desc="¿Tu canción es buena pero no crece? Descubre por qué muchos artistas emergentes no despegan en Spoti..." data-catname="Spotify">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/spotify.jpg');background-position:center 52%"></i><span class="bl-tag">📊 Spotify</span></div>
+        <button type="button" class="bl-save" data-url="/blog-por-que-no-crezco-en-spotify/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-por-que-no-crezco-en-spotify/">¿Por qué tu canción no despega en Spotify aunque sea buena?</a></h3>
+          <p class="bl-card-d">¿Tu canción es buena pero no crece? Descubre por qué muchos artistas emergentes no despegan en Spoti...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="spot" data-url="/blog-spotify-me-ha-tirado-la-cancion/" data-title="Spotify me ha tirado la canción: causas reales y cómo recuperarte" data-desc="¿Spotify te ha eliminado una canción? Descubre las causas reales, cómo recuperarte y evitar que vuel..." data-catname="Spotify">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/spotify.jpg');background-position:center 85%"></i><span class="bl-tag">📊 Spotify</span></div>
+        <button type="button" class="bl-save" data-url="/blog-spotify-me-ha-tirado-la-cancion/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-spotify-me-ha-tirado-la-cancion/">Spotify me ha tirado la canción: causas reales y cómo recuperarte</a></h3>
+          <p class="bl-card-d">¿Spotify te ha eliminado una canción? Descubre las causas reales, cómo recuperarte y evitar que vuel...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="port" data-url="/blog-como-hacer-portada-profesional/" data-title="Cómo hacer que tu portada parezca de un artista grande" data-desc="¿Tu portada parece amateur? Aprende cómo diseñar una portada profesional para Spotify, singles y álb..." data-catname="Portadas">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/portadas.jpg');background-position:center 18%"></i><span class="bl-tag">🎨 Portadas</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-hacer-portada-profesional/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-hacer-portada-profesional/">Cómo hacer que tu portada parezca de un artista grande</a></h3>
+          <p class="bl-card-d">¿Tu portada parece amateur? Aprende cómo diseñar una portada profesional para Spotify, singles y álb...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="port" data-url="/blog-errores-portada-amateur/" data-title="Las 7 cosas que hacen que una portada parezca amateur" data-desc="¿Tu portada no parece profesional? Descubre los errores más comunes en portadas de singles, EPs y ál..." data-catname="Portadas">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/portadas.jpg');background-position:center 52%"></i><span class="bl-tag">🎨 Portadas</span></div>
+        <button type="button" class="bl-save" data-url="/blog-errores-portada-amateur/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-errores-portada-amateur/">Las 7 cosas que hacen que una portada parezca amateur</a></h3>
+          <p class="bl-card-d">¿Tu portada no parece profesional? Descubre los errores más comunes en portadas de singles, EPs y ál...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="port" data-url="/blog-portadas-virales-trap/" data-title="Las portadas más virales del trap y por qué funcionan" data-desc="Analizamos algunas de las portadas más virales del trap y urbano para entender qué hace que un artwo..." data-catname="Portadas">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/portadas.jpg');background-position:center 85%"></i><span class="bl-tag">🎨 Portadas</span></div>
+        <button type="button" class="bl-save" data-url="/blog-portadas-virales-trap/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-portadas-virales-trap/">Las portadas más virales del trap y por qué funcionan</a></h3>
+          <p class="bl-card-d">Analizamos algunas de las portadas más virales del trap y urbano para entender qué hace que un artwo...</p>
+          <div class="bl-card-f"><span class="min">2 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="video" data-url="/blog-como-grabar-videoclip-barato/" data-title="Cómo grabar un videoclip barato que no parezca barato" data-desc="¿Poco presupuesto para videoclip? Aprende cómo grabar un videoclip barato para trap, drill o urbano ..." data-catname="Videoclips">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/videoclips.jpg');background-position:center 25%"></i><span class="bl-tag">🎬 Videoclips</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-grabar-videoclip-barato/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-grabar-videoclip-barato/">Cómo grabar un videoclip barato que no parezca barato</a></h3>
+          <p class="bl-card-d">¿Poco presupuesto para videoclip? Aprende cómo grabar un videoclip barato para trap, drill o urbano ...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="video" data-url="/blog-que-es-un-visualizer/" data-title="Qué es un visualizer y por qué artistas pequeños deberían usarlo" data-desc="¿No tienes presupuesto para videoclip? Descubre qué es un visualizer, cómo funciona y por qué puede ..." data-catname="Videoclips">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/videoclips.jpg');background-position:center 60%"></i><span class="bl-tag">🎬 Videoclips</span></div>
+        <button type="button" class="bl-save" data-url="/blog-que-es-un-visualizer/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-que-es-un-visualizer/">Qué es un visualizer y por qué artistas pequeños deberían usarlo</a></h3>
+          <p class="bl-card-d">¿No tienes presupuesto para videoclip? Descubre qué es un visualizer, cómo funciona y por qué puede ...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="video" data-url="/blog-videoclip-barato-que-se-vea-profesional/" data-title="No necesitas 10.000€ para un videoclip: ideas que sí funcionan" data-desc="¿Quieres grabar un videoclip sin gastar una locura? Ideas reales para hacer videoclips de trap y urb..." data-catname="Videoclips">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/videoclips.jpg');background-position:center 90%"></i><span class="bl-tag">🎬 Videoclips</span></div>
+        <button type="button" class="bl-save" data-url="/blog-videoclip-barato-que-se-vea-profesional/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-videoclip-barato-que-se-vea-profesional/">No necesitas 10.000€ para un videoclip: ideas que sí funcionan</a></h3>
+          <p class="bl-card-d">¿Quieres grabar un videoclip sin gastar una locura? Ideas reales para hacer videoclips de trap y urb...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="grab" data-url="/blog-como-grabar-voces-trap/" data-title="Cómo grabar voces de trap sin sonar amateur" data-desc="¿Tus voces no suenan profesionales? Aprende cómo grabar voces de trap, drill y urbano para conseguir..." data-catname="Grabación">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/grabacion.jpg');background-position:center 18%"></i><span class="bl-tag">🎙️ Grabación</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-grabar-voces-trap/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-grabar-voces-trap/">Cómo grabar voces de trap sin sonar amateur</a></h3>
+          <p class="bl-card-d">¿Tus voces no suenan profesionales? Aprende cómo grabar voces de trap, drill y urbano para conseguir...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="grab" data-url="/blog-errores-grabar-voces/" data-title="7 errores al grabar voces que arruinan una canción" data-desc="¿Tus voces no suenan profesionales? Descubre los errores más comunes al grabar voces de trap, drill ..." data-catname="Grabación">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/grabacion.jpg');background-position:center 52%"></i><span class="bl-tag">🎙️ Grabación</span></div>
+        <button type="button" class="bl-save" data-url="/blog-errores-grabar-voces/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-errores-grabar-voces/">7 errores al grabar voces que arruinan una canción</a></h3>
+          <p class="bl-card-d">¿Tus voces no suenan profesionales? Descubre los errores más comunes al grabar voces de trap, drill ...</p>
+          <div class="bl-card-f"><span class="min">2 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="grab" data-url="/blog-grabar-en-casa-musica/" data-title="Por qué grabar en casa está frenando tu música" data-desc="¿Tus canciones no suenan profesionales? Descubre por qué grabar en casa puede estar limitando tu mús..." data-catname="Grabación">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/grabacion.jpg');background-position:center 85%"></i><span class="bl-tag">🎙️ Grabación</span></div>
+        <button type="button" class="bl-save" data-url="/blog-grabar-en-casa-musica/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-grabar-en-casa-musica/">Por qué grabar en casa está frenando tu música</a></h3>
+          <p class="bl-card-d">¿Tus canciones no suenan profesionales? Descubre por qué grabar en casa puede estar limitando tu mús...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="feat" data-url="/blog-como-escribir-letra-trap/" data-title="Cómo escribir una letra de trap que no suene genérica" data-desc="¿Tus letras suenan iguales a todas? Aprende cómo escribir letras de trap y urbano con personalidad, ..." data-catname="Featurings y letras">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/letras-flow.jpg');background-position:center 18%"></i><span class="bl-tag">🤝 Featurings y letras</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-escribir-letra-trap/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-escribir-letra-trap/">Cómo escribir una letra de trap que no suene genérica</a></h3>
+          <p class="bl-card-d">¿Tus letras suenan iguales a todas? Aprende cómo escribir letras de trap y urbano con personalidad, ...</p>
+          <div class="bl-card-f"><span class="min">2 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="feat" data-url="/blog-feat-trap-in-spain/" data-title="Feat con Anto GM, M3RY o artistas de Trap In Spain: cómo funciona" data-desc="¿Quieres hacer un feat con Anto GM, M3RY o artistas de Trap In Spain? Descubre cómo funciona, requis..." data-catname="Featurings y letras">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-valencia2/evento4-11.jpg');background-position:center 25%"></i><span class="bl-tag">🤝 Featurings y letras</span></div>
+        <button type="button" class="bl-save" data-url="/blog-feat-trap-in-spain/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-feat-trap-in-spain/">Feat con Anto GM, M3RY o artistas de Trap In Spain: cómo funciona</a></h3>
+          <p class="bl-card-d">¿Quieres hacer un feat con Anto GM, M3RY o artistas de Trap In Spain? Descubre cómo funciona, requis...</p>
+          <div class="bl-card-f"><span class="min">2 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="feat" data-url="/blog-merece-la-pena-pagar-featuring/" data-title="¿Merece la pena pagar un featuring? La verdad que nadie te dice" data-desc="¿Estás pensando en pagar un featuring? Descubre cuándo merece la pena una colaboración musical y cuá..." data-catname="Featurings y letras">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-valencia2/evento4-11.jpg');background-position:center 25%"></i><span class="bl-tag">🤝 Featurings y letras</span></div>
+        <button type="button" class="bl-save" data-url="/blog-merece-la-pena-pagar-featuring/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-merece-la-pena-pagar-featuring/">¿Merece la pena pagar un featuring? La verdad que nadie te dice</a></h3>
+          <p class="bl-card-d">¿Estás pensando en pagar un featuring? Descubre cuándo merece la pena una colaboración musical y cuá...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="edit" data-url="/blog-color-grading-videoclip/" data-title="Color grading: por qué algunos videoclips parecen de artista grande" data-desc="¿Por qué algunos videoclips se ven tan profesionales? Descubre cómo el color grading cambia totalmen..." data-catname="Edición y VFX">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/videoclips.jpg');background-position:center 25%"></i><span class="bl-tag">✂️ Edición y VFX</span></div>
+        <button type="button" class="bl-save" data-url="/blog-color-grading-videoclip/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-color-grading-videoclip/">Color grading: por qué algunos videoclips parecen de artista grande</a></h3>
+          <p class="bl-card-d">¿Por qué algunos videoclips se ven tan profesionales? Descubre cómo el color grading cambia totalmen...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="edit" data-url="/blog-como-hacer-videoclip-barato-parezca-caro/" data-title="Cómo hacer que un videoclip barato parezca caro" data-desc="¿Tu videoclip parece amateur? Descubre cómo hacer que un videoclip barato de trap, drill o urbano pa..." data-catname="Edición y VFX">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/videoclips.jpg');background-position:center 60%"></i><span class="bl-tag">✂️ Edición y VFX</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-hacer-videoclip-barato-parezca-caro/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-hacer-videoclip-barato-parezca-caro/">Cómo hacer que un videoclip barato parezca caro</a></h3>
+          <p class="bl-card-d">¿Tu videoclip parece amateur? Descubre cómo hacer que un videoclip barato de trap, drill o urbano pa...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="edit" data-url="/blog-efectos-visuales-videoclip-trap/" data-title="Los efectos visuales que están usando los artistas urbanos" data-desc="¿Quieres que tus videoclips se vean más profesionales? Descubre los efectos visuales (VFX) que están..." data-catname="Edición y VFX">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-servicios/videoclips.jpg');background-position:center 90%"></i><span class="bl-tag">✂️ Edición y VFX</span></div>
+        <button type="button" class="bl-save" data-url="/blog-efectos-visuales-videoclip-trap/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-efectos-visuales-videoclip-trap/">Los efectos visuales que están usando los artistas urbanos</a></h3>
+          <p class="bl-card-d">¿Quieres que tus videoclips se vean más profesionales? Descubre los efectos visuales (VFX) que están...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="ase" data-url="/blog-errores-carrera-musical/" data-title="Los 10 errores que están frenando tu carrera musical" data-desc="¿Sientes que tu música no avanza? Descubre los errores más comunes que frenan a artistas emergentes ..." data-catname="Asesoría">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-valencia2/evento4-01.jpg');background-position:center 18%"></i><span class="bl-tag">🧠 Asesoría</span></div>
+        <button type="button" class="bl-save" data-url="/blog-errores-carrera-musical/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-errores-carrera-musical/">Los 10 errores que están frenando tu carrera musical</a></h3>
+          <p class="bl-card-d">¿Sientes que tu música no avanza? Descubre los errores más comunes que frenan a artistas emergentes ...</p>
+          <div class="bl-card-f"><span class="min">3 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="ase" data-url="/blog-por-que-no-crece-mi-musica/" data-title="Por qué algunos artistas crecen y otros se quedan estancados" data-desc="¿Sientes que tu música no avanza? Descubre por qué algunos artistas emergentes crecen y otros se que..." data-catname="Asesoría">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-valencia2/evento4-01.jpg');background-position:center 52%"></i><span class="bl-tag">🧠 Asesoría</span></div>
+        <button type="button" class="bl-save" data-url="/blog-por-que-no-crece-mi-musica/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-por-que-no-crece-mi-musica/">Por qué algunos artistas crecen y otros se quedan estancados</a></h3>
+          <p class="bl-card-d">¿Sientes que tu música no avanza? Descubre por qué algunos artistas emergentes crecen y otros se que...</p>
+          <div class="bl-card-f"><span class="min">5 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="ev" data-url="/blog-como-conseguir-primeros-conciertos/" data-title="Cómo conseguir tus primeros conciertos siendo artista emergente" data-desc="¿Quieres empezar a actuar? Descubre cómo conseguir tus primeros conciertos siendo artista emergente,..." data-catname="Eventos">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-valencia2/evento4-02.jpg');background-position:center 18%"></i><span class="bl-tag">🔥 Eventos</span></div>
+        <button type="button" class="bl-save" data-url="/blog-como-conseguir-primeros-conciertos/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-como-conseguir-primeros-conciertos/">Cómo conseguir tus primeros conciertos siendo artista emergente</a></h3>
+          <p class="bl-card-d">¿Quieres empezar a actuar? Descubre cómo conseguir tus primeros conciertos siendo artista emergente,...</p>
+          <div class="bl-card-f"><span class="min">1 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="ev" data-url="/blog-que-buscan-organizadores-bolo/" data-title="Qué buscan realmente los organizadores antes de darte un bolo" data-desc="¿Quieres actuar más? Descubre qué miran realmente los organizadores antes de dar un concierto a un a..." data-catname="Eventos">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-valencia2/evento4-02.jpg');background-position:center 52%"></i><span class="bl-tag">🔥 Eventos</span></div>
+        <button type="button" class="bl-save" data-url="/blog-que-buscan-organizadores-bolo/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-que-buscan-organizadores-bolo/">Qué buscan realmente los organizadores antes de darte un bolo</a></h3>
+          <p class="bl-card-d">¿Quieres actuar más? Descubre qué miran realmente los organizadores antes de dar un concierto a un a...</p>
+          <div class="bl-card-f"><span class="min">1 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+      <article class="bl-card" data-cat="ev" data-url="/blog-trap-in-spain-eventos/" data-title="Trap In Spain: cómo funcionan nuestros eventos para artistas emergentes" data-desc="Descubre cómo funcionan los eventos de Trap In Spain y cómo puedes participar siendo artista emergen..." data-catname="Eventos">
+        <div class="bl-card-img"><i style="background-image:url('/fotos-valencia2/evento4-02.jpg');background-position:center 85%"></i><span class="bl-tag">🔥 Eventos</span></div>
+        <button type="button" class="bl-save" data-url="/blog-trap-in-spain-eventos/" aria-pressed="false" aria-label="Guardar artículo para leer luego" title="Guardar para luego">♥</button>
+        <div class="bl-card-body">
+          <h3 class="bl-card-t"><a href="/blog-trap-in-spain-eventos/">Trap In Spain: cómo funcionan nuestros eventos para artistas emergentes</a></h3>
+          <p class="bl-card-d">Descubre cómo funcionan los eventos de Trap In Spain y cómo puedes participar siendo artista emergen...</p>
+          <div class="bl-card-f"><span class="min">1 min de lectura</span><span class="go">Leer →</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="bl-empty" id="blEmpty" hidden>
+      <div class="bl-empty-i" aria-hidden="true">🔎</div>
+      <h3>Nada por aquí…</h3>
+      <p id="blEmptyMsg">No hemos encontrado artículos con esa búsqueda.</p>
+      <button type="button" class="bl-ghost" id="blReset">Ver todos los artículos</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ CTA ═════════ -->
+<section class="bl-cta" aria-label="Contacto">
+  <div class="bl-cta-glow" aria-hidden="true"></div>
+  <div class="container bl-cta-in">
+    <h2 class="bl-cta-h reveal">¿Prefieres que lo<br/><span class="gold">hagamos nosotros?</span></h2>
+    <p class="reveal">Mezcla, portadas, videoclips, grabación y promoción. Cuéntanos tu proyecto y te damos presupuesto sin compromiso.</p>
+    <div class="bl-hero-cta reveal" style="justify-content:center;">
+      <a href="/servicios/" class="btn-primary">Ver servicios</a>
+      <a href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20he%20le%C3%ADdo%20vuestro%20blog%20y%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="bl-ghost">Hablar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<div class="bl-toast" id="blToast" role="status" aria-live="polite"></div>
+</main>
   <footer role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -538,5 +1016,149 @@
       });
     }
   </script>
+<script>
+/* ═════════ BLOG · interacciones ═════════ */
+(function(){
+  var $ = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canHover = window.matchMedia && window.matchMedia('(hover:hover)').matches;
+  var norm = function(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); };
+
+  /* foco dorado del hero */
+  var hero = $('.bl-hero');
+  if (hero && canHover && !reduce) hero.addEventListener('pointermove', function(e){
+    var r = hero.getBoundingClientRect();
+    hero.style.setProperty('--mx', (e.clientX - r.left) + 'px'); hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  /* contadores */
+  var counted = false;
+  function runCounters(){
+    if (counted) return; counted = true;
+    $$('[data-count]').forEach(function(el){
+      var end = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '';
+      if (reduce) { el.textContent = end + suf; return; }
+      var t0 = null;
+      (function step(t){ if (!t0) t0 = t; var p = Math.min((t - t0) / 1300, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(step); })(performance.now());
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var so = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { runCounters(); so.disconnect(); } }); }, { threshold:.4 });
+    var st = $('.bl-stats'); if (st) so.observe(st);
+  } else runCounters();
+
+  /* tilt 3D */
+  if (canHover && !reduce) {
+    $$('.bl-card, .bl-feat').forEach(function(c){
+      c.addEventListener('pointermove', function(e){
+        var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = 'rotateY(' + (x * 6).toFixed(2) + 'deg) rotateX(' + (-y * 6).toFixed(2) + 'deg) translateY(-4px)';
+      });
+      c.addEventListener('pointerleave', function(){ c.style.transform = ''; });
+    });
+  }
+
+  /* toast */
+  var toastT;
+  function toast(msg){ var t = $('#blToast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove('on'); }, 2200); }
+
+  /* guardados (localStorage con fallback) */
+  var saved = [];
+  try { saved = JSON.parse(localStorage.getItem('trsp_blog_saved') || '[]') || []; } catch(e) { saved = []; }
+  function persist(){ try { localStorage.setItem('trsp_blog_saved', JSON.stringify(saved)); } catch(e) {} }
+
+  /* biblioteca: filtros + búsqueda */
+  var grid = $('#blGrid'), cards = $$('.bl-card', grid), q = $('#blQ'), count = $('#blCount');
+  var state = { cat:'all', q:'' };
+  cards.forEach(function(c){ c._txt = norm(c.getAttribute('data-title') + ' ' + c.getAttribute('data-desc') + ' ' + c.getAttribute('data-catname')); });
+
+  function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function highlight(card, words){
+    var a = $('.bl-card-t a', card), d = $('.bl-card-d', card);
+    [a, d].forEach(function(el){
+      if (!el.__orig) el.__orig = el.textContent;
+      var t = el.__orig;
+      if (!words.length) { el.textContent = t; return; }
+      var n = norm(t), ranges = [];
+      words.forEach(function(w){ var i = n.indexOf(w); while (i > -1) { ranges.push([i, i + w.length]); i = n.indexOf(w, i + w.length); } });
+      if (!ranges.length) { el.textContent = t; return; }
+      ranges.sort(function(x,y){ return x[0] - y[0]; });
+      var out = '', pos = 0;
+      ranges.forEach(function(r){ if (r[0] < pos) return; out += t.slice(pos, r[0]).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '<mark class="bl-hl">' + t.slice(r[0], r[1]).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</mark>'; pos = r[1]; });
+      out += t.slice(pos).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+      el.innerHTML = out;
+    });
+  }
+
+  function apply(animate){
+    var words = norm(state.q).split(/\s+/).filter(Boolean), shown = 0;
+    cards.forEach(function(c, i){
+      var okCat = state.cat === 'all' || (state.cat === 'saved' ? saved.indexOf(c.getAttribute('data-url')) > -1 : c.getAttribute('data-cat') === state.cat);
+      var okQ = words.every(function(w){ return c._txt.indexOf(w) > -1; });
+      var show = okCat && okQ;
+      c.classList.toggle('is-hidden', !show);
+      c.classList.remove('is-in');
+      if (show) {
+        shown++; highlight(c, okQ ? words : []);
+        if (animate && !reduce) { void c.offsetWidth; c.style.animationDelay = Math.min(shown * 0.035, .5) + 's'; c.classList.add('is-in'); }
+      }
+    });
+    count.textContent = shown + (shown === 1 ? ' artículo' : ' artículos') + (state.cat !== 'all' || words.length ? ' · de ' + cards.length : '');
+    var empty = $('#blEmpty'); empty.hidden = shown !== 0;
+    if (!shown) $('#blEmptyMsg').textContent = state.cat === 'saved' && !words.length ? 'Aún no has guardado ningún artículo. Pulsa el ♥ de una tarjeta para guardarlo.' : 'No hemos encontrado artículos con esa búsqueda.';
+    var sc = $('.bl-chip-saved small'); if (sc) sc.textContent = saved.length;
+  }
+
+  $$('.bl-chip').forEach(function(ch){
+    ch.addEventListener('click', function(){
+      state.cat = ch.getAttribute('data-cat');
+      $$('.bl-chip').forEach(function(b){ var on = b === ch; b.classList.toggle('is-on', on); b.setAttribute('aria-selected', on); });
+      apply(true);
+      ch.scrollIntoView({ inline:'center', block:'nearest', behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+  var qt;
+  q.addEventListener('input', function(){ clearTimeout(qt); qt = setTimeout(function(){ state.q = q.value; apply(true); }, 120); });
+  $('#blReset').addEventListener('click', function(){
+    state.cat = 'all'; state.q = ''; q.value = '';
+    $$('.bl-chip').forEach(function(b){ var on = b.getAttribute('data-cat') === 'all'; b.classList.toggle('is-on', on); b.setAttribute('aria-selected', on); });
+    apply(true);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && !/input|textarea/i.test((document.activeElement || {}).tagName || '')) { e.preventDefault(); q.focus(); q.scrollIntoView({ block:'center', behavior: reduce ? 'auto' : 'smooth' }); }
+    if (e.key === 'Escape' && document.activeElement === q) { q.value = ''; state.q = ''; apply(true); q.blur(); }
+  });
+
+  /* guardar ♥ */
+  function paintSaved(){ $$('.bl-save').forEach(function(b){ b.setAttribute('aria-pressed', saved.indexOf(b.getAttribute('data-url')) > -1); }); }
+  $$('.bl-save').forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      var u = b.getAttribute('data-url'), i = saved.indexOf(u);
+      if (i > -1) { saved.splice(i, 1); toast('Quitado de guardados'); } else { saved.push(u); toast('♥ Guardado para leer luego'); }
+      persist(); paintSaved(); apply(false);
+    });
+  });
+  paintSaved(); apply(false);
+
+  /* sorpréndeme */
+  $('#blRandom').addEventListener('click', function(){
+    var c = cards[Math.floor(Math.random() * cards.length)];
+    toast('🎲 ' + c.getAttribute('data-title'));
+    setTimeout(function(){ location.href = c.getAttribute('data-url'); }, 900);
+  });
+
+  /* ruta: ¿en qué punto estás? */
+  var tpl = $('#blPaths'), lists = tpl ? $$('ol', tpl.content) : [], target = $('#blPathList');
+  $$('.bl-tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      $$('.bl-tab').forEach(function(b){ var on = b === t; b.classList.toggle('is-on', on); b.setAttribute('aria-selected', on); });
+      var l = lists[+t.getAttribute('data-path')];
+      if (l) target.innerHTML = l.innerHTML;
+    });
+  });
+})();
+</script>
 </body>
 </html>
