@@ -75,12 +75,13 @@
     .fb-carousel { display:flex; gap:1.1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:0.75rem; scrollbar-width:none; }
     .fb-carousel::-webkit-scrollbar { display:none; }
     .fb-carousel .feedback-card { scroll-snap-align:start; flex:0 0 auto; width:min(360px,85vw); margin-bottom:0; }
-    .fb-arrow { position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; background:var(--black-2); border:1px solid rgba(201,162,39,0.3); color:var(--gold); font-size:1.2rem; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:2; opacity:0.95; transition:background .2s,color .2s,opacity .2s; }
-    .fb-arrow:hover { background:var(--gold); color:var(--black); }
+    .fb-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:50px; height:50px; border-radius:50%; background:var(--gold); border:2px solid var(--black); color:var(--black); font-size:1.3rem; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 22px rgba(0,0,0,.55), 0 0 0 1px rgba(201,162,39,.5); transition:transform .2s, background .2s, opacity .2s; padding:0; }
+    .fb-arrow:hover:not(:disabled) { background:var(--gold-light); transform:translateY(-50%) scale(1.12); }
+    .fb-arrow:active:not(:disabled) { transform:translateY(-50%) scale(.95); }
     .fb-arrow:disabled { opacity:0.2; cursor:default; }
-    .fb-arrow.fb-prev { left:-6px; }
-    .fb-arrow.fb-next { right:-6px; }
-    @media(max-width:640px){ .fb-arrow{ width:34px;height:34px;font-size:1rem; } .fb-arrow.fb-prev{left:-2px;} .fb-arrow.fb-next{right:-2px;} }
+    .fb-arrow.fb-prev { left:-18px; }
+    .fb-arrow.fb-next { right:-18px; }
+    @media(max-width:640px){ .fb-arrow{ width:42px;height:42px;font-size:1.1rem; } .fb-arrow.fb-prev{left:-6px;} .fb-arrow.fb-next{right:-6px;} }
     .fb-carousel .feedback-card.founder { border-color:rgba(201,162,39,0.4); background:linear-gradient(160deg,var(--black-3),var(--black-2)); }
 
     .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;flex-direction:column;align-items:flex-start;gap:0.4rem; }

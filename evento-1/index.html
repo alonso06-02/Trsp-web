@@ -59,6 +59,13 @@
     .fb-carousel { display:flex; gap:1.1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:0.75rem; scrollbar-width:none; }
     .fb-carousel::-webkit-scrollbar { display:none; }
     .fb-carousel .feedback-card { scroll-snap-align:start; flex:0 0 auto; width:min(360px,85vw); margin-bottom:0; }
+    .fb-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:50px; height:50px; border-radius:50%; background:var(--gold); border:2px solid var(--black); color:var(--black); font-size:1.3rem; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 22px rgba(0,0,0,.55), 0 0 0 1px rgba(201,162,39,.5); transition:transform .2s, background .2s, opacity .2s; padding:0; }
+    .fb-arrow:hover:not(:disabled) { background:var(--gold-light); transform:translateY(-50%) scale(1.12); }
+    .fb-arrow:active:not(:disabled) { transform:translateY(-50%) scale(.95); }
+    .fb-arrow:disabled { opacity:0.2; cursor:default; }
+    .fb-arrow.fb-prev { left:-18px; }
+    .fb-arrow.fb-next { right:-18px; }
+    @media(max-width:640px){ .fb-arrow{ width:42px;height:42px;font-size:1.1rem; } .fb-arrow.fb-prev{left:-6px;} .fb-arrow.fb-next{right:-6px;} }
     .fb-carousel .feedback-card.founder { border-color:rgba(201,162,39,0.4); background:linear-gradient(160deg,var(--black-3),var(--black-2)); }
 
     .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
@@ -73,9 +80,9 @@
     .lightbox-prev { left:10px; }
     .lightbox-next { right:10px; }
     @media(max-width:600px){ .photo-gallery{ grid-template-columns:repeat(3,1fr); } .lightbox-arrow{ font-size:1.8rem; padding:0.5rem; } }
-    .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center; }
-    .artist-name { font-weight:600;font-size:0.88rem; }
-    .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold); }
+    .artist-item { background:var(--black-2);border:1px solid rgba(201,162,39,0.1);border-radius:8px;padding:0.75rem 1rem;display:flex;flex-direction:column;align-items:flex-start;gap:0.4rem; }
+    .artist-name { font-weight:600;font-size:0.88rem;line-height:1.35; }
+    .artist-ig { font-family:var(--font-mono);font-size:0.72rem;color:var(--gold);white-space:nowrap; }
     
     /* ── Active nav link ── */
     .skip-link { display:none !important; }
@@ -428,6 +435,8 @@
       <div class="section-label">Feedback de artistas</div>
       <h2 class="event-section-title">Lo que dijeron</h2>
       <div class="fb-carousel-wrap">
+        <button type="button" class="fb-arrow fb-prev" aria-label="Testimonio anterior" onclick="fbScroll(this)">&#10094;</button>
+        <button type="button" class="fb-arrow fb-next" aria-label="Testimonio siguiente" onclick="fbScroll(this)">&#10095;</button>
         <div class="fb-carousel">
           <div class="feedback-card founder"><div class="feedback-author">M3RY · Co-fundadora</div><div class="feedback-text">Al ser nuestro primer evento, todo fue un reto. Tuvimos que afrontar muchísimos preparativos, cambios de última hora y aprender a organizar algo así prácticamente desde cero. Fueron días de bastante estrés, pero también de muchísima ilusión. Al final conseguimos sacar el evento adelante con nuestros propios medios y ver a los artistas y al público disfrutando hizo que todo el esfuerzo mereciera la pena. Ese día nos demostró que, aunque todavía nos quedaba mucho por aprender, éramos capaces de hacer realidad lo que nos habíamos propuesto.</div></div>
           <div class="feedback-card"><div class="feedback-author">Anto GM</div><div class="feedback-text">Nuestra primera edición de un evento hecho por y para artistas, con un mensaje muy claro: la unión hace la fuerza. Pasaron mil complicaciones, cambios de última hora y momentos difíciles, pero entre todos supimos sacarlo adelante. Quiero traer a mi país muchos de los valores que la industria argentina me ha inculcado: compañerismo, respeto, hambre de crecer y unión real dentro de la música.</div></div>
@@ -575,6 +584,32 @@
       if(hamburger) hamburger.setAttribute('aria-expanded', false);
       document.body.style.overflow = '';
     }
+
+    // Carrusel de "Lo que dijeron" (feedback de artistas)
+    function fbScroll(btn) {
+      var wrap = btn.closest('.fb-carousel-wrap');
+      var track = wrap && wrap.querySelector('.fb-carousel');
+      if (!track) return;
+      var card = track.querySelector('.feedback-card');
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 18;
+      var amount = (card ? card.getBoundingClientRect().width : 300) + gap;
+      var dir = btn.classList.contains('fb-next') ? 1 : -1;
+      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    }
+    function fbUpdateArrows(track) {
+      var wrap = track.closest('.fb-carousel-wrap');
+      var prev = wrap && wrap.querySelector('.fb-prev');
+      var next = wrap && wrap.querySelector('.fb-next');
+      if (!prev || !next) return;
+      var maxScroll = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= maxScroll;
+    }
+    document.querySelectorAll('.fb-carousel').forEach(function(track) {
+      fbUpdateArrows(track);
+      track.addEventListener('scroll', function() { fbUpdateArrows(track); }, { passive: true });
+      window.addEventListener('resize', function() { fbUpdateArrows(track); });
+    });
 
     // Scroll reveal
     const revealObs = new IntersectionObserver((entries) => {
