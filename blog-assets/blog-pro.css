@@ -3,8 +3,8 @@
 
 /* ── HERO del artículo ── */
 .bp-hero{position:relative;overflow:hidden;isolation:isolate;min-height:56vh!important}
-.bp-hero::before{content:"";position:absolute;inset:-4%;background:var(--bp-bg) center/cover no-repeat;opacity:.36;filter:saturate(.85);z-index:-3;transform:scale(1.06);animation:bpKen 24s ease-in-out infinite alternate}
-.bp-hero::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(55% 70% at 85% 5%,rgba(201,162,39,.30),transparent 60%),linear-gradient(180deg,rgba(10,10,8,.5),rgba(10,10,8,.8) 60%,#0A0A08)}
+.bp-hero::before{content:"";position:absolute;inset:-4%;background:var(--bp-bg) 80% 40%/cover no-repeat;opacity:1;z-index:-3;transform:scale(1.06);animation:bpKen 24s ease-in-out infinite alternate}
+.bp-hero::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(55% 70% at 85% 5%,rgba(201,162,39,.30),transparent 60%),linear-gradient(90deg,rgba(10,10,8,.7) 0%,rgba(10,10,8,.25) 55%,rgba(10,10,8,0) 100%),linear-gradient(180deg,rgba(10,10,8,.1),rgba(10,10,8,.4) 60%,#0A0A08)}
 @keyframes bpKen{to{transform:scale(1.14) translate3d(-1.5%,-1%,0)}}
 .bp-hero h1{text-shadow:0 6px 40px rgba(0,0,0,.65);font-size:clamp(2.2rem,5.6vw,4.4rem)!important;max-width:18ch}
 .bp-meta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:1.3rem}
