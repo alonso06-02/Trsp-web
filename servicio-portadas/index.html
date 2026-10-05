@@ -306,6 +306,7 @@
     }
   
   </style>
+<link rel="stylesheet" href="/servicios-assets/servicios-pro.css"/>
 </head>
 <body>
   <nav id="nav" role="navigation" aria-label="Navegación principal">
@@ -341,13 +342,14 @@
   <main id="main">
 
   <!-- Hero -->
-  <section style="min-height:50vh;display:flex;align-items:flex-end;padding:clamp(6rem,14vh,10rem) clamp(1.25rem,4vw,3rem) clamp(2rem,4vh,3rem);background:var(--black);">
+  <section class="sx-hero" style="--sx-bg:url('/fotos-servicios/portadas.jpg');min-height:50vh;display:flex;align-items:flex-end;padding:clamp(6rem,14vh,10rem) clamp(1.25rem,4vw,3rem) clamp(2rem,4vh,3rem);background:var(--black);">
     <div style="max-width:1100px;margin:0 auto;width:100%;">
       <nav aria-label="breadcrumb" style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--white-dim);margin-bottom:1rem;">
         <a href="/servicios/" style="color:var(--gold);">SERVICIOS</a> / DISEÑO DE PORTADAS
       </nav>
-      <div style="font-size:3rem;margin-bottom:0.5rem;">🎨</div>
+      <div class="sx-hero-badge">🎨</div>
       <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);line-height:0.92;margin-bottom:1rem;">Diseño de portadas para singles y álbumes</h1>
+      <div class="sx-hero-cta"><a class="sx-btn sx-btn-gold" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20servicio%20de%20Dise%C3%B1o%20de%20Portadas" target="_blank" rel="noopener noreferrer">Pedir presupuesto</a><a class="sx-btn sx-btn-ghost" href="#sx-offer">Ver qué incluye ↓</a></div>
     </div>
   </section>
 
@@ -362,24 +364,22 @@
     <div class="reveal" style="margin-bottom:clamp(3rem,6vh,4rem);">
       <div class="section-label" style="margin-bottom:1.5rem;">Qué incluye</div>
       <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:2rem;">Lo que ofrecemos</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
-        <div style="background:var(--black-2);border:1px solid rgba(201,162,39,0.12);border-radius:var(--radius-lg);padding:1.75rem;">
-          <h3 style="font-size:1.05rem;color:var(--white);margin-bottom:0.6rem;">Portadas de single</h3>
-          <p style="color:var(--white-dim);line-height:1.7;font-size:0.88rem;">Diseño impactante listo para todas las plataformas de streaming.</p>
-        </div>
-        <div style="background:var(--black-2);border:1px solid rgba(201,162,39,0.12);border-radius:var(--radius-lg);padding:1.75rem;">
-          <h3 style="font-size:1.05rem;color:var(--white);margin-bottom:0.6rem;">Artwork de EP y álbum</h3>
-          <p style="color:var(--white-dim);line-height:1.7;font-size:0.88rem;">Identidad visual coherente para proyectos completos.</p>
-        </div>
-        <div style="background:var(--black-2);border:1px solid rgba(201,162,39,0.12);border-radius:var(--radius-lg);padding:1.75rem;">
-          <h3 style="font-size:1.05rem;color:var(--white);margin-bottom:0.6rem;">Formato para todas las plataformas</h3>
-          <p style="color:var(--white-dim);line-height:1.7;font-size:0.88rem;">Entregamos en las medidas correctas para Spotify, Apple Music, redes, etc.</p>
-        </div>
-        <div style="background:var(--black-2);border:1px solid rgba(201,162,39,0.12);border-radius:var(--radius-lg);padding:1.75rem;">
-          <h3 style="font-size:1.05rem;color:var(--white);margin-bottom:0.6rem;">Identidad visual</h3>
-          <p style="color:var(--white-dim);line-height:1.7;font-size:0.88rem;">Te ayudamos a construir una estética reconocible para tu proyecto.</p>
-        </div>
+      <div class="sx-offer" id="sx-offer">
+      <div class="sx-list" role="tablist" aria-label="Qué incluye">
+        <button type="button" class="sx-item" role="tab" data-title="Portadas de single" data-text="Diseño impactante listo para todas las plataformas de streaming."><span class="sx-item-num">01</span><span class="sx-item-title">Portadas de single</span><span class="sx-item-arrow">→</span><span class="sx-item-bar"></span></button>
+        <button type="button" class="sx-item" role="tab" data-title="Artwork de EP y álbum" data-text="Identidad visual coherente para proyectos completos."><span class="sx-item-num">02</span><span class="sx-item-title">Artwork de EP y álbum</span><span class="sx-item-arrow">→</span><span class="sx-item-bar"></span></button>
+        <button type="button" class="sx-item" role="tab" data-title="Formato para todas las plataformas" data-text="Entregamos en las medidas correctas para Spotify, Apple Music, redes, etc."><span class="sx-item-num">03</span><span class="sx-item-title">Formato para todas las plataformas</span><span class="sx-item-arrow">→</span><span class="sx-item-bar"></span></button>
+        <button type="button" class="sx-item" role="tab" data-title="Identidad visual" data-text="Te ayudamos a construir una estética reconocible para tu proyecto."><span class="sx-item-num">04</span><span class="sx-item-title">Identidad visual</span><span class="sx-item-arrow">→</span><span class="sx-item-bar"></span></button>
       </div>
+      <div class="sx-stage" style="--sx-bg:url('/fotos-servicios/portadas.jpg')" aria-live="polite">
+        <div class="sx-stage-bg"></div>
+        <div class="sx-stage-num">01</div>
+        <div class="sx-stage-tag"><i></i><span></span></div>
+        <h3 class="sx-stage-title"></h3>
+        <p class="sx-stage-text"></p>
+        <a class="sx-btn sx-btn-gold" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20servicio%20de%20Dise%C3%B1o%20de%20Portadas" target="_blank" rel="noopener noreferrer">Preguntar por esto →</a>
+      </div>
+    </div>
     </div>
 
     <!-- Cómo trabajamos -->
@@ -416,14 +416,14 @@
     </div>
 
     <!-- CTA principal -->
-    <div class="reveal" style="text-align:center;margin-bottom:clamp(3rem,6vh,4rem);padding:clamp(2rem,4vw,3.5rem);border:1px solid rgba(201,162,39,0.2);border-radius:var(--radius-lg);">
+    <div class="reveal sx-cta" style="text-align:center;margin-bottom:clamp(3rem,6vh,4rem);padding:clamp(2rem,4vw,3.5rem);border:1px solid rgba(201,162,39,0.2);border-radius:var(--radius-lg);">
       <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:1;margin-bottom:1rem;">¿Hablamos de tu <span class="gold">proyecto?</span></h2>
       <p style="color:var(--white-dim);margin-bottom:1.5rem;font-size:0.92rem;">Cuéntanos qué necesitas y te damos presupuesto sin compromiso. Respondemos rápido por WhatsApp.</p>
       <a href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20servicio%20de%20Dise%C3%B1o%20de%20Portadas" target="_blank" rel="noopener noreferrer" class="btn-primary">Pedir presupuesto por WhatsApp</a>
     </div>
 
     <!-- FAQs -->
-    <div class="reveal" style="margin-bottom:clamp(3rem,6vh,4rem);">
+    <div class="reveal sx-faq" style="margin-bottom:clamp(3rem,6vh,4rem);">
       <div class="section-label" style="margin-bottom:1.5rem;">Preguntas frecuentes</div>
       <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:2rem;">Dudas habituales</h2>
         <details style="background:var(--black-2);border:1px solid rgba(201,162,39,0.12);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:0.75rem;">
@@ -610,5 +610,6 @@
       });
     }
   </script>
+<script src="/servicios-assets/servicios-pro.js" defer></script>
 </body>
 </html>
