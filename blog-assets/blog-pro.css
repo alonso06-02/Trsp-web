@@ -1,0 +1,94 @@
+/* Trap In Spain · blog · artículos interactivos */
+.bp-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#C9A227,#F3D56B);z-index:9999;box-shadow:0 0 12px rgba(201,162,39,.7);pointer-events:none}
+
+/* ── HERO del artículo ── */
+.bp-hero{position:relative;overflow:hidden;isolation:isolate;min-height:56vh!important}
+.bp-hero::before{content:"";position:absolute;inset:-4%;background:var(--bp-bg) center/cover no-repeat;opacity:.36;filter:saturate(.85);z-index:-3;transform:scale(1.06);animation:bpKen 24s ease-in-out infinite alternate}
+.bp-hero::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(55% 70% at 85% 5%,rgba(201,162,39,.30),transparent 60%),linear-gradient(180deg,rgba(10,10,8,.5),rgba(10,10,8,.8) 60%,#0A0A08)}
+@keyframes bpKen{to{transform:scale(1.14) translate3d(-1.5%,-1%,0)}}
+.bp-hero h1{text-shadow:0 6px 40px rgba(0,0,0,.65);font-size:clamp(2.2rem,5.6vw,4.4rem)!important;max-width:18ch}
+.bp-meta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:1.3rem}
+.bp-chip{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);padding:.45rem .85rem;border-radius:999px;border:1px solid rgba(201,162,39,.4);background:rgba(10,10,8,.55);backdrop-filter:blur(6px)}
+.bp-chip i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:bpPulse 1.8s infinite}
+@keyframes bpPulse{50%{opacity:.35;transform:scale(.7)}}
+.bp-share{margin-left:auto;display:flex;gap:.5rem}
+.bp-share button,.bp-share a{width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(201,162,39,.4);background:rgba(10,10,8,.55);color:var(--gold-light);backdrop-filter:blur(6px);transition:transform .25s var(--ease-out),background .25s,color .25s}
+.bp-share button:hover,.bp-share a:hover{background:var(--gold);color:#0A0A08;transform:translateY(-3px) rotate(-6deg)}
+.article-visual-band{background-size:200% 200%!important;animation:bpBand 12s ease-in-out infinite alternate}
+@keyframes bpBand{to{background-position:100% 50%}}
+.article-visual-icon{animation:bpFloat 4.5s ease-in-out infinite}
+@keyframes bpFloat{50%{transform:translateY(-8px) rotate(-4deg)}}
+
+/* ── Índice interactivo ── */
+.bp-toc{background:linear-gradient(160deg,#151513,#0d0d0b);border:1px solid rgba(201,162,39,.28);border-radius:18px;padding:1.3rem 1.4rem;margin:0 0 2.6rem;position:relative;overflow:hidden}
+.bp-toc::before{content:"";position:absolute;width:300px;height:300px;right:-100px;top:-140px;background:radial-gradient(circle,rgba(201,162,39,.18),transparent 65%);pointer-events:none}
+.bp-toc-h{display:flex;align-items:center;justify-content:space-between;width:100%;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:left}
+.bp-toc-h span:last-child{transition:transform .35s var(--ease-out);font-size:1rem}
+.bp-toc.closed .bp-toc-h span:last-child{transform:rotate(-90deg)}
+.bp-toc ol{list-style:none;margin:1rem 0 0!important;padding:0!important;display:grid;gap:.35rem;overflow:hidden;max-height:600px;transition:max-height .45s var(--ease-out),opacity .3s,margin .3s}
+.bp-toc.closed ol{max-height:0;opacity:0;margin-top:0!important}
+.bp-toc a{display:flex;gap:.9rem;align-items:center;padding:.65rem .8rem;border-radius:10px;color:var(--white-dim);font-size:.95rem;line-height:1.35;transition:background .25s,color .25s,transform .25s}
+.bp-toc a b{font-family:var(--font-display);font-weight:400;font-size:1.5rem;line-height:1;color:rgba(201,162,39,.45);min-width:1.9rem;transition:color .25s}
+.bp-toc a:hover{background:rgba(201,162,39,.1);color:var(--white);transform:translateX(5px)}
+.bp-toc a:hover b,.bp-toc a.on b{color:var(--gold-light)}
+.bp-toc a.on{color:var(--white);background:linear-gradient(90deg,rgba(201,162,39,.18),transparent)}
+
+/* ── Pastilla "estás leyendo" ── */
+.bp-now{position:fixed;left:50%;top:76px;transform:translate(-50%,-20px);z-index:850;max-width:min(92vw,560px);display:flex;gap:.7rem;align-items:center;padding:.5rem 1rem .5rem .6rem;border-radius:999px;background:rgba(14,14,12,.88);border:1px solid rgba(201,162,39,.45);backdrop-filter:blur(10px);box-shadow:0 10px 36px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .35s,transform .45s var(--ease-out)}
+.bp-now.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.bp-now b{font-family:var(--font-display);font-weight:400;font-size:1.15rem;width:34px;height:34px;border-radius:50%;background:var(--gold);color:#0A0A08;display:flex;align-items:center;justify-content:center;flex:none}
+.bp-now span{font-size:.82rem;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ── Texto del artículo ── */
+.article-section h2{position:relative;padding-top:.2rem}
+.article-section h2[data-n]::before{content:attr(data-n);display:block;font-family:var(--font-display);font-size:4.2rem;line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(201,162,39,.5);margin-bottom:.3rem;transition:.4s}
+.article-section:hover h2[data-n]::before{-webkit-text-stroke-color:var(--gold-light);transform:translateX(6px)}
+.article-body p.bp-punch{font-family:var(--font-display);font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1;color:var(--gold-light);margin:1.4rem 0;letter-spacing:.01em}
+.article-body p.bp-quote{position:relative;margin:1.6rem 0;padding:1.4rem 1.5rem 1.4rem 3.4rem;border-radius:14px;background:linear-gradient(100deg,rgba(201,162,39,.14),rgba(201,162,39,.02));border-left:3px solid var(--gold);color:var(--white);font-size:1.12rem;font-style:italic}
+.article-body p.bp-quote::before{content:"“";position:absolute;left:.9rem;top:.2rem;font-family:var(--font-display);font-size:3.6rem;color:var(--gold);font-style:normal;line-height:1}
+.article-body p.bp-lead{color:var(--white);font-weight:600}
+.article-bullets{display:grid;gap:.6rem;margin:1.3rem 0!important}
+.article-bullets li{padding:0!important}
+.bp-li{display:flex;gap:.9rem;align-items:center;padding:.95rem 1.1rem;border-radius:12px;background:var(--black-2);border:1px solid rgba(245,243,236,.08);color:var(--white)!important;font-size:.98rem;transition:transform .3s var(--ease-out),border-color .3s,background .3s}
+.bp-li:hover{transform:translateX(8px)}
+.bp-li .ic{flex:none;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700}
+.bp-li.good{border-color:rgba(201,162,39,.25)}.bp-li.good .ic{background:rgba(201,162,39,.2);color:var(--gold-light)}
+.bp-li.good:hover{border-color:var(--gold);background:linear-gradient(90deg,rgba(201,162,39,.14),var(--black-2))}
+.bp-li.bad .ic{background:rgba(220,70,70,.18);color:#ff7b7b}
+.bp-li.bad:hover{border-color:rgba(220,70,70,.55);background:linear-gradient(90deg,rgba(220,70,70,.10),var(--black-2))}
+.bp-li.plain .ic{background:rgba(201,162,39,.2);color:var(--gold-light)}
+
+/* ── CTA, FAQ y relacionados ── */
+.article-cta{position:relative;overflow:hidden;background:radial-gradient(70% 120% at 50% 0%,rgba(201,162,39,.24),transparent 70%),#0e0e0c!important;border-color:rgba(201,162,39,.55)!important;border-radius:22px!important}
+.article-cta .btn-primary{box-shadow:0 10px 34px rgba(201,162,39,.4);transition:transform .25s var(--ease-out),box-shadow .25s}
+.article-cta .btn-primary:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 16px 46px rgba(201,162,39,.6)}
+.faq-item{transition:border-color .3s,background .3s,transform .3s}
+.faq-item:hover{transform:translateX(4px);border-color:rgba(201,162,39,.5)!important}
+.faq-item[open]{background:linear-gradient(100deg,rgba(201,162,39,.10),#111110 60%)!important;border-color:rgba(201,162,39,.65)!important}
+.faq-item summary{display:flex!important;justify-content:space-between;align-items:center;gap:1rem}
+.faq-item summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--gold);transition:transform .35s var(--ease-out);flex:none}
+.faq-item[open] summary::after{transform:rotate(135deg)}
+.faq-item[open] p{animation:bpIn .4s var(--ease-out)}
+@keyframes bpIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.related-links{display:grid;gap:.6rem}
+.related-links li{margin:0!important}
+.related-links a{display:flex!important;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.2rem;border-radius:12px;background:var(--black-2);border:1px solid rgba(201,162,39,.16)!important;color:var(--white)!important;font-size:.95rem!important;line-height:1.4;transition:transform .3s var(--ease-out),border-color .3s,background .3s}
+.related-links a::after{content:"→";color:var(--gold);transition:transform .3s;flex:none}
+.related-links a:hover{transform:translateX(8px);border-color:var(--gold)!important;background:linear-gradient(90deg,rgba(201,162,39,.14),var(--black-2))}
+.related-links a:hover::after{transform:translateX(5px)}
+
+/* ── Botón flotante y aviso ── */
+.bp-float{position:fixed;right:18px;bottom:18px;z-index:900;transform:translateY(120px);opacity:0;transition:transform .5s var(--ease-out),opacity .4s}
+.bp-float.show{transform:none;opacity:1}
+.bp-float a{display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.4rem;border-radius:999px;background:linear-gradient(135deg,#E8BD47,#C9A227);color:#0A0A08;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 30px rgba(201,162,39,.4)}
+.bp-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);z-index:9999;background:#0e0e0c;border:1px solid var(--gold);color:var(--gold-light);padding:.7rem 1.2rem;border-radius:999px;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;opacity:0;pointer-events:none;transition:.4s var(--ease-out)}
+.bp-toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:700px){
+  .bp-share{margin-left:0;width:100%}
+  .article-section h2[data-n]::before{font-size:3.2rem}
+  .bp-now{top:70px}
+}
+@media(prefers-reduced-motion:reduce){
+  .bp-hero::before,.article-visual-band,.article-visual-icon,.bp-chip i{animation:none!important}
+}
