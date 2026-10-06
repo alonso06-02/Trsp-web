@@ -304,6 +304,41 @@
   
   </style>
 <link rel="stylesheet" href="/servicios-assets/servicios-pro.css"/>
+<style>
+/* Reproductores y galerías de servicios */
+.tis-p { color:var(--white-dim); line-height:1.8; font-size:0.92rem; max-width:720px; margin:0 0 1.75rem; }
+.tis-ic { display:block; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent currentColor; margin-left:3px; }
+.is-playing > .tis-play .tis-ic, .tis-ab.playing .tis-play .tis-ic { width:12px; height:14px; border:0; margin:0; background:linear-gradient(90deg,currentColor 0 4px,transparent 4px 8px,currentColor 8px 12px); }
+.tis-play { flex:none; width:52px; height:52px; border-radius:50%; border:0; cursor:pointer; background:var(--gold); color:#0a0a0a; display:grid; place-items:center; transition:transform .16s cubic-bezier(.23,1,.32,1), filter .15s ease; }
+.tis-play:active { transform:scale(0.95); }
+@media (hover:hover) and (pointer:fine) { .tis-play:hover { filter:brightness(1.1); } }
+.tis-play:focus-visible, .tis-chip:focus-visible, .tis-switch button:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+.tis-bar { height:6px; border-radius:999px; background:rgba(255,255,255,0.1); overflow:hidden; cursor:pointer; }
+.tis-fill { height:100%; background:var(--gold); transform-origin:left; transform:scaleX(0); }
+.tis-chip { min-height:40px; padding:0 1.1rem; border-radius:999px; border:1px solid rgba(201,162,39,0.3); background:transparent; color:var(--white-dim); cursor:pointer; font:inherit; font-size:0.85rem; transition:background-color .15s ease, color .15s ease; }
+.tis-chip.on { background:var(--gold); border-color:var(--gold); color:#0a0a0a; font-weight:600; }
+.tis-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); overflow:hidden; }
+.tis-cat { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+.tis-video { display:block; width:100%; aspect-ratio:16/9; background:#000; object-fit:cover; }
+.tis-vgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.25rem; }
+.tis-vgrid .tis-card .tis-meta { padding:0.85rem 1rem 1rem; }
+.tis-vgrid .tis-card h3 { font-size:0.95rem; margin:0.35rem 0 0; color:var(--white); font-weight:600; }
+.tis-pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:0.85rem; }
+.tis-pgrid figure { margin:0; }
+.tis-pgrid img { display:block; width:100%; aspect-ratio:1; object-fit:cover; border-radius:var(--radius-lg); background:var(--black-2); }
+.tis-pgrid figcaption { font-size:0.78rem; color:var(--white-muted); margin-top:0.45rem; }
+.tis-masonry { columns:3 220px; column-gap:0.85rem; }
+.tis-masonry img { display:block; width:100%; height:auto; margin:0 0 0.85rem; border-radius:var(--radius-lg); break-inside:avoid; background:var(--black-2); }
+@media (prefers-reduced-motion: reduce) { .tis-play { transition:none; } }
+.tis-tracks { display:grid; gap:0.75rem; }
+.tis-track { display:flex; align-items:center; gap:1rem; padding:0.85rem 1rem; }
+.tis-track .tis-info { flex:1; min-width:0; }
+.tis-track .tis-top { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:0.5rem; }
+.tis-track b { color:var(--white); font-size:0.95rem; }
+.tis-track [data-time] { font-family:var(--font-mono); font-size:0.72rem; color:var(--white-muted); font-variant-numeric:tabular-nums; }
+.tis-track .tis-ask { flex:none; font-size:0.78rem; color:var(--gold); text-decoration:none; white-space:nowrap; }
+@media (hover:hover) and (pointer:fine) { .tis-track .tis-ask:hover { text-decoration:underline; } }
+@media (max-width:520px) { .tis-track .tis-ask { display:none; } }</style>
 </head>
 <body>
   <nav id="nav" role="navigation" aria-label="Navegación principal">
@@ -388,6 +423,60 @@
         <div class="svc-step"><div class="svc-step-num">02</div><h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Base del beat</h3><p style="color:var(--white-dim);font-size:0.85rem;line-height:1.6;">Melodía, batería y estructura inicial sobre la que construir el tema.</p></div>
         <div class="svc-step"><div class="svc-step-num">03</div><h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Capas y arreglos</h3><p style="color:var(--white-dim);font-size:0.85rem;line-height:1.6;">Añadimos textura, variaciones y detalles para que no suene plano.</p></div>
         <div class="svc-step"><div class="svc-step-num">04</div><h3 style="font-size:0.95rem;margin-bottom:0.4rem;">Entrega</h3><p style="color:var(--white-dim);font-size:0.85rem;line-height:1.6;">Instrumental y stems listos para grabar o mezclar.</p></div>
+      </div>
+    </div>
+
+    <!-- Beats -->
+    <div class="reveal svc-module">
+      <div class="section-label" style="margin-bottom:1.5rem;">Escucha</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1rem;">Algunos de <span class="gold">nuestros beats</span></h2>
+      <p class="tis-p">Avances de 40 segundos de beats producidos en Trap In Spain. Si alguno encaja con tu estilo, pregúntanos por él o lo construimos a tu medida.</p>
+      <div class="tis-tracks">
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-trap.mp3" data-name="Trap">
+          <button type="button" class="tis-play" aria-label="Reproducir Trap"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Trap</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Trap%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-trap-2.mp3" data-name="Trap II">
+          <button type="button" class="tis-play" aria-label="Reproducir Trap II"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Trap II</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Trap%20II%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-glo.mp3" data-name="Glo">
+          <button type="button" class="tis-play" aria-label="Reproducir Glo"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Glo</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Glo%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-glo-2.mp3" data-name="Glo II">
+          <button type="button" class="tis-play" aria-label="Reproducir Glo II"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Glo II</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Glo%20II%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-reggaeton.mp3" data-name="Reggaeton">
+          <button type="button" class="tis-play" aria-label="Reproducir Reggaeton"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Reggaeton</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Reggaeton%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-jerk.mp3" data-name="Jerk">
+          <button type="button" class="tis-play" aria-label="Reproducir Jerk"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Jerk</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Jerk%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-jerk-2.mp3" data-name="Jerk II">
+          <button type="button" class="tis-play" aria-label="Reproducir Jerk II"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Jerk II</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Jerk%20II%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-emotional-jerk.mp3" data-name="Emotional Jerk">
+          <button type="button" class="tis-play" aria-label="Reproducir Emotional Jerk"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Emotional Jerk</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Emotional%20Jerk%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
+        <div class="tis-track tis-card" data-track="/audios-servicios/beat-rap.mp3" data-name="Rap">
+          <button type="button" class="tis-play" aria-label="Reproducir Rap"><span class="tis-ic"></span></button>
+          <div class="tis-info"><div class="tis-top"><b>Rap</b><span data-time>0:00</span></div><div class="tis-bar"><div class="tis-fill"></div></div></div>
+          <a class="tis-ask" href="https://wa.me/34628796290?text=Hola%20Trap%20In%20Spain%2C%20me%20interesa%20el%20beat%20Rap%20que%20he%20escuchado%20en%20la%20web" target="_blank" rel="noopener noreferrer">Me interesa →</a>
+        </div>
       </div>
     </div>
 
@@ -593,5 +682,22 @@
     }
   </script>
 <script src="/servicios-assets/servicios-pro.js" defer></script>
+<script>(function(){
+  var cur=null;
+  document.querySelectorAll('[data-track]').forEach(function(row){
+    var a=new Audio(); a.preload='none'; a.src=row.dataset.track;
+    var btn=row.querySelector('.tis-play'), fill=row.querySelector('.tis-fill'), bar=row.querySelector('.tis-bar'), time=row.querySelector('[data-time]');
+    function fmt(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+    function tick(){ fill.style.transform='scaleX('+(a.duration?a.currentTime/a.duration:0)+')'; time.textContent=fmt(a.currentTime); if(!a.paused) requestAnimationFrame(tick); }
+    function setUi(on){ row.classList.toggle('is-playing',on); btn.setAttribute('aria-label',(on?'Pausar ':'Reproducir ')+row.dataset.name); }
+    btn.addEventListener('click',function(){
+      if(a.paused){ if(cur&&cur!==a){cur.pause();} cur=a; a.play(); } else { a.pause(); }
+    });
+    a.addEventListener('play',function(){ setUi(true); requestAnimationFrame(tick); });
+    a.addEventListener('pause',function(){ setUi(false); });
+    a.addEventListener('ended',function(){ a.currentTime=0; setUi(false); tick(); });
+    bar.addEventListener('click',function(e){ if(!a.duration) return; var r=bar.getBoundingClientRect(); a.currentTime=(e.clientX-r.left)/r.width*a.duration; tick(); });
+  });
+})();</script>
 </body>
 </html>

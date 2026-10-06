@@ -304,6 +304,33 @@
   
   </style>
 <link rel="stylesheet" href="/servicios-assets/servicios-pro.css"/>
+<style>
+/* Reproductores y galerías de servicios */
+.tis-p { color:var(--white-dim); line-height:1.8; font-size:0.92rem; max-width:720px; margin:0 0 1.75rem; }
+.tis-ic { display:block; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent currentColor; margin-left:3px; }
+.is-playing > .tis-play .tis-ic, .tis-ab.playing .tis-play .tis-ic { width:12px; height:14px; border:0; margin:0; background:linear-gradient(90deg,currentColor 0 4px,transparent 4px 8px,currentColor 8px 12px); }
+.tis-play { flex:none; width:52px; height:52px; border-radius:50%; border:0; cursor:pointer; background:var(--gold); color:#0a0a0a; display:grid; place-items:center; transition:transform .16s cubic-bezier(.23,1,.32,1), filter .15s ease; }
+.tis-play:active { transform:scale(0.95); }
+@media (hover:hover) and (pointer:fine) { .tis-play:hover { filter:brightness(1.1); } }
+.tis-play:focus-visible, .tis-chip:focus-visible, .tis-switch button:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+.tis-bar { height:6px; border-radius:999px; background:rgba(255,255,255,0.1); overflow:hidden; cursor:pointer; }
+.tis-fill { height:100%; background:var(--gold); transform-origin:left; transform:scaleX(0); }
+.tis-chip { min-height:40px; padding:0 1.1rem; border-radius:999px; border:1px solid rgba(201,162,39,0.3); background:transparent; color:var(--white-dim); cursor:pointer; font:inherit; font-size:0.85rem; transition:background-color .15s ease, color .15s ease; }
+.tis-chip.on { background:var(--gold); border-color:var(--gold); color:#0a0a0a; font-weight:600; }
+.tis-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); overflow:hidden; }
+.tis-cat { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+.tis-video { display:block; width:100%; aspect-ratio:16/9; background:#000; object-fit:cover; }
+.tis-vgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.25rem; }
+.tis-vgrid .tis-card .tis-meta { padding:0.85rem 1rem 1rem; }
+.tis-vgrid .tis-card h3 { font-size:0.95rem; margin:0.35rem 0 0; color:var(--white); font-weight:600; }
+.tis-pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:0.85rem; }
+.tis-pgrid figure { margin:0; }
+.tis-pgrid img { display:block; width:100%; aspect-ratio:1; object-fit:cover; border-radius:var(--radius-lg); background:var(--black-2); }
+.tis-pgrid figcaption { font-size:0.78rem; color:var(--white-muted); margin-top:0.45rem; }
+.tis-masonry { columns:3 220px; column-gap:0.85rem; }
+.tis-masonry img { display:block; width:100%; height:auto; margin:0 0 0.85rem; border-radius:var(--radius-lg); break-inside:avoid; background:var(--black-2); }
+@media (prefers-reduced-motion: reduce) { .tis-play { transition:none; } }
+</style>
 </head>
 <body>
   <nav id="nav" role="navigation" aria-label="Navegación principal">
@@ -382,25 +409,21 @@
     <!-- Trabajos reales -->
     <div class="reveal svc-module">
       <div class="section-label" style="margin-bottom:1.5rem;">Trabajos reales</div>
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1.5rem;">Lo que ya <span class="gold">hemos grabado</span></h2>
-      <div class="svc-video-grid">
-        <div class="svc-video-card">
-          <div class="svc-video-cat">Vlog</div>
-          <div class="svc-video-frame"><iframe src="https://www.youtube.com/embed/lGI_eUUgLP4" title="Vlog oficial Trap In Spain #3 Murcia — Noche de Contactos" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-          <div class="svc-video-title">Vlog — Trap In Spain #3 Murcia</div>
-        </div>
-        <div class="svc-video-card">
-          <div class="svc-video-cat">Vlog</div>
-          <div class="svc-video-frame"><iframe src="https://www.youtube.com/embed/bTZK6LcOI9I" title="Vlog Trap In Spain #2 Valencia" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-          <div class="svc-video-title">Vlog — Trap In Spain #2 Valencia</div>
-        </div>
-        <div class="svc-video-card">
-          <div class="svc-video-cat">Vlog</div>
-          <div class="svc-video-frame"><iframe src="https://www.youtube.com/embed/qWqChuTh4xA" title="Vlog Trap In Spain #1 Valencia" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-          <div class="svc-video-title">Vlog — Trap In Spain #1 Valencia</div>
-        </div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1rem;">Lo que ya <span class="gold">hemos hecho</span></h2>
+      <p class="tis-p">Videoclips y visualizers grabados y editados por Trap In Spain para Anto GM, M3RY y otros artistas. Avances de 20 segundos.</p>
+      <div class="tis-vgrid">
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/solo-queria-bailar-con-ella.jpg"><source src="/videos-servicios/solo-queria-bailar-con-ella.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Grabación y edición</div><h3>Solo quería bailar con ella</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/jamaica-anto-gm-m3ry.jpg"><source src="/videos-servicios/jamaica-anto-gm-m3ry.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Edición top</div><h3>Jamaica — Anto GM &amp; M3RY</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/tuausencia-anto-gm.jpg"><source src="/videos-servicios/tuausencia-anto-gm.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Edición top</div><h3>tuausencia! — Anto GM</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/te-perdona-hasta-el-diablo.jpg"><source src="/videos-servicios/te-perdona-hasta-el-diablo.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Edición top</div><h3>Te perdona hasta el diablo — Anto GM &amp; Zenki</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/im-vip-anto-gm.jpg"><source src="/videos-servicios/im-vip-anto-gm.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Edición top</div><h3>I&rsquo;M VIP BITCH! — Anto GM</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/like-floyd.jpg"><source src="/videos-servicios/like-floyd.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Edición top</div><h3>Like Floyd</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/me-quieres.jpg"><source src="/videos-servicios/me-quieres.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Edición básica</div><h3>¿Me quieres?</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/fortuna-24.jpg"><source src="/videos-servicios/fortuna-24.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Edición básica</div><h3>Fortuna 24</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/visualizer-muevelo-gyal.jpg"><source src="/videos-servicios/visualizer-muevelo-gyal.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Visualizer</div><h3>Muévelo gyal</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/visualizer-divino-y-maldito.jpg"><source src="/videos-servicios/visualizer-divino-y-maldito.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Visualizer</div><h3>Divino y maldito</h3></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/visualizer-volver-atras.jpg"><source src="/videos-servicios/visualizer-volver-atras.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Visualizer</div><h3>Volver atrás</h3></div></div>
       </div>
-      <p class="svc-note">Estos son contenidos reales grabados y editados por el equipo de Trap In Spain. En cuanto tengamos videoclips y visualizers individuales de artistas, los añadimos aquí también.</p>
     </div>
 
     <!-- Por qué Trap In Spain -->
@@ -605,5 +628,6 @@
     }
   </script>
 <script src="/servicios-assets/servicios-pro.js" defer></script>
+<script>document.querySelectorAll('video.tis-video').forEach(function(v){ v.addEventListener('play',function(){ document.querySelectorAll('video.tis-video').forEach(function(o){ if(o!==v) o.pause(); }); }); });</script>
 </body>
 </html>
