@@ -304,6 +304,33 @@
   
   </style>
 <link rel="stylesheet" href="/servicios-assets/servicios-pro.css"/>
+<style>
+/* Reproductores y galerías de servicios */
+.tis-p { color:var(--white-dim); line-height:1.8; font-size:0.92rem; max-width:720px; margin:0 0 1.75rem; }
+.tis-ic { display:block; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent currentColor; margin-left:3px; }
+.is-playing > .tis-play .tis-ic, .tis-ab.playing .tis-play .tis-ic { width:12px; height:14px; border:0; margin:0; background:linear-gradient(90deg,currentColor 0 4px,transparent 4px 8px,currentColor 8px 12px); }
+.tis-play { flex:none; width:52px; height:52px; border-radius:50%; border:0; cursor:pointer; background:var(--gold); color:#0a0a0a; display:grid; place-items:center; transition:transform .16s cubic-bezier(.23,1,.32,1), filter .15s ease; }
+.tis-play:active { transform:scale(0.95); }
+@media (hover:hover) and (pointer:fine) { .tis-play:hover { filter:brightness(1.1); } }
+.tis-play:focus-visible, .tis-chip:focus-visible, .tis-switch button:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+.tis-bar { height:6px; border-radius:999px; background:rgba(255,255,255,0.1); overflow:hidden; cursor:pointer; }
+.tis-fill { height:100%; background:var(--gold); transform-origin:left; transform:scaleX(0); }
+.tis-chip { min-height:40px; padding:0 1.1rem; border-radius:999px; border:1px solid rgba(201,162,39,0.3); background:transparent; color:var(--white-dim); cursor:pointer; font:inherit; font-size:0.85rem; transition:background-color .15s ease, color .15s ease; }
+.tis-chip.on { background:var(--gold); border-color:var(--gold); color:#0a0a0a; font-weight:600; }
+.tis-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); overflow:hidden; }
+.tis-cat { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+.tis-video { display:block; width:100%; aspect-ratio:16/9; background:#000; object-fit:cover; }
+.tis-vgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.25rem; }
+.tis-vgrid .tis-card .tis-meta { padding:0.85rem 1rem 1rem; }
+.tis-vgrid .tis-card h3 { font-size:0.95rem; margin:0.35rem 0 0; color:var(--white); font-weight:600; }
+.tis-pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:0.85rem; }
+.tis-pgrid figure { margin:0; }
+.tis-pgrid img { display:block; width:100%; aspect-ratio:1; object-fit:cover; border-radius:var(--radius-lg); background:var(--black-2); }
+.tis-pgrid figcaption { font-size:0.78rem; color:var(--white-muted); margin-top:0.45rem; }
+.tis-masonry { columns:3 220px; column-gap:0.85rem; }
+.tis-masonry img { display:block; width:100%; height:auto; margin:0 0 0.85rem; border-radius:var(--radius-lg); break-inside:avoid; background:var(--black-2); }
+@media (prefers-reduced-motion: reduce) { .tis-play { transition:none; } }
+</style>
 </head>
 <body>
   <nav id="nav" role="navigation" aria-label="Navegación principal">
@@ -401,6 +428,21 @@
           <h3>Instalaciones</h3>
           <p>Estudio propio con sofás, nevera con agua y baños — un espacio cómodo, no solo una cabina.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- En el estudio -->
+    <div class="reveal svc-module">
+      <div class="section-label" style="margin-bottom:1.5rem;">En el estudio</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1rem;">Así se graba <span class="gold">con nosotros</span></h2>
+      <p class="tis-p">Sesiones reales de grabación en nuestro estudio.</p>
+      <div class="tis-vgrid">
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/grabacion-estudio-1.jpg"><source src="/videos-servicios/grabacion-estudio-1.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Sesión de grabación</div></div></div>
+        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/grabacion-estudio-2.jpg"><source src="/videos-servicios/grabacion-estudio-2.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Sesión de grabación</div></div></div>
+      </div>
+      <div class="tis-pgrid" style="margin-top:1.25rem;">
+        <figure><img src="/fotos-servicios/estudio-01.jpg" alt="Artista grabando voces en el estudio de Trap In Spain" loading="lazy"/></figure>
+        <figure><img src="/fotos-servicios/estudio-02.jpg" alt="Sesión de grabación en el estudio de Trap In Spain" loading="lazy"/></figure>
       </div>
     </div>
 

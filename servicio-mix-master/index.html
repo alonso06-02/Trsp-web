@@ -304,6 +304,40 @@
   
   </style>
 <link rel="stylesheet" href="/servicios-assets/servicios-pro.css"/>
+<style>
+/* Reproductores y galerías de servicios */
+.tis-p { color:var(--white-dim); line-height:1.8; font-size:0.92rem; max-width:720px; margin:0 0 1.75rem; }
+.tis-ic { display:block; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent currentColor; margin-left:3px; }
+.is-playing > .tis-play .tis-ic, .tis-ab.playing .tis-play .tis-ic { width:12px; height:14px; border:0; margin:0; background:linear-gradient(90deg,currentColor 0 4px,transparent 4px 8px,currentColor 8px 12px); }
+.tis-play { flex:none; width:52px; height:52px; border-radius:50%; border:0; cursor:pointer; background:var(--gold); color:#0a0a0a; display:grid; place-items:center; transition:transform .16s cubic-bezier(.23,1,.32,1), filter .15s ease; }
+.tis-play:active { transform:scale(0.95); }
+@media (hover:hover) and (pointer:fine) { .tis-play:hover { filter:brightness(1.1); } }
+.tis-play:focus-visible, .tis-chip:focus-visible, .tis-switch button:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+.tis-bar { height:6px; border-radius:999px; background:rgba(255,255,255,0.1); overflow:hidden; cursor:pointer; }
+.tis-fill { height:100%; background:var(--gold); transform-origin:left; transform:scaleX(0); }
+.tis-chip { min-height:40px; padding:0 1.1rem; border-radius:999px; border:1px solid rgba(201,162,39,0.3); background:transparent; color:var(--white-dim); cursor:pointer; font:inherit; font-size:0.85rem; transition:background-color .15s ease, color .15s ease; }
+.tis-chip.on { background:var(--gold); border-color:var(--gold); color:#0a0a0a; font-weight:600; }
+.tis-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); overflow:hidden; }
+.tis-cat { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+.tis-video { display:block; width:100%; aspect-ratio:16/9; background:#000; object-fit:cover; }
+.tis-vgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.25rem; }
+.tis-vgrid .tis-card .tis-meta { padding:0.85rem 1rem 1rem; }
+.tis-vgrid .tis-card h3 { font-size:0.95rem; margin:0.35rem 0 0; color:var(--white); font-weight:600; }
+.tis-pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:0.85rem; }
+.tis-pgrid figure { margin:0; }
+.tis-pgrid img { display:block; width:100%; aspect-ratio:1; object-fit:cover; border-radius:var(--radius-lg); background:var(--black-2); }
+.tis-pgrid figcaption { font-size:0.78rem; color:var(--white-muted); margin-top:0.45rem; }
+.tis-masonry { columns:3 220px; column-gap:0.85rem; }
+.tis-masonry img { display:block; width:100%; height:auto; margin:0 0 0.85rem; border-radius:var(--radius-lg); break-inside:avoid; background:var(--black-2); }
+@media (prefers-reduced-motion: reduce) { .tis-play { transition:none; } }
+.tis-ab { padding:1.25rem; display:grid; gap:1.1rem; max-width:640px; }
+.tis-ab-songs { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.tis-ab-main { display:flex; align-items:center; gap:1rem; }
+.tis-switch { flex:1; display:grid; grid-template-columns:1fr 1fr; background:rgba(255,255,255,0.05); border-radius:14px; padding:4px; }
+.tis-switch button { min-height:52px; border:0; border-radius:10px; background:transparent; color:var(--white-dim); font:inherit; font-weight:600; cursor:pointer; display:grid; place-content:center; line-height:1.2; transition:background-color .15s ease, color .15s ease; }
+.tis-switch button small { font-weight:400; font-size:0.7rem; color:var(--white-muted); }
+.tis-switch button.on { background:var(--black); color:var(--gold); box-shadow:inset 0 0 0 1px rgba(201,162,39,0.4); }
+.tis-ab-time { display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.72rem; color:var(--white-muted); font-variant-numeric:tabular-nums; margin-top:-0.6rem; }</style>
 </head>
 <body>
   <nav id="nav" role="navigation" aria-label="Navegación principal">
@@ -382,32 +416,24 @@
     <!-- Antes / Después -->
     <div class="reveal svc-module">
       <div class="section-label" style="margin-bottom:1.5rem;">Antes / Después</div>
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1.5rem;">Escucha la <span class="gold">diferencia</span></h2>
-      <div class="sx-ab" id="sx-ab">
-        <div class="sx-ab-top">
-          <div class="sx-ab-tabs" role="tablist" aria-label="Comparar antes y después">
-            <button class="active" id="ab-btn-before" type="button">Antes</button>
-            <button id="ab-btn-after" type="button">Después</button>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1rem;">Escucha la <span class="gold">diferencia</span></h2>
+      <p class="tis-p">Temas reales mezclados y masterizados en Trap In Spain. Dale al play y cambia entre <b>Antes</b> y <b>Después</b> mientras suena: la canción sigue en el mismo punto.</p>
+      <div class="tis-ab tis-card" data-ab>
+        <div class="tis-ab-songs" role="group" aria-label="Elige tema">
+          <button type="button" class="tis-chip on" data-song="jamaica" aria-pressed="true">Jamaica</button>
+          <button type="button" class="tis-chip" data-song="ponte-linda" aria-pressed="false">Ponte Linda</button>
+        </div>
+        <div class="tis-ab-main">
+          <button type="button" class="tis-play" aria-label="Reproducir"><span class="tis-ic"></span></button>
+          <div class="tis-switch" role="group" aria-label="Versión">
+            <button type="button" class="on" data-v="antes" aria-pressed="true">Antes<small>Sin procesar</small></button>
+            <button type="button" data-v="despues" aria-pressed="false">Después<small>Mezcla y master</small></button>
           </div>
-          <button class="sx-ab-play" type="button"><span class="ic"></span><span> Reproducir demo</span></button>
         </div>
-        <div class="sx-ab-view" id="ab-demo" aria-label="Comparador interactivo: arrastra para comparar">
-          <div class="sx-ab-wave sx-ab-before" aria-hidden="true"></div>
-          <div class="sx-ab-wave sx-ab-after" aria-hidden="true"></div>
-          <span class="sx-ab-lbl l">Sin procesar</span><span class="sx-ab-lbl r">Mezclado y masterizado</span>
-          <div class="sx-ab-play-head"></div>
-          <div class="sx-ab-handle"></div>
-        </div>
-        <div class="sx-ab-hint">↔ Arrastra el control para comparar</div>
-        <div class="sx-ab-meters">
-          <div><div class="sx-meter-top"><span>Volumen</span><b>Bajo</b></div><div class="sx-meter-track"><div class="sx-meter-fill"></div></div></div>
-          <div><div class="sx-meter-top"><span>Espacio</span><b>Bajo</b></div><div class="sx-meter-track"><div class="sx-meter-fill"></div></div></div>
-          <div><div class="sx-meter-top"><span>Brillo</span><b>Bajo</b></div><div class="sx-meter-track"><div class="sx-meter-fill"></div></div></div>
-          <div><div class="sx-meter-top"><span>Claridad</span><b>Bajo</b></div><div class="sx-meter-track"><div class="sx-meter-fill"></div></div></div>
-        </div>
-        <p id="ab-caption">Voz sin procesar: volumen irregular, sin espacio en la mezcla, sin brillo.</p>
+        <div class="tis-bar" data-bar><div class="tis-fill"></div></div>
+        <div class="tis-ab-time"><span data-cur>0:00</span><span>0:30</span></div>
       </div>
-      <p class="svc-note">Demo ilustrativa — en cuanto Anto nos facilite ejemplos reales de mezclas antes/después, los añadimos aquí con audio real de artistas de Trap In Spain.</p>
+      <p class="svc-note">Fragmentos de 30 segundos de los temas originales. Mejor con cascos o altavoces.</p>
     </div>
 
     <!-- Por qué Trap In Spain -->
@@ -636,5 +662,32 @@
     }
   </script>
 <script src="/servicios-assets/servicios-pro.js" defer></script>
+<script>(function(){
+  var root=document.querySelector('[data-ab]'); if(!root) return;
+  var names=['jamaica','ponte-linda'], songs={}, song='jamaica', ver='antes', playing=false;
+  names.forEach(function(s){ songs[s]={}; ['antes','despues'].forEach(function(v){ var a=new Audio(); a.preload='none'; a.src='/audios-servicios/'+s+'-'+v+'.mp3'; songs[s][v]=a; a.addEventListener('ended',function(){ if(s===song&&v===ver){ playing=false; songs[s].antes.currentTime=0; songs[s].despues.currentTime=0; ui(); tick(); } }); }); });
+  var play=root.querySelector('.tis-play'), fill=root.querySelector('.tis-fill'), bar=root.querySelector('[data-bar]'), cur=root.querySelector('[data-cur]');
+  function a(){ return songs[song][ver]; }
+  function other(){ return songs[song][ver==='antes'?'despues':'antes']; }
+  function fmt(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+  function seek(el,t){ if(el.readyState>=1){ el.currentTime=t; } else { el.addEventListener('loadedmetadata',function(){ el.currentTime=t; },{once:true}); } }
+  function warm(){ ['antes','despues'].forEach(function(v){ var el=songs[song][v]; if(el.preload!=='auto'){ el.preload='auto'; el.load(); } }); }
+  function ui(){ root.classList.toggle('playing',playing); play.setAttribute('aria-label',playing?'Pausar':'Reproducir'); }
+  function tick(){ var el=a(); fill.style.transform='scaleX('+(el.duration?el.currentTime/el.duration:0)+')'; cur.textContent=fmt(el.currentTime); if(playing) requestAnimationFrame(tick); }
+  play.addEventListener('click',function(){ warm(); if(playing){ a().pause(); playing=false; } else { a().play(); playing=true; requestAnimationFrame(tick); } ui(); });
+  root.querySelectorAll('[data-v]').forEach(function(b){ b.addEventListener('click',function(){
+    if(b.dataset.v===ver) return; warm(); var from=a(), t=from.currentTime||0; ver=b.dataset.v; var to=a(); seek(to,t);
+    if(playing){ to.play(); from.pause(); }
+    root.querySelectorAll('[data-v]').forEach(function(x){ var on=x===b; x.classList.toggle('on',on); x.setAttribute('aria-pressed',on); });
+    tick();
+  }); });
+  root.querySelectorAll('[data-song]').forEach(function(b){ b.addEventListener('click',function(){
+    if(b.dataset.song===song) return; names.forEach(function(s){ songs[s].antes.pause(); songs[s].despues.pause(); });
+    playing=false; song=b.dataset.song; songs[song].antes.currentTime=0; songs[song].despues.currentTime=0;
+    root.querySelectorAll('[data-song]').forEach(function(x){ var on=x===b; x.classList.toggle('on',on); x.setAttribute('aria-pressed',on); });
+    ui(); tick();
+  }); });
+  bar.addEventListener('click',function(e){ var el=a(); if(!el.duration) return; var r=bar.getBoundingClientRect(), t=(e.clientX-r.left)/r.width*el.duration; el.currentTime=t; seek(other(),t); tick(); });
+})();</script>
 </body>
 </html>

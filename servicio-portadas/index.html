@@ -307,6 +307,33 @@
   
   </style>
 <link rel="stylesheet" href="/servicios-assets/servicios-pro.css"/>
+<style>
+/* Reproductores y galerías de servicios */
+.tis-p { color:var(--white-dim); line-height:1.8; font-size:0.92rem; max-width:720px; margin:0 0 1.75rem; }
+.tis-ic { display:block; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent currentColor; margin-left:3px; }
+.is-playing > .tis-play .tis-ic, .tis-ab.playing .tis-play .tis-ic { width:12px; height:14px; border:0; margin:0; background:linear-gradient(90deg,currentColor 0 4px,transparent 4px 8px,currentColor 8px 12px); }
+.tis-play { flex:none; width:52px; height:52px; border-radius:50%; border:0; cursor:pointer; background:var(--gold); color:#0a0a0a; display:grid; place-items:center; transition:transform .16s cubic-bezier(.23,1,.32,1), filter .15s ease; }
+.tis-play:active { transform:scale(0.95); }
+@media (hover:hover) and (pointer:fine) { .tis-play:hover { filter:brightness(1.1); } }
+.tis-play:focus-visible, .tis-chip:focus-visible, .tis-switch button:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+.tis-bar { height:6px; border-radius:999px; background:rgba(255,255,255,0.1); overflow:hidden; cursor:pointer; }
+.tis-fill { height:100%; background:var(--gold); transform-origin:left; transform:scaleX(0); }
+.tis-chip { min-height:40px; padding:0 1.1rem; border-radius:999px; border:1px solid rgba(201,162,39,0.3); background:transparent; color:var(--white-dim); cursor:pointer; font:inherit; font-size:0.85rem; transition:background-color .15s ease, color .15s ease; }
+.tis-chip.on { background:var(--gold); border-color:var(--gold); color:#0a0a0a; font-weight:600; }
+.tis-card { background:var(--black-2); border:1px solid rgba(201,162,39,0.12); border-radius:var(--radius-lg); overflow:hidden; }
+.tis-cat { font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+.tis-video { display:block; width:100%; aspect-ratio:16/9; background:#000; object-fit:cover; }
+.tis-vgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.25rem; }
+.tis-vgrid .tis-card .tis-meta { padding:0.85rem 1rem 1rem; }
+.tis-vgrid .tis-card h3 { font-size:0.95rem; margin:0.35rem 0 0; color:var(--white); font-weight:600; }
+.tis-pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:0.85rem; }
+.tis-pgrid figure { margin:0; }
+.tis-pgrid img { display:block; width:100%; aspect-ratio:1; object-fit:cover; border-radius:var(--radius-lg); background:var(--black-2); }
+.tis-pgrid figcaption { font-size:0.78rem; color:var(--white-muted); margin-top:0.45rem; }
+.tis-masonry { columns:3 220px; column-gap:0.85rem; }
+.tis-masonry img { display:block; width:100%; height:auto; margin:0 0 0.85rem; border-radius:var(--radius-lg); break-inside:avoid; background:var(--black-2); }
+@media (prefers-reduced-motion: reduce) { .tis-play { transition:none; } }
+</style>
 </head>
 <body>
   <nav id="nav" role="navigation" aria-label="Navegación principal">
@@ -397,16 +424,40 @@
     <!-- Galería -->
     <div class="reveal svc-module">
       <div class="section-label" style="margin-bottom:1.5rem;">Galería</div>
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1.5rem;">Ejemplos <span class="gold">reales</span></h2>
-      <div class="svc-gallery-grid">
-        <div class="svc-gallery-photo"><img src="/fotos-portadas/portada-murcia.jpg" alt="Portada diseñada para Trap In Spain - Murcia" loading="lazy"/></div>
-        <div class="svc-gallery-photo"><img src="/fotos-portadas/portada-valencia1.jpg" alt="Portada diseñada para Trap In Spain - Valencia #1" loading="lazy"/></div>
-        <div class="svc-gallery-photo"><img src="/fotos-portadas/portada-valencia2.jpg" alt="Portada diseñada para Trap In Spain - Valencia #2" loading="lazy"/></div>
-        <div class="svc-gallery-empty">Próximamente</div>
-        <div class="svc-gallery-empty">Próximamente</div>
-        <div class="svc-gallery-empty">Próximamente</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1rem;">Ejemplos <span class="gold">reales</span></h2>
+      <p class="tis-p">Portadas que hemos diseñado para artistas de la escena.</p>
+      <div class="tis-pgrid">
+        <figure><img src="/fotos-servicios/portada-angel-caido.jpg" alt="Portada Ángel Caído" loading="lazy"/><figcaption>Ángel Caído</figcaption></figure>
+        <figure><img src="/fotos-servicios/portada-trappin.jpg" alt="Portada Trappin" loading="lazy"/><figcaption>Trappin</figcaption></figure>
+        <figure><img src="/fotos-servicios/portada-tan-rapido.jpg" alt="Portada Tan Rápido — Anto GM x Frijo" loading="lazy"/><figcaption>Tan Rápido — Anto GM x Frijo</figcaption></figure>
+        <figure><img src="/fotos-servicios/portada-la-pared.jpg" alt="Portada La Pared — DK24.7 x Anto GM" loading="lazy"/><figcaption>La Pared — DK24.7 x Anto GM</figcaption></figure>
+        <figure><img src="/fotos-servicios/portada-me-quieres.jpg" alt="Portada ¿Me quieres?" loading="lazy"/><figcaption>¿Me quieres?</figcaption></figure>
+        <figure><img src="/fotos-servicios/portada-tuausencia.jpg" alt="Portada tuausencia!" loading="lazy"/><figcaption>tuausencia!</figcaption></figure>
+        <figure><img src="/fotos-servicios/portada-holi-party-remix.jpg" alt="Portada Holi Party Remix" loading="lazy"/><figcaption>Holi Party Remix</figcaption></figure>
       </div>
-      <p class="svc-note">Portadas reales de eventos Trap In Spain. Iremos ampliando la galería con cada nuevo trabajo.</p>
+    </div>
+
+    <!-- Sesiones de fotos -->
+    <div class="reveal svc-module">
+      <div class="section-label" style="margin-bottom:1.5rem;">Sesiones de fotos</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1rem;">De la sesión <span class="gold">a la portada</span></h2>
+      <p class="tis-p">Fotos de directos y sesiones en estudio que hacemos a nuestros artistas, la base de muchas de sus portadas.</p>
+      <div class="tis-masonry">
+        <img src="/fotos-servicios/sesion-01.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-02.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-03.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-04.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-05.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-06.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-07.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-08.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-09.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-10.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-13.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-14.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-15.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+        <img src="/fotos-servicios/sesion-16.jpg" alt="Sesión de fotos de artista - Trap In Spain" loading="lazy"/>
+      </div>
     </div>
 
     <!-- Por qué Trap In Spain -->
