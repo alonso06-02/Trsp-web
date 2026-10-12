@@ -1,0 +1,106 @@
+/* ==========================================================================
+   movil.css — arreglos para móvil comunes a todas las páginas.
+   Se carga después del <style> de cada página. Muchas rejillas están
+   escritas en línea (style="..."), por eso aquí se usan selectores de
+   atributo y !important para poder sobrescribirlas.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------- Contraste: los textos grises secundarios no se leían ---------- */
+  :root { --white-muted: rgba(245,243,236,0.6); --white-dim: rgba(245,243,236,0.72); }
+
+  /* ---------- Menú móvil ---------- */
+  .mobile-menu {
+    background: var(--black);
+    justify-content: flex-start;
+    gap: 0.25rem;
+    padding: 96px 1.5rem 2rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .mobile-menu a {
+    font-size: 1.9rem;
+    color: var(--white);
+    padding: 0.45rem 1rem;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+  /* Con el menú abierto, la cabecera es opaca y el botón de WhatsApp no tapa enlaces */
+  body:has(.mobile-menu.open) #nav { background: var(--black); }
+  body:has(.mobile-menu.open) #wa-float { display: none; }
+
+  /* Hamburguesa → X cuando el menú está abierto */
+  .nav-hamburger { padding: 12px; margin-right: -12px; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ---------- Rejillas en línea de 2–3 columnas → una columna ---------- */
+  [style*="grid-template-columns:1fr 1fr;gap:clamp"],      /* último evento, sobre, productos */
+  [style*="grid-template-columns:1fr 1.4fr"],              /* contacto: texto + formulario */
+  [style*="grid-template-columns:repeat(3,1fr)"],          /* contacto: Instagram / WhatsApp / email */
+  [style*="grid-template-columns:1fr 1fr;gap:1px"] {       /* contacto: cofundadores */
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contacto: tarjetas de canal más compactas y textos largos que no se salgan */
+  [style*="grid-template-columns:repeat(3,1fr)"] > a {
+    min-height: 0 !important;
+    padding: 1.5rem !important;
+  }
+  [style*="grid-template-columns:repeat(3,1fr)"] *,
+  [style*="grid-template-columns:1fr 1fr;gap:1px"] * {
+    overflow-wrap: anywhere;
+  }
+
+  /* Sobre: cifras en 2×2 que ahora sí caben */
+  [style*="grid-template-columns:1fr 1fr;gap:1rem;"] > div[style*="padding:2rem"] {
+    padding: 1.25rem 0.75rem !important;
+  }
+
+  /* Portada: cifras del movimiento en 2×2 en vez de 4 tarjetas enormes */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+  [style*="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"] > div {
+    padding: 1.25rem 0.75rem !important;
+  }
+  [style*="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"] > div > div:first-child {
+    font-size: 2.4rem !important;
+    line-height: 1;
+  }
+
+  /* ---------- Merch en portada: tarjeta horizontal (foto + texto) ---------- */
+  .merch-landing-card {
+    flex-direction: row;
+    text-align: left;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .merch-landing-photo { width: 88px; height: 88px; border-radius: 12px; }
+
+  /* ---------- Textos pequeños y de bajo contraste ---------- */
+  .svc-card-desc { color: rgba(245,243,236,0.8); font-size: 0.85rem; }
+  .merch-cat, .event-date { font-size: 0.75rem; }
+  .footer-seo-links a, .footer-legal { font-size: 0.8rem; }
+
+  /* ---------- Zonas táctiles de al menos 44 px en el pie ---------- */
+  .footer-links { gap: 0; }
+  .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer-seo-links { gap: 0 1.25rem; }
+  .footer-seo-links a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+@media (max-width: 480px) {
+  /* Eventos: tarjetas que no caben a 320 px y ficha del evento en una columna */
+  .events-grid { grid-template-columns: 1fr; }
+  .event-info-grid { grid-template-columns: 1fr; }
+
+  /* Contacto: nombre y email uno debajo del otro */
+  [style*="grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem"] {
+    grid-template-columns: 1fr !important;
+  }
+}
