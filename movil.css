@@ -5,10 +5,14 @@
    atributo y !important para poder sobrescribirlas.
    ========================================================================== */
 
-@media (max-width: 768px) {
+/* ---------- Imágenes: width/height en el HTML reservan el hueco (sin saltos al cargar);
+   la altura real la decide el CSS. :where() = prioridad cero, cualquier regla de la página gana. */
+:where(img[width][height]) { height: auto; }
 
-  /* ---------- Contraste: los textos grises secundarios no se leían ---------- */
-  :root { --white-muted: rgba(245,243,236,0.6); --white-dim: rgba(245,243,236,0.72); }
+/* ---------- Contraste (todas las pantallas): los grises secundarios no llegaban a 4.5:1 ---------- */
+:root { --white-muted: rgba(245,243,236,0.6); --white-dim: rgba(245,243,236,0.72); }
+
+@media (max-width: 768px) {
 
   /* ---------- Menú móvil ---------- */
   .mobile-menu {
