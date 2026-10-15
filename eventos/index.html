@@ -504,6 +504,102 @@
         </div>
       </div>
     </section>
+
+<!-- ===== Fiestas Trap In Spain (BETA · Roto Club) — va en /eventos/ tras el listado de eventos ===== -->
+<style>
+  .fiestas { padding:clamp(4rem,10vh,7rem) 0; background:var(--black); border-top:1px solid rgba(201,162,39,0.12); overflow:hidden; }
+  .fiestas-inner { max-width:1200px; margin:0 auto; padding:0 clamp(1.25rem,4vw,3rem); }
+  .fiestas-ruler { position:relative; height:44px; border:1px solid rgba(245,243,236,0.35); border-radius:2px; margin-bottom:clamp(2rem,5vh,3rem);
+    background:repeating-linear-gradient(90deg, rgba(245,243,236,0.35) 0 1px, transparent 1px 2.5%) 0 0 / 100% 10px repeat-x; }
+  .fiestas-ruler ol { list-style:none; position:absolute; inset:0; display:flex; }
+  .fiestas-ruler li { flex:1; border-left:1px solid rgba(245,243,236,0.35); padding:16px 0 0 8px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.08em; color:var(--white-dim); text-transform:uppercase; white-space:nowrap; overflow:hidden; }
+  .fiestas-ruler li:first-child { border-left:0; }
+  .fiestas-ruler li.is-on { color:var(--black); background:var(--gold); }
+  .fiestas-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:1rem 2rem; margin-bottom:clamp(1.75rem,4vh,2.5rem); }
+  .fiestas-kicker { margin-bottom:0.75rem; font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); }
+  .fiestas-title { font-family:var(--font-display); font-size:clamp(2.6rem,6vw,4.75rem); line-height:0.9; letter-spacing:0.01em; }
+  .fiestas-lead { max-width:440px; color:var(--white-dim); font-size:0.95rem; line-height:1.7; }
+  .fiestas-track { display:flex; align-items:stretch; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:1rem; scrollbar-width:thin; scrollbar-color:var(--gold) transparent; }
+  .flyer { flex:0 0 auto; width:min(320px,82vw); scroll-snap-align:start; display:flex; flex-direction:column; border:1px solid rgba(245,243,236,0.4); border-radius:6px; background:var(--black-2); overflow:hidden; color:var(--white); }
+  .flyer-bar { display:flex; justify-content:space-between; align-items:center; gap:.5rem; padding:10px 12px; border-bottom:1px solid rgba(245,243,236,0.25); font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); }
+  .flyer-bar b { color:var(--black); background:var(--gold); padding:2px 6px; font-weight:500; white-space:nowrap; }
+  .flyer-bar b.is-past { background:var(--black-5); color:var(--white-dim); }
+  .flyer-img { display:block; position:relative; }
+  .flyer-img img { display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; }
+  .flyer-img span { position:absolute; right:8px; bottom:8px; padding:4px 8px; border-radius:2px; background:rgba(10,10,8,0.8); font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); }
+  .flyer-meta { list-style:none; border-top:1px solid rgba(245,243,236,0.25); }
+  .flyer-meta li { display:flex; justify-content:space-between; gap:1rem; padding:9px 12px; border-bottom:1px solid rgba(245,243,236,0.12); font-size:0.85rem; }
+  .flyer-meta li span:first-child { font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--white-dim); padding-top:2px; }
+  .flyer-meta li span:last-child { text-align:right; }
+  .flyer-cta { margin-top:auto; display:flex; align-items:center; justify-content:center; min-height:48px; background:var(--gold); color:var(--black); font-weight:700; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:background .2s; }
+  .flyer-cta:hover { background:var(--gold-light); }
+  .flyer--next { border-style:dashed; background:transparent; }
+  .flyer--next .flyer-empty { flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 1rem; font-family:var(--font-display); font-size:2rem; line-height:1; color:var(--white-dim); }
+  .flyer--next .flyer-cta { background:transparent; color:var(--gold); border-top:1px solid rgba(201,162,39,0.4); }
+  @media (max-width:640px) {
+    .fiestas-ruler li { font-size:0.62rem; padding-left:5px; }
+    .fiestas-ruler li:nth-child(n+4) { display:none; }
+  }
+</style>
+
+<section id="fiestas" class="fiestas" aria-labelledby="fiestas-heading">
+  <div class="fiestas-inner">
+    <div class="fiestas-ruler" aria-hidden="true">
+      <ol>
+        <li class="is-on">Sáb 17 · Oct</li>
+        <li>Próxima</li>
+        <li>·</li>
+        <li>·</li>
+        <li>·</li>
+      </ol>
+    </div>
+
+    <div class="fiestas-head">
+      <div>
+        <p class="fiestas-kicker">BETA · Roto Club · Valencia</p>
+        <h2 id="fiestas-heading" class="fiestas-title">Fiestas<br/>Trap In Spain</h2>
+      </div>
+      <p class="fiestas-lead">Showcases de Trap In Spain en BETA, la segunda sala de Roto Club: un escenario para que los nuevos talentos de la escena urbana se suban, se expresen y se den a conocer.</p>
+    </div>
+
+    <div class="fiestas-track" role="list">
+      <article class="flyer" role="listitem" data-end="2026-10-18T07:00:00+02:00" aria-labelledby="fiesta-20261017">
+        <div class="flyer-bar"><span>Trap In Spain × Roto</span><b class="flyer-status">Próxima</b></div>
+        <a class="flyer-img" href="/img/fiestas/beta-roto-2026-10-17-grande.webp" target="_blank" rel="noopener">
+          <img src="/img/fiestas/beta-roto-2026-10-17.webp" width="600" height="750" loading="lazy" alt="Cartel: sábado 17, M3RY Showcase Trap In Spain en BETA, hosted by Roto, con DJ set. Mayores de 18."/>
+          <span>Ver cartel</span>
+        </a>
+        <h3 id="fiesta-20261017" class="sr-only">M3RY Showcase Trap In Spain en BETA, Roto Club, sábado 17 de octubre de 2026</h3>
+        <ul class="flyer-meta">
+          <li><span>Fecha</span><span><time datetime="2026-10-17T23:30">Sáb 17 oct 2026</time></span></li>
+          <li><span>Hora</span><span>Desde las 23:30</span></li>
+          <li><span>Sala</span><span>BETA · Sala 2 de Roto Club</span></li>
+          <li><span>Dónde</span><span>Av. d'Ausiàs March, 18, Valencia</span></li>
+          <li><span>Edad</span><span>+18</span></li>
+        </ul>
+        <a class="flyer-cta" href="https://xceed.me/es/valencia/event/17-10-twenti-w-mami-ashtralmery/244748" target="_blank" rel="noopener noreferrer">Entradas en Xceed →</a>
+      </article>
+
+      <article class="flyer flyer--next" role="listitem" aria-label="Próximas fiestas">
+        <div class="flyer-bar"><span>Trap In Spain × Roto</span><span>Próximamente</span></div>
+        <p class="flyer-empty">Próximas<br/>fechas</p>
+        <a class="flyer-cta" href="https://instagram.com/trapinspainoficial" target="_blank" rel="noopener noreferrer">Avisos en Instagram →</a>
+      </article>
+    </div>
+  </div>
+  <script>
+    // Cuando pasa la fiesta: etiqueta "Realizada" y fuera el botón de entradas
+    document.querySelectorAll('#fiestas .flyer[data-end]').forEach(function (f) {
+      if (Date.now() > Date.parse(f.dataset.end)) {
+        var b = f.querySelector('.flyer-status'); if (b) { b.textContent = 'Realizada'; b.classList.add('is-past'); }
+        var c = f.querySelector('.flyer-cta'); if (c) c.remove();
+      }
+    });
+  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"MusicEvent","name":"M3RY Showcase · Trap In Spain en BETA (Roto Club)","startDate":"2026-10-17T23:30:00+02:00","endDate":"2026-10-18T07:00:00+02:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"Roto Club","address":{"@type":"PostalAddress","streetAddress":"Av. d'Ausiàs March, 18","addressLocality":"Valencia","addressCountry":"ES"}},"image":["https://www.trapinspain.com/img/fiestas/beta-roto-2026-10-17-grande.webp"],"performer":[{"@type":"MusicGroup","name":"M3RY"}],"organizer":{"@type":"Organization","name":"Trap In Spain","url":"https://www.trapinspain.com/"},"offers":{"@type":"Offer","url":"https://xceed.me/es/valencia/event/17-10-twenti-w-mami-ashtralmery/244748","availability":"https://schema.org/InStock"},"typicalAgeRange":"18-","url":"https://www.trapinspain.com/eventos/#fiestas"}</script>
+</section>
+<!-- ===== /Fiestas ===== -->
+
   </main>
   <footer role="contentinfo">
     <div class="container">
