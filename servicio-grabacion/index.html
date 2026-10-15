@@ -333,6 +333,11 @@
 .tis-vertical { grid-template-columns:repeat(auto-fill,minmax(200px,280px)); }
 .tis-vertical .tis-video { aspect-ratio:9/16; object-fit:contain; }
 </style>
+<style>
+  .svc-equip-grid--4 { grid-template-columns:repeat(4,1fr); }
+  @media(max-width:1024px){ .svc-equip-grid--4 { grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:560px){ .svc-equip-grid--4 { grid-template-columns:1fr; } }
+</style>
 <link rel="stylesheet" href="/movil.css" />
 </head>
 <body>
@@ -414,7 +419,7 @@
       <div class="section-label" style="margin-bottom:1.5rem;">Nuestro estudio</div>
       <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:0.75rem;">Un estudio propio, <span class="gold">bacano y funcional</span></h2>
       <p style="color:var(--white-dim);line-height:1.8;font-size:0.92rem;max-width:720px;margin-bottom:1.75rem;">No lo vendemos como algo que no es: es una opción low cost cuidada y seria, pensada para que grabes cómodo y con buen equipo. Si tu proyecto necesita subir de nivel o presupuesto, también te orientamos hacia otros estudios más grandes.</p>
-      <div class="svc-equip-grid">
+      <div class="svc-equip-grid svc-equip-grid--4">
         <div class="svc-equip-card">
           <h3>Micrófono</h3>
           <p>Aston Origin, un micrófono de condensador nuevo pensado para voz.</p>
@@ -431,21 +436,6 @@
           <h3>Instalaciones</h3>
           <p>Estudio propio con sofás, nevera con agua y baños — un espacio cómodo, no solo una cabina.</p>
         </div>
-      </div>
-    </div>
-
-    <!-- En el estudio -->
-    <div class="reveal svc-module">
-      <div class="section-label" style="margin-bottom:1.5rem;">En el estudio</div>
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:1rem;">Así se graba <span class="gold">con nosotros</span></h2>
-      <p class="tis-p">Sesiones reales de grabación en nuestro estudio.</p>
-      <div class="tis-vgrid tis-vertical">
-        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/grabacion-estudio-1.jpg"><source src="/videos-servicios/grabacion-estudio-1.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Sesión de grabación</div></div></div>
-        <div class="tis-card"><video class="tis-video" controls preload="none" playsinline poster="/videos-servicios/grabacion-estudio-2.jpg"><source src="/videos-servicios/grabacion-estudio-2.mp4" type="video/mp4"/></video><div class="tis-meta"><div class="tis-cat">Sesión de grabación</div></div></div>
-      </div>
-      <div class="tis-pgrid" style="margin-top:1.25rem;">
-        <figure><img src="/fotos-servicios/estudio-01.jpg" alt="Artista grabando voces en el estudio de Trap In Spain" loading="lazy"/></figure>
-        <figure><img src="/fotos-servicios/estudio-02.jpg" alt="Sesión de grabación en el estudio de Trap In Spain" loading="lazy"/></figure>
       </div>
     </div>
 
