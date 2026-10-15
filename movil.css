@@ -117,3 +117,9 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ---------- Accesibilidad (todas las pantallas) ---------- */
+/* Números 01, 02… de las listas de servicios: de 1,97:1 a más de 3:1 (texto grande) */
+.sx-item-num { color: rgba(201,162,39,0.62); }
+/* Migas de pan: el enlace se distingue por algo más que el color */
+.sx-hero nav a, .article-hero nav a { text-decoration: underline; text-underline-offset: 3px; }
