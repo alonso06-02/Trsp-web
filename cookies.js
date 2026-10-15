@@ -69,7 +69,7 @@
     box.setAttribute('aria-label', 'Aviso de cookies');
     box.innerHTML =
       '<p>Usamos cookies de Google Analytics para saber qué páginas se visitan y mejorar la web. ' +
-      'Solo se activan si aceptas. <a href="/cookies/">Más información</a></p>' +
+      'Solo se activan si aceptas. <a href="/cookies/">Política de cookies</a></p>' +
       '<div class="tc-row"><button type="button" class="tc-no">Rechazar</button>' +
       '<button type="button" class="tc-yes">Aceptar</button></div>';
     document.body.appendChild(box);
