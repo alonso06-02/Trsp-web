@@ -533,6 +533,10 @@
   .flyer-meta li span:last-child { text-align:right; }
   .flyer-cta { margin-top:auto; display:flex; align-items:center; justify-content:center; min-height:48px; background:var(--gold); color:var(--black); font-weight:700; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:background .2s; }
   .flyer-cta:hover { background:var(--gold-light); }
+  .fiestas-lead p + p { margin-top:0.9rem; }
+  .fiestas-tagline { font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+  .fiestas-ig { color:var(--gold); text-decoration:underline; text-underline-offset:3px; }
+  .fiestas-ig:hover { color:var(--gold-light); }
   .flyer--next { border-style:dashed; background:transparent; }
   .flyer--next .flyer-empty { flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem 1rem; font-family:var(--font-display); font-size:2rem; line-height:1; color:var(--white-dim); }
   .flyer--next .flyer-cta { background:transparent; color:var(--gold); border-top:1px solid rgba(201,162,39,0.4); }
@@ -556,33 +560,33 @@
 
     <div class="fiestas-head">
       <div>
-        <p class="fiestas-kicker">BETA · Roto Club · Valencia</p>
+        <p class="fiestas-kicker">Fiestas y showcases</p>
         <h2 id="fiestas-heading" class="fiestas-title">Fiestas<br/>Trap In Spain</h2>
       </div>
-      <p class="fiestas-lead">Showcases de Trap In Spain en BETA, la segunda sala de Roto Club: un escenario para que los nuevos talentos de la escena urbana se suban, se expresen y se den a conocer.</p>
+      <div class="fiestas-lead"><p>Vive la escena urbana con las fiestas de Trap In Spain. Creamos experiencias únicas donde la música, los artistas y el público se encuentran. Desde showcases de talentos emergentes hasta eventos con artistas consolidados, llevamos la energía del trap y la música urbana a diferentes escenarios y ciudades.</p>
+        <p class="fiestas-tagline">Nuevos talentos. Nuevos escenarios. Una misma cultura.</p></div>
     </div>
 
     <div class="fiestas-track" role="list">
       <article class="flyer" role="listitem" data-end="2026-10-18T07:00:00+02:00" aria-labelledby="fiesta-20261017">
         <div class="flyer-bar"><span>Trap In Spain × Roto</span><b class="flyer-status">Próxima</b></div>
         <a class="flyer-img" href="/img/fiestas/beta-roto-2026-10-17-grande.webp" target="_blank" rel="noopener">
-          <img src="/img/fiestas/beta-roto-2026-10-17.webp" width="600" height="750" loading="lazy" alt="Cartel: sábado 17, M3RY Showcase Trap In Spain en BETA, hosted by Roto, con DJ sets de DJ Sopa y DJ #300MADEIT. Mayores de 18."/>
+          <img src="/img/fiestas/beta-roto-2026-10-17.webp" width="600" height="750" loading="lazy" alt="Cartel: sábado 17, M3RY Showcase Trap In Spain en BETA, hosted by Roto, con DJ sets de DJ Sopa y DJ #300MADEIT."/>
           <span>Ver cartel</span>
         </a>
         <h3 id="fiesta-20261017" class="sr-only">M3RY Showcase Trap In Spain en BETA, Roto Club, sábado 17 de octubre de 2026</h3>
         <ul class="flyer-meta">
           <li><span>Fecha</span><span><time datetime="2026-10-17T23:30">Sáb 17 oct 2026</time></span></li>
           <li><span>Hora</span><span>Desde las 23:30</span></li>
-          <li><span>Sala</span><span>BETA · Sala 2 de Roto Club</span></li>
+          <li><span>Sala</span><span>ROTO CLUB</span></li>
           <li><span>Dónde</span><span>Av. d'Ausiàs March, 18, Valencia</span></li>
-          <li><span>DJ sets</span><span>DJ Sopa + DJ #300MADEIT</span></li>
-          <li><span>Edad</span><span>+18</span></li>
+          <li><span>Artistas</span><span><a class="fiestas-ig" href="https://instagram.com/m3ry.es" target="_blank" rel="noopener noreferrer">M3RY</a></span></li>
+          <li><span>DJ sets</span><span><a class="fiestas-ig" href="https://www.instagram.com/pau.albuixech/" target="_blank" rel="noopener noreferrer">DJ Sopa</a> + <a class="fiestas-ig" href="https://www.instagram.com/300madeit/" target="_blank" rel="noopener noreferrer">DJ #300MADEIT</a></span></li>
         </ul>
         <a class="flyer-cta" href="https://xceed.me/es/valencia/event/17-10-twenti-w-mami-ashtralmery/244748" target="_blank" rel="noopener noreferrer">Entradas en Xceed →</a>
       </article>
 
       <article class="flyer flyer--next" role="listitem" aria-label="Próximas fiestas">
-        <div class="flyer-bar"><span>Trap In Spain × Roto</span><span>Próximamente</span></div>
         <p class="flyer-empty">Próximas<br/>fechas</p>
         <a class="flyer-cta" href="https://instagram.com/trapinspainoficial" target="_blank" rel="noopener noreferrer">Avisos en Instagram →</a>
       </article>
@@ -597,7 +601,7 @@
       }
     });
   </script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"MusicEvent","name":"M3RY Showcase · Trap In Spain en BETA (Roto Club)","startDate":"2026-10-17T23:30:00+02:00","endDate":"2026-10-18T07:00:00+02:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"Roto Club","address":{"@type":"PostalAddress","streetAddress":"Av. d'Ausiàs March, 18","addressLocality":"Valencia","addressCountry":"ES"}},"image":["https://www.trapinspain.com/img/fiestas/beta-roto-2026-10-17-grande.webp"],"performer":[{"@type":"MusicGroup","name":"M3RY"},{"@type":"Person","name":"DJ Sopa"},{"@type":"Person","name":"DJ #300MADEIT"}],"organizer":{"@type":"Organization","name":"Trap In Spain","url":"https://www.trapinspain.com/"},"offers":{"@type":"Offer","url":"https://xceed.me/es/valencia/event/17-10-twenti-w-mami-ashtralmery/244748","availability":"https://schema.org/InStock"},"typicalAgeRange":"18-","url":"https://www.trapinspain.com/eventos/#fiestas"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"MusicEvent","name":"M3RY Showcase · Trap In Spain en Roto Club","startDate":"2026-10-17T23:30:00+02:00","endDate":"2026-10-18T07:00:00+02:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"Roto Club","address":{"@type":"PostalAddress","streetAddress":"Av. d'Ausiàs March, 18","addressLocality":"Valencia","addressCountry":"ES"}},"image":["https://www.trapinspain.com/img/fiestas/beta-roto-2026-10-17-grande.webp"],"performer":[{"@type":"MusicGroup","name":"M3RY","sameAs":"https://instagram.com/m3ry.es"},{"@type":"Person","name":"DJ Sopa","sameAs":"https://www.instagram.com/pau.albuixech/"},{"@type":"Person","name":"DJ #300MADEIT","sameAs":"https://www.instagram.com/300madeit/"}],"organizer":{"@type":"Organization","name":"Trap In Spain","url":"https://www.trapinspain.com/"},"offers":{"@type":"Offer","url":"https://xceed.me/es/valencia/event/17-10-twenti-w-mami-ashtralmery/244748","availability":"https://schema.org/InStock"},"url":"https://www.trapinspain.com/eventos/#fiestas"}</script>
 </section>
 <!-- ===== /Fiestas ===== -->
 
