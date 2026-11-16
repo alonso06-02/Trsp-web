@@ -322,7 +322,23 @@
   .mc-btn--ghost:hover { border-color:var(--gold); color:var(--gold); }
 
   /* Sobre ilustrado (SVG, sin fotos hasta tener el pack real) */
-  .mc-envelope { width:min(100%,520px); margin-inline:auto; filter:drop-shadow(0 30px 60px rgba(201,162,39,.25)); transform:rotate(-8deg); }
+  /* Sobre animado: la solapa se abre y asoman cromo, tríptico y pegatina; luego flota */
+  .mc-env-wrap { width:min(100%,520px); margin-inline:auto; animation:mcFloat 3.2s ease-in-out 2.4s infinite alternate; }
+  .mc-envelope { width:100%; overflow:visible; filter:drop-shadow(0 30px 60px rgba(201,162,39,.25)); transform:rotate(-8deg); }
+  .mc-envelope .flap-closed { transform-box:fill-box; transform-origin:50% 0; animation:mcFlapClose .35s cubic-bezier(.5,0,.75,0) .4s both; }
+  .mc-envelope .flap-open { transform-box:fill-box; transform-origin:50% 100%; animation:mcFlapOpen .35s cubic-bezier(.25,1,.5,1) .75s both; }
+  .mc-envelope .piece { animation:mcRise .75s cubic-bezier(.22,1,.36,1) both; }
+  .mc-envelope .p1 { animation-delay:1.05s; } .mc-envelope .p2 { animation-delay:1.25s; } .mc-envelope .p3 { animation-delay:1.45s; }
+  @keyframes mcFlapClose { from { transform:scaleY(1); } to { transform:scaleY(0); } }
+  @keyframes mcFlapOpen { from { transform:scaleY(0); } to { transform:scaleY(1); } }
+  @keyframes mcRise { from { transform:translateY(190px); } to { transform:translateY(0); } }
+  .mc-env-wrap.wait, .mc-env-wrap.wait * { animation-play-state:paused !important; }
+  @keyframes mcFloat { from { transform:translateY(0); } to { transform:translateY(-12px); } }
+  @media (prefers-reduced-motion:reduce) {
+    .mc-env-wrap, .mc-envelope .piece { animation:none; }
+    .mc-envelope .flap-closed { animation:none; transform:scaleY(0); }
+    .mc-envelope .flap-open { animation:none; transform:none; }
+  }
 
   /* Planes */
   .mc-plans { padding:clamp(3rem,8vh,5rem) 0; }
@@ -400,15 +416,42 @@
       </div>
     </div>
     <div aria-hidden="true">
-      <svg class="mc-envelope" viewBox="0 0 520 360" role="presentation">
+      <div class="mc-env-wrap">
+      <svg class="mc-envelope" viewBox="0 -70 520 510" role="presentation">
         <defs><linearGradient id="mcEnv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d1d1a"/><stop offset="1" stop-color="#0c0c0a"/></linearGradient></defs>
-        <rect x="10" y="20" width="500" height="320" rx="14" fill="url(#mcEnv)" stroke="#C9A227" stroke-opacity=".55" stroke-width="2"/>
-        <path d="M14 30 L260 205 L506 30" fill="none" stroke="#C9A227" stroke-opacity=".45" stroke-width="2"/>
-        <rect x="402" y="48" width="78" height="92" rx="4" fill="none" stroke="#C9A227" stroke-width="3" stroke-dasharray="6 5"/>
-        <path d="M420 112 l10 -26 l11 16 l11 -16 l10 26 z" fill="none" stroke="#C9A227" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M350 70 q20 -10 40 0 M350 84 q20 -10 40 0 M350 98 q20 -10 40 0" fill="none" stroke="#C9A227" stroke-opacity=".6" stroke-width="2"/>
-        <image href="/img/emb/logo.webp" x="165" y="190" width="190" height="114"/>
+        <!-- fondo del sobre -->
+        <rect x="10" y="120" width="500" height="300" rx="14" fill="#0e0e0c" stroke="#C9A227" stroke-opacity=".55" stroke-width="2"/>
+        <!-- solapa abierta (detrás de las piezas) -->
+        <path class="flap-open" d="M12 122 L260 -46 L508 122 Z" fill="#151513" stroke="#C9A227" stroke-opacity=".5" stroke-width="2" stroke-linejoin="round"/>
+        <!-- piezas que asoman -->
+        <g class="piece p1"><g transform="rotate(-9 175 95)">
+          <rect x="110" y="10" width="130" height="170" rx="6" fill="#F5F3EC"/>
+          <text x="175" y="52" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="30" fill="#0A0A08">TRÍPTICO</text>
+          <rect x="128" y="66" width="94" height="6" rx="3" fill="#0A0A08" opacity=".7"/>
+          <rect x="128" y="80" width="80" height="6" rx="3" fill="#0A0A08" opacity=".45"/>
+          <rect x="128" y="94" width="88" height="6" rx="3" fill="#0A0A08" opacity=".45"/>
+          <rect x="128" y="108" width="64" height="6" rx="3" fill="#0A0A08" opacity=".45"/>
+        </g></g>
+        <g class="piece p2"><g transform="rotate(7 300 90)">
+          <rect x="240" y="-5" width="120" height="170" rx="8" fill="#141412" stroke="#C9A227" stroke-width="3"/>
+          <image href="/img/mailclub/pinguino-gold.webp" x="270" y="12" width="60" height="112"/>
+          <text x="300" y="150" text-anchor="middle" font-family="DM Mono, monospace" font-size="13" letter-spacing="2" fill="#C9A227">CROMO</text>
+        </g></g>
+        <g class="piece p3">
+          <circle cx="410" cy="78" r="48" fill="#0A0A08" stroke="#C9A227" stroke-width="3"/>
+          <image href="/img/emb/logo.webp" x="366" y="52" width="88" height="53"/>
+        </g>
+        <!-- frontal del sobre -->
+        <path d="M10 124 L260 292 L510 124 L510 406 Q510 420 496 420 L24 420 Q10 420 10 406 Z" fill="url(#mcEnv)" stroke="#C9A227" stroke-opacity=".55" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="402" y="200" width="78" height="92" rx="4" fill="none" stroke="#C9A227" stroke-width="3" stroke-dasharray="6 5"/>
+        <path d="M420 264 l10 -26 l11 16 l11 -16 l10 26 z" fill="none" stroke="#C9A227" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M350 222 q20 -10 40 0 M350 236 q20 -10 40 0 M350 250 q20 -10 40 0" fill="none" stroke="#C9A227" stroke-opacity=".6" stroke-width="2"/>
+        <image href="/img/emb/logo.webp" x="165" y="300" width="190" height="114"/>
+        <!-- solapa cerrada (encima de todo; se pliega al cargar) -->
+        <path class="flap-closed" d="M8 120 L260 298 L512 120 Z" fill="#191917" stroke="#C9A227" stroke-opacity=".5" stroke-width="2" stroke-linejoin="round"/>
       </svg>
+      </div>
+      <script>/* El sobre se abre cuando entra en pantalla (en móvil está más abajo) */(function(){var w=document.querySelector('.mc-env-wrap');if(!w||!('IntersectionObserver' in window))return;w.classList.add('wait');new IntersectionObserver(function(e,o){if(e[0].isIntersecting){w.classList.remove('wait');o.disconnect();}},{threshold:0.6}).observe(w);})();</script>
     </div>
   </div>
 </section>
@@ -420,7 +463,7 @@
     <p class="mc-note">Suscríbete y recibe cada mes en casa contenido físico exclusivo de Trap In Spain. Enviamos a toda España.</p>
 
     <div class="mc-grid">
-      <article id="gold" class="mc-plan" aria-labelledby="gold-h">
+      <article id="gold" style="transition-delay:0.00s" class="reveal mc-plan" aria-labelledby="gold-h">
         <div class="mc-plan-head">
           <img class="mc-peng" src="/img/mailclub/pinguino-gold.webp" width="128" height="240" alt="" aria-hidden="true"/>
           <div><h3 id="gold-h" class="mc-plan-name">Gold</h3><p class="mc-plan-tag">Lo esencial de la escena</p></div>
@@ -442,7 +485,7 @@
         </div>
       </article>
 
-      <article id="diamond" class="mc-plan mc-plan--diamond" aria-labelledby="diamond-h">
+      <article id="diamond" style="transition-delay:0.12s" class="reveal mc-plan mc-plan--diamond" aria-labelledby="diamond-h">
         <div class="mc-plan-head">
           <img class="mc-peng" src="/img/mailclub/pinguino-diamond.webp" width="128" height="240" alt="" aria-hidden="true"/>
           <div><h3 id="diamond-h" class="mc-plan-name">Diamond</h3><p class="mc-plan-tag">Más contenido, más real</p></div>
@@ -458,7 +501,7 @@
         </div>
       </article>
 
-      <article id="netherite" class="mc-plan mc-plan--netherite" aria-labelledby="netherite-h">
+      <article id="netherite" style="transition-delay:0.24s" class="reveal mc-plan mc-plan--netherite" aria-labelledby="netherite-h">
         <div class="mc-plan-head">
           <img class="mc-peng" src="/img/mailclub/pinguino-netherite.webp" width="128" height="240" alt="" aria-hidden="true"/>
           <div><h3 id="netherite-h" class="mc-plan-name">Netherite</h3><p class="mc-plan-tag">La experiencia completa</p></div>
