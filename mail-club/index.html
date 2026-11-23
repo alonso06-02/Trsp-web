@@ -374,6 +374,20 @@
 
   /* Qué incluye */
   .mc-incl { padding:clamp(3rem,8vh,5rem) 0; background:var(--black-2); }
+  /* Tema del mes: cambiar solo estas variables y la imagen de fondo cada mes */
+  .mc-mes--diciembre { --mes-bg:#E2FF00; --mes-acc:#FF2E96; --mes-ink:#0A0A08; --mes-pattern:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%20viewBox='0%200%20180%20180'%20fill='%23FF2E96'%3E%3Cpolygon%20points='50.3,12.4%2056.1,38.5%2082.4,43.4%2059.3,57.0%2062.8,83.6%2042.8,65.8%2018.6,77.3%2029.3,52.8%2010.8,33.3%2037.5,35.9'/%3E%3Cpolygon%20points='128.4,102.6%20142.0,125.7%20168.6,122.2%20150.8,142.2%20162.3,166.4%20137.8,155.7%20118.3,174.2%20120.9,147.5%2097.4,134.7%20123.5,128.9'/%3E%3Cpolygon%20points='128.4,-77.4%20142.0,-54.3%20168.6,-57.8%20150.8,-37.8%20162.3,-13.6%20137.8,-24.3%20118.3,-5.8%20120.9,-32.5%2097.4,-45.3%20123.5,-51.1'/%3E%3C/svg%3E"); }
+  .mc-mes { background:var(--mes-pattern) 0 0 / 180px 180px repeat, var(--mes-bg); color:var(--mes-ink); }
+  .mc-mes .mc-panel { background:var(--mes-bg); border:3px solid var(--mes-ink); border-radius:10px; box-shadow:10px 10px 0 var(--mes-acc), 10px 10px 0 3px var(--mes-ink); padding:clamp(1.5rem,4vw,2.75rem); }
+  .mc-mes { overflow:hidden; }
+  @media (max-width:600px) { .mc-mes .mc-panel { box-shadow:6px 6px 0 var(--mes-acc), 6px 6px 0 3px var(--mes-ink); margin-right:9px; } }
+  .mc-mes .mc-kicker { color:var(--mes-ink); }
+  .mc-mes .mc-h2 { color:var(--mes-ink); }
+  .mc-mes .mc-h2 mark { background:var(--mes-acc); color:var(--mes-ink); padding:0 .15em; border-radius:4px; }
+  .mc-mes .mc-items { border-top-color:rgba(10,10,8,.25); }
+  .mc-mes .mc-item { border-bottom-color:rgba(10,10,8,.25); }
+  .mc-mes .mc-item dt { font-weight:700; }
+  .mc-mes .mc-item dd { color:rgba(10,10,8,.78); }
+  .mc-mes .mc-item i { width:18px; height:18px; margin-top:2px; transform:none; background:var(--mes-acc); -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='-10%20-10%2020%2020'%3E%3Cpolygon%20points='0.0,-10.0%202.5,-3.4%209.5,-3.1%204.0,1.3%205.9,8.1%200.0,4.2%20-5.9,8.1%20-4.0,1.3%20-9.5,-3.1%20-2.5,-3.4'%20fill='black'/%3E%3C/svg%3E") center/contain no-repeat; mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='-10%20-10%2020%2020'%3E%3Cpolygon%20points='0.0,-10.0%202.5,-3.4%209.5,-3.1%204.0,1.3%205.9,8.1%200.0,4.2%20-5.9,8.1%20-4.0,1.3%20-9.5,-3.1%20-2.5,-3.4'%20fill='black'/%3E%3C/svg%3E") center/contain no-repeat; }
   .mc-items { display:grid; gap:0; margin-top:2rem; border-top:1px solid rgba(245,243,236,.12); }
   @media (min-width:700px) { .mc-items { grid-template-columns:1fr 1fr; column-gap:3rem; } }
   .mc-item { display:grid; grid-template-columns:auto 1fr; gap:.25rem 1rem; padding:1.1rem 0; border-bottom:1px solid rgba(245,243,236,.12); }
@@ -405,6 +419,8 @@
   .mc-faq details { border-bottom:1px solid rgba(245,243,236,.12); padding:1rem 0; }
   .mc-faq summary { cursor:pointer; font-weight:600; min-height:44px; display:flex; align-items:center; }
   .mc-faq p { color:var(--white-dim); margin-top:.5rem; line-height:1.7; }
+  .mc-faq p a { color:var(--gold); text-decoration:underline; text-underline-offset:3px; }
+  .mc-faq .mc-h2 { margin-bottom:1.5rem; }
 </style>
 
 
@@ -431,8 +447,7 @@
         <!-- piezas que asoman -->
         <g class="piece p1"><g transform="rotate(-9 175 95)">
           <rect x="110" y="10" width="130" height="170" rx="6" fill="#F5F3EC"/>
-          <text x="175" y="52" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="30" fill="#0A0A08">TRÍPTICO</text>
-          <rect x="128" y="66" width="94" height="6" rx="3" fill="#0A0A08" opacity=".7"/>
+          <rect x="128" y="40" width="94" height="10" rx="3" fill="#0A0A08" opacity=".7"/>
           <rect x="128" y="80" width="80" height="6" rx="3" fill="#0A0A08" opacity=".45"/>
           <rect x="128" y="94" width="88" height="6" rx="3" fill="#0A0A08" opacity=".45"/>
           <rect x="128" y="108" width="64" height="6" rx="3" fill="#0A0A08" opacity=".45"/>
@@ -440,7 +455,6 @@
         <g class="piece p2"><g transform="rotate(7 300 90)">
           <rect x="240" y="-5" width="120" height="170" rx="8" fill="#141412" stroke="#C9A227" stroke-width="3"/>
           <image href="/img/mailclub/pinguino-gold.webp" x="270" y="12" width="60" height="112"/>
-          <text x="300" y="150" text-anchor="middle" font-family="DM Mono, monospace" font-size="13" letter-spacing="2" fill="#C9A227">CROMO</text>
         </g></g>
         <g class="piece p3">
           <circle cx="410" cy="78" r="48" fill="#0A0A08" stroke="#C9A227" stroke-width="3"/>
@@ -531,10 +545,10 @@
   </div>
 </section>
 
-<section class="mc-incl" aria-labelledby="incl-h">
-  <div class="mc-wrap">
-    <p class="mc-kicker">En todos los planes · cada mes</p>
-    <h2 id="incl-h" class="mc-h2">¿Qué trae <span class="gold">el sobre?</span></h2>
+<section class="mc-incl mc-mes mc-mes--diciembre" aria-labelledby="incl-h">
+  <div class="mc-wrap"><div class="mc-panel">
+    <p class="mc-kicker">Edición de diciembre · en todos los planes</p>
+    <h2 id="incl-h" class="mc-h2">¿Qué trae el Mail Club de <mark>diciembre</mark>?</h2>
     <dl class="mc-items">
       <div class="mc-item"><i></i><dt>Pegatinas personalizadas</dt></div>
       <div class="mc-item"><i></i><dt>Ilustración principal</dt></div>
@@ -545,6 +559,7 @@
       <div class="mc-item"><i></i><dt>Tarjeta de fidelidad Trap In Spain</dt></div>
       <div class="mc-item"><i></i><dt>Algunos detalles extra</dt></div>
     </dl>
+  </div>
   </div>
 </section>
 
@@ -583,6 +598,19 @@
       <li><h3>Recibes tu sobre</h3><p>Te enviamos el Mail Club a casa cada mes, a cualquier punto de España.</p></li>
       <li><h3>Diamond y Netherite: te llamamos</h3><p>Te contactamos para agendar tu asesoría con Anto o M3RY.</p></li>
     </ol>
+  </div>
+</section>
+
+<section class="mc-faq" aria-labelledby="faq-h">
+  <div class="mc-wrap">
+    <p class="mc-kicker">Dudas frecuentes</p>
+    <h2 id="faq-h" class="mc-h2">Antes de <span class="gold">suscribirte</span></h2>
+    <details><summary>¿Cuánto tarda en llegar el sobre?</summary><p>Entre 7 y 10 días desde que se envía, sin contar festivos. Depende un poco de lo rápido que vaya Correos.</p></details>
+    <details><summary>¿A dónde enviáis?</summary><p>A cualquier punto de España. El envío está incluido en el precio.</p></details>
+    <details><summary>¿El precio lleva IVA?</summary><p>Sí. Los precios de los tres planes llevan el IVA incluido.</p></details>
+    <details><summary>¿Hay permanencia? ¿Cómo me doy de baja?</summary><p>No hay permanencia. Te das de baja cuando quieras desde <a href="https://billing.stripe.com/p/login/28EbIV5rgdKPfww0Bxcwg00" rel="noopener">Gestiona tu suscripción</a>, con el email que usaste al suscribirte. Sigues teniendo el mes que ya pagaste y no se te vuelve a cobrar.</p></details>
+    <details><summary>¿Cada mes trae lo mismo?</summary><p>Cada mes el Mail Club tiene una temática distinta y el contenido del sobre cambia.</p></details>
+    <details><summary>¿Cómo pago?</summary><p>Con tarjeta u otros medios a través de Stripe, de forma segura. Se cobra automáticamente cada mes y recibes el recibo por email.</p></details>
   </div>
 </section>
 
